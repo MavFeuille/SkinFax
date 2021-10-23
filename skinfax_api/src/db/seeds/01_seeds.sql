@@ -22,9 +22,6 @@ VALUES
 (2, 1),
 (3, 2);
 
-
-
-
 INSERT INTO forum_posts (user_id, category_id, content)
 VALUES 
 (1, 1, 'This is a test post'),

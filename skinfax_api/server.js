@@ -1,22 +1,22 @@
 //NEWEST
 // load .env data into process.env
-require ('dotenv').config ();
+require('dotenv').config();
 
 // ____________________Web server config_______________________________
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || 'development';
-const express = require ('express');
-const app = express ();
+const express = require('express');
+const app = express();
 
 
-app.use('/',)
+// app.use('/', )
 
-app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 
-app.get ('/', (req, res) => {
-  res.render ('index');
+app.get('/', (req, res) => {
+  res.send('Hello world');
 });
 
+app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 // const bodyParser = require ('body-parser');
 // const sass = require ('node-sass-middleware');
 // const morgan = require ('morgan');
