@@ -13,7 +13,7 @@ const pool = new Pool(dbParams);
 
 const testAPIRouter = require('./routes/testAPI');
 
-app.use('/api/test', testAPIRouter(pool));
+app.use('/api', testAPIRouter(pool));
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 // const bodyParser = require ('body-parser');
