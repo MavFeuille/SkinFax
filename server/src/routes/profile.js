@@ -8,7 +8,7 @@ const routers = function (pool) {
 
     const queryString = `
     SELECT * FROM results
-    JOIN users ON results.id = users.result_id
+    JOIN users ON users.id = users.result_id
     WHERE results.id = 1`
 
     // SELECT * FROM calendar_entries
@@ -30,4 +30,6 @@ const routers = function (pool) {
 
 // only export the function
 module.exports = routers;
+
+//know which user is being retrieved, u can get profil + results /users seperately. also $1 etc
 
