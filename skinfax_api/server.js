@@ -7,13 +7,15 @@ const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || 'development';
 const express = require('express');
 const app = express();
+app.set('port', PORT);
 
+const testAPIRouter = require('./routes/testAPI');
 
-// app.use('/', )
+app.use('/testAPI', testAPIRouter);
 
 
 app.get('/', (req, res) => {
-  res.send('Hello world');
+  res.redirect(testAPIRouter);
 });
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
