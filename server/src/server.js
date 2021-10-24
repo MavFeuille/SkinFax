@@ -11,11 +11,18 @@ const dbParams = require('./dbConfig');
 const { Pool } = require('pg');
 const pool = new Pool(dbParams);
 
-const testAPIRouter = require('./routes/testAPI');
+const forumRouter = require('./routes/forum');
+const profileRouter = require('./routes/profile');
+const calendarRouter = require('./routes/calendar');
+const quizRouter = require('./routes/quiz');
 
-app.use('/api', testAPIRouter(pool));
+app.use('/api', forumRouter(pool));
+app.use('/api', profileRouter(pool));
+app.use('/api', calendarRouter(pool));
+app.use('/api', quizRouter(pool));
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
+
 // const bodyParser = require ('body-parser');
 // const sass = require ('node-sass-middleware');
 // const morgan = require ('morgan');

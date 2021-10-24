@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     // using Axios to fetch data from the database
-    axios.get("/api/test")
+    axios.get("/api/forum")
       .then((res) => {
         setValue(res.data) // set value
       })
@@ -21,8 +21,11 @@ function App() {
   const users = value.map((obj) => {
     return (
       <div>
-        <p>Hi my name is {obj.name} and my username is
-          also {obj.username}. and my email is {obj.email}
+        <p>
+          {obj.content}
+        </p>
+        <p>
+          {obj.name}
         </p>
       </div>
     )
