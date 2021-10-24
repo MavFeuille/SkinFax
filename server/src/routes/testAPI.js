@@ -1,12 +1,22 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', function (req, res) {
-  console.log("GET /")
-  res.json({
-    name: "sam",
-    age: 25
-  })
-});
+const testRoute = function (pool) {
 
-module.exports = router;
+  router.get('/', function (req, res) {
+
+    pool.query('SELECT * FROM users')
+      .then((data) => {
+        res.json(data.rows)
+      });
+    // console.log("GET /")
+    // res.json({
+    //   name: "sam",
+    //   age: 25
+    // })
+  });
+
+  return router;
+
+}
+module.exports = testRoute;

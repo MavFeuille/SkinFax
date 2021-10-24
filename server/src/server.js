@@ -7,11 +7,13 @@ const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || 'development';
 const express = require('express');
 const app = express();
-app.set('port', PORT);
+const dbParams = require('./dbConfig');
+const { Pool } = require('pg');
+const pool = new Pool(dbParams);
 
 const testAPIRouter = require('./routes/testAPI');
 
-app.use('/api/test', testAPIRouter);
+app.use('/api/test', testAPIRouter(pool));
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 // const bodyParser = require ('body-parser');
