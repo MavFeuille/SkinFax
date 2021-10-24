@@ -1,21 +1,24 @@
 {
-  "name": "SkinFax",
+  "name": "skinfax",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "echo \"We will do this later\" && exit 1"
+    "start": "node ./src/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MavFeuille/SkinFax.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MavFeuille/SkinFax/issues"
   },
-  "homepage": "https://github.com/MavFeuille/SkinFax#readme"
+  "homepage": "https://github.com/MavFeuille/SkinFax#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
 }

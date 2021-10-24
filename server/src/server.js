@@ -11,12 +11,7 @@ app.set('port', PORT);
 
 const testAPIRouter = require('./routes/testAPI');
 
-app.use('/testAPI', testAPIRouter);
-
-
-app.get('/', (req, res) => {
-  res.redirect(testAPIRouter);
-});
+app.use('/api/test', testAPIRouter);
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 // const bodyParser = require ('body-parser');
