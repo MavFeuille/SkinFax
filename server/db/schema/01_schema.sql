@@ -43,4 +43,3 @@ CREATE TABLE topics (
   category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
   created timestamp default current_timestamp
 );
-//----
