@@ -1,33 +1,38 @@
 import './App.css';
 import axios from "axios";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 
-  // const [name, setName] = useState('');
-  // const [age, setAge] = useState();
-  const [value, setValue] = useState([])
+  const [value, setValue] = useState()
 
-  const onClick = function () {
-    axios.get("/api/test")
-      .then((res) => {
-        // setName(res.data.name)
-        // setAge(res.data.age)
-        setValue(res.data)
-        console.log(res.data)
-      })
-  }
-
-  // const clear = function () {
-  //   setAge('')
-  //   setName('')
-  // }
+  useEffect(() => {
+    const test = function () {
+      return axios.get("/api/test")
+        .then((res) => {
+          setValue(res.data)
+        })
+        .then(() => {
+          const users = value.map((obj) => {
+            return (
+              <div>
+                <p>Hi my name is {obj.name} and my username is
+                  also {obj.username}. and my email is {obj.email}
+                </p>
+              </div>
+            )
+          })
+        })
+        .catch((err) => {
+          console.log(err.message)
+        })
+    }
+  }, [])
 
   return (
     <div className="App">
-      <button onClick={onClick}>click me</button>
       <div>
-        {/* {value} */}
+        { }
       </div>
     </div>
   );
