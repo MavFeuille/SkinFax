@@ -31,7 +31,9 @@ CREATE TABLE favourites (
 
 CREATE TABLE followers (
   id SERIAL PRIMARY KEY NOT NULL,
+  follower_user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+
 );
 
 CREATE TABLE direct_messages (

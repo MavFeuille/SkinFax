@@ -16,11 +16,12 @@ VALUES
 (2,2,3), 
 (3,3,1);
 
-INSERT INTO followers(id, user_id)
+INSERT INTO followers(id, follower_user_id, user_id)
 VALUES 
-(1, 3),
-(2, 1),
-(3, 2);
+(1, 1, 3),
+(2, 2, 1),
+(3, 3, 2);
+
 
 INSERT INTO direct_messages (to_user_id, from_user_id, message)
 VALUES 
