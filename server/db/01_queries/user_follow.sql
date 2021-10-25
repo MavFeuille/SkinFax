@@ -15,7 +15,7 @@ WHERE follower_user_id = 3;
 --prints princess peach
 
 -- List all the posts that the user is following
-SELECT content_posts.user_id FROM content_posts
-INNER JOIN users ON content_posts.user_id = users.id
-INNER JOIN followers ON followers.user_id = users.id 
-WHERE user.id = 3;
+SELECT content_posts.user_id as PostCreator, image_video_url, description, created FROM content_posts
+JOIN users ON content_posts.user_id = users.id
+JOIN followers ON followers.user_id = users.id 
+WHERE users.id = 1;
