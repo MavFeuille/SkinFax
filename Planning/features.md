@@ -1,0 +1,11 @@
+## Features of skinfax
+- [ ]direct message other users
+- [ ]create a post
+- [ ]delete a post
+- [ ]comment on posts
+- [ ]able to auto post something based on the specified time from user
+- [ ]able to favorite a post
+- [ ]able to like a post/auto increment
+- [ ]can follow people
+- [ ]able to see how many followers
+- [ ]can register/login
