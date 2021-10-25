@@ -1,5 +1,6 @@
 ## Features of skinfax
 - [ ]direct message other users
+- [ ]get all messages
 - [ ]create a post
 - [ ]delete a post
 - [ ]comment on posts
