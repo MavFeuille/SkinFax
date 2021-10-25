@@ -1,38 +1,54 @@
-INSERT INTO users (id, username, name, email, password)
-VALUES
-(1, 'mario', 'mario', 'mario@hotmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG'), 
-(2, 'luigi','luigi', 'luigi@deviantart.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG'),
-(3, 'Princess Peach', 'Princess Peach', 'peach@gmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG');
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS content_posts CASCADE;
+DROP TABLE IF EXISTS favourites CASCADE;
+DROP TABLE IF EXISTS followers CASCADE;
+DROP TABLE IF EXISTS direct_messages CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
+DROP TABLE IF EXISTS likes CASCADE;
 
-INSERT INTO categories (id, skin_type)
-VALUES 
-(1,'dry'),
-(2,'oily'),
-(3,'combination');
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+  profile_picture VARBINARY (max) 
+);
 
-INSERT INTO results (id, user_id, category_id)
-VALUES 
-(1,1,1), 
-(2,2,2), 
-(3,3,3);
+CREATE TABLE content_posts (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  created timestamp default current_timestamp,
+  description VARCHAR(1024) NOT NULL
+);
 
-INSERT INTO calendar_entries(id, user_id)
-VALUES 
-(1, 3),
-(2, 1),
-(3, 2);
+CREATE TABLE favourites (
+  id SERIAL PRIMARY KEY NOT NULL,
+  content_post_id INTEGER REFERENCES content_posts(id) ON DELETE CASCADE,
+);
 
-INSERT INTO forum_posts (user_id, category_id, content)
-VALUES 
-(1, 1, 'This is a test post'),
-(2, 2, 'This is another test'),
-(3, 3, 'This is the next test');
+CREATE TABLE followers (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+);
 
-INSERT INTO topics (category_id)
-VALUES 
-(1),
-(2),
-(3);
+CREATE TABLE direct_messages (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  message VARCHAR(1024) NOT NULL
+  created timestamp default current_timestamp
+);
 
--- stretch: user who created topic
+CREATE TABLE comments (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  content_post_id INTEGER REFERENCES content_posts(id) ON DELETE CASCADE,
+  created timestamp default current_timestamp
+);
 
+CREATE TABLE likes (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  comment_id INTEGER REFERENCES comments(id) ON DELETE CASCADE,
+);
+
+--how to add image/video content_posts db
