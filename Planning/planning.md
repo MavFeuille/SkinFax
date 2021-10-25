@@ -1,7 +1,7 @@
 ### To-do List:
 
-- [] fix Kadia's VS code / git issue
-- [] look for mentor to ask about grab {value} for skinFax-api
+1- ig beauty base app
+2-filters into makeup related
 
 * _NOTE_ db-> server -> client so render db data thru server file to show on client. server = middle man
 
@@ -29,4 +29,5 @@ return (
 {step === 1 && <input type="text" name="age"/>}
 </form>
 )
+
 }
