@@ -18,8 +18,17 @@ const routers = function (pool) {
     WHERE users.username = 'luigi''
     `;
 
-    pool
-      .query(queryString, queryString2)
+      pool
+      .query(queryString)
+      .then((data) => {
+        res.json(data.rows);
+      })
+      .catch((err) => {
+        console.log('error:', err.message);
+      });
+
+      pool
+      .query(queryString2)
       .then((data) => {
         res.json(data.rows);
       })
