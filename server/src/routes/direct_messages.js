@@ -10,16 +10,8 @@ const routers = function (pool) {
     JOIN users ON users.id = direct_messages.from_user_id
     WHERE users.username = 'mario'
     `;
-
-    const queryString2 = `
-    Select message, to_user_id, created
-    FROM direct_messages
-    JOIN users ON users.id = direct_messages.to_user_id
-    WHERE users.username = 'luigi''
-    `;
-
     pool
-      .query(queryString, queryString2)
+      .query(queryString)
       .then((data) => {
         res.json(data.rows);
       })
@@ -27,6 +19,26 @@ const routers = function (pool) {
         console.log('error:', err.message);
       });
 
+      
+  })
+
+  router.get('/direct_messages', function (req, res) {
+    const  queryString2 = 
+    `
+    SELECT message, to_user_id, created
+    FROM direct_messages
+    JOIN users ON users.id = direct_messages.to_user_id
+    WHERE users.username = 'luigi'
+    `;
+
+    pool
+      .query(queryString2)
+      .then((data) => {
+        res.json(data.rows);
+      })
+      .catch((err) => {
+        console.log('error:', err.message);
+      });
       
   });
 
@@ -36,3 +48,4 @@ const routers = function (pool) {
 
 // only export the function
 module.exports = routers;
+//2 queries 1 route
