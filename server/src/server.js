@@ -11,14 +11,16 @@ const dbParams = require('./dbConfig');
 const { Pool } = require('pg');
 const pool = new Pool(dbParams);
 
-const forumRouter = require('./routes/forum');
+const mainFeedRouter = require('./routes/main_feed');
 const profileRouter = require('./routes/profile');
-const calendarRouter = require('./routes/calendar');
+const favouritesRouter = require('./routes/favourites');
+const dmRouter = require('./routes/direct_messages');
 const quizRouter = require('./routes/quiz');
 
-app.use('/api', forumRouter(pool));
+app.use('/api', mainFeedRouter(pool));
 app.use('/api', profileRouter(pool));
-app.use('/api', calendarRouter(pool));
+app.use('/api', favouritesRouter(pool));
+app.use('/api', dmRouter(pool));
 app.use('/api', quizRouter(pool));
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
