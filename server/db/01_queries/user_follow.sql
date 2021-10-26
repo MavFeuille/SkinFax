@@ -21,5 +21,5 @@ WHERE follower_user_id = 3;
 SELECT users.username as following_user, image_video_url, description, created FROM content_posts
 JOIN users ON content_posts.user_id = users.id
 JOIN followers ON followers.user_id = users.id 
-WHERE followers.follower_user_id = 1
+WHERE followers.follower_user_id = 2
 ORDER BY created DESC;

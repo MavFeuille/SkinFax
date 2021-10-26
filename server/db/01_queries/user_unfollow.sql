@@ -1,5 +1,5 @@
 DELETE FROM followers
-WHERE users.id= _ AND followers.user_id = 3;
+WHERE follower_user_id= 3 AND followers.user_id = 2;
 
 -- cloudinary, aws as 3
 -- socket.io

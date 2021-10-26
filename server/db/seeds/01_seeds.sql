@@ -140,6 +140,7 @@ INSERT INTO likes (user_id, content_post_id, comment_id)
 VALUES 
 (1,3,2),
 (2,1,3),
-(3,2,1);
+(3,2,1),
+(1,3,3);
 
 --inserting content image via 3rd party ting

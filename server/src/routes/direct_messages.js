@@ -9,11 +9,11 @@ const routers = function (pool) {
     SELECT message, from_user_id, created
     FROM direct_messages
     JOIN users ON users.id = direct_messages.from_user_id
-    WHERE users.username = 'mario'
+    WHERE users.username = 'luigi'
     `;
     return pool.query(queryString) 
       .then((data) => {
-        const directMessage = data.rows[0];
+        const directMessage = data.rows;
 
         if (directMessage) {
           return res.json(directMessage)
@@ -27,27 +27,27 @@ const routers = function (pool) {
       })
   });
 
-  router.get('/direct_message/to', function (req, res, next) {
+  // router.get('/direct_message/to', function (req, res, next) {
 
-    const  queryString = 
-    `
-    SELECT message, to_user_id, created
-    FROM direct_messages
-    JOIN users ON users.id = direct_messages.to_user_id
-    WHERE users.username = 'luigi'
-    `;
+  //   const  queryString = 
+  //   `
+  //   SELECT message, to_user_id, created
+  //   FROM direct_messages
+  //   JOIN users ON users.id = direct_messages.to_user_id
+  //   WHERE users.username = 'luigi'
+  //   `;
 
-    return pool.query(queryString) 
-      .then((data) => {
-        const dm = data.rows;
-          return res.json(dm);
-      })
-      .catch(err => {
-        console.log('error:', err.message);
-        return next (err)
-      })
+  //   return pool.query(queryString) 
+  //     .then((data) => {
+  //       const dm = data.rows;
+  //         return res.json(dm);
+  //     })
+  //     .catch(err => {
+  //       console.log('error:', err.message);
+  //       return next (err)
+  //     })
 
-  });
+  // });
   //only return router
   return router;
 }
