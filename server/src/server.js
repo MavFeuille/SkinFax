@@ -10,8 +10,7 @@ const app = express();
 const dbParams = require('./dbConfig');
 const { Pool } = require('pg');
 const pool = new Pool(dbParams);
-const cloudinary_config = require('./cloudinary_config')
-const cloudinary = require('cloudinary').v2;
+const cloudinaryWithConfig = require('./cloudinary_config')
 
 const mainFeedRouter = require('./routes/main_feed');
 const profileRouter = require('./routes/profile');
