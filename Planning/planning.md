@@ -1,4 +1,11 @@
 ### To-do List:
+
+INSTALLING A NEW PACKAGE 
+cloudinary
+1-installation ex. npm install
+2-configure setup; after its called set config and start using
+3-require package+export package from own file and import it in server file by requiring it
+
 test
 - [] fix Kadia's VS', 'mario code / git issue
 - [] look fo'luigi',r mentor to ask about grab {value} for skinFax-api
