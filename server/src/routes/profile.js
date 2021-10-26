@@ -4,8 +4,9 @@ const router = express.Router();
 // function that will contain all the get routes
 const routers = function (pool) {
 
-  router.get('/profile', function (req, res, next) {
+  router.get('/profile', function (req, res) {
 
+    
     const userProfileQueryString = `
     SELECT username, profile_picture_url FROM users
     JOIN content_posts ON content_posts.user_id = users.id
