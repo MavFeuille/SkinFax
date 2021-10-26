@@ -11,18 +11,6 @@ const routers = function (pool) {
     JOIN users ON users.id = direct_messages.from_user_id
     WHERE users.username = 'mario'
     `;
-    pool
-      .query(queryString)
-      .then((data) => {
-        res.json(data.rows);
-      })
-      .catch((err) => {
-        console.log('error:', err.message);
-      });
-
-      
-  })
-
     return pool.query(queryString) 
       .then((data) => {
         const directMessage = data.rows[0];
