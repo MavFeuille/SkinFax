@@ -7,13 +7,10 @@ const routers = function (pool) {
   router.get('/profile', function (req, res) {
 
     const queryString = `
-    SELECT * FROM results
-    JOIN users ON users.id = users.result_id
-    WHERE results.id = 1`
-
-    // SELECT * FROM calendar_entries
-    // JOIN users ON users.id = calendar_entries.user_id
-    // WHERE users.id = 1`
+    SELECT username, profile_picture_url, content_posts.image_video_url, content_posts.description, content_posts.created FROM users
+    JOIN content_posts ON content_posts.user_id = users.id
+    WHERE users.id = 1
+    ORDER BY created DESC;`
 
     pool.query(queryString)
       .then((data) => {
@@ -21,7 +18,8 @@ const routers = function (pool) {
       })
       .catch(err => {
         console.log('error:', err.message);
-      });
+      })
+      
   });
 
   //only return router

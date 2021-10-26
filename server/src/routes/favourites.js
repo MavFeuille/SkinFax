@@ -12,7 +12,7 @@ const routers = function (pool) {
       JOIN favourites ON content_post_id = content_posts.id
       JOIN users ON favourites.user_id = users.id
       WHERE users.id = 3
-      ORDER BY created DESC;`;
+      ORDER BY created DESC;`
 
     pool.query(queryString)
       .then((data) => {
@@ -70,4 +70,3 @@ const routers = function (pool) {
 
 // only export the function
 module.exports = routers;
-
