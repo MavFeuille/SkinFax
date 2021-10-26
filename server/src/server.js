@@ -11,7 +11,6 @@ const dbParams = require('./dbConfig');
 const { Pool } = require('pg');
 const pool = new Pool(dbParams);
 const cloudinaryWithConfig = require('./cloudinary_config')
-
 const mainFeedRouter = require('./routes/main_feed');
 const profileRouter = require('./routes/profile');
 const favouritesRouter = require('./routes/favourites');
