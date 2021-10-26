@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/MavFeuille/SkinFax/issues"
   },
-  "homepage": "https://github.com/MavFeuille/SkinFax#readme"
+  "homepage": "https://github.com/MavFeuille/SkinFax#readme",
+  "dependencies": {
+    "cloudinary": "^1.27.1"
+  }
 }
