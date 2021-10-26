@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
+// function that will contain all the get routes;
+const routers = function (pool) {
 
-// function that will contain all the get routes
-const routers = function (pool, pool2) {
-  router.get('/direct_messages', function (req, res) {
+  router.get('/direct_messages', function (req, res, next) {
+
     const queryString = `
     SELECT message, from_user_id, created
     FROM direct_messages
@@ -22,8 +23,25 @@ const routers = function (pool, pool2) {
       
   })
 
-  router.get('/direct_messages', function (req, res) {
-    const  queryString2 = 
+    return pool.query(queryString) 
+      .then((data) => {
+        const directMessage = data.rows[0];
+
+        if (directMessage) {
+          return res.json(directMessage)
+        }
+        return res.status(404).send("not available")
+    
+      })
+      .catch(err => {
+        console.log('error:', err.message);
+        return next (err)
+      })
+  });
+
+  router.get('/direct_message/to', function (req, res, next) {
+
+    const  queryString = 
     `
     SELECT message, to_user_id, created
     FROM direct_messages
@@ -31,31 +49,24 @@ const routers = function (pool, pool2) {
     WHERE users.username = 'luigi'
     `;
 
-    
-      pool
-      .query(queryString)
+    return pool.query(queryString) 
       .then((data) => {
-        res.json(data.rows);
+        const dm = data.rows;
+          return res.json(dm);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log('error:', err.message);
-      });
+        return next (err)
+      })
 
-      pool2
-      .query(queryString2)
-      .then((data) => {
-        res.json(data.rows);
-      })
-      .catch((err) => {
-        console.log('error:', err.message);
-      });
-      
   });
-
   //only return router
   return router;
-};
+}
 
 // only export the function
 module.exports = routers;
-//2 queries 1 route
+
+
+
+
