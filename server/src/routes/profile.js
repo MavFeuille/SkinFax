@@ -6,22 +6,27 @@ const routers = function (pool) {
 
   router.get('/profile', function (req, res) {
 
-    const queryString = `
-    SELECT * FROM results
-    JOIN users ON users.id = users.result_id
-    WHERE results.id = 1`
+    
+    const userProfileQueryString = `
+    SELECT username, profile_picture_url FROM users
+    JOIN content_posts ON content_posts.user_id = users.id
+    WHERE users.id = 1;`
 
-    // SELECT * FROM calendar_entries
-    // JOIN users ON users.id = calendar_entries.user_id
-    // WHERE users.id = 1`
-
-    pool.query(queryString)
+    const queryForAllPostString = `
+    SELECT * FROM content_posts
+    WHERE user_id = 1;
+    `
+    
+    pool.query(userProfileQueryString)
       .then((data) => {
         res.json(data.rows)
       })
       .catch(err => {
         console.log('error:', err.message);
-      });
+      })
+
+   
+     
   });
 
   //only return router
