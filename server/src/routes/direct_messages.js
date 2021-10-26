@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // function that will contain all the get routes
-const routers = function (pool) {
+const routers = function (pool, pool2) {
   router.get('/direct_messages', function (req, res) {
     const queryString = `
     SELECT message, from_user_id, created
@@ -31,6 +31,7 @@ const routers = function (pool) {
     WHERE users.username = 'luigi'
     `;
 
+    
       pool
       .query(queryString)
       .then((data) => {
@@ -40,7 +41,7 @@ const routers = function (pool) {
         console.log('error:', err.message);
       });
 
-      pool
+      pool2
       .query(queryString2)
       .then((data) => {
         res.json(data.rows);
