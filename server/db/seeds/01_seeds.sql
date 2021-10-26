@@ -8,7 +8,8 @@ INSERT INTO content_posts (id, user_id, image_video_url, description)
 VALUES 
 (1,2, 'url','description 1'),
 (2,3, 'url', 'description 2'),
-(3,1, 'url', 'description 3');
+(3,1, 'url', 'description 3'),
+(4,1, 'url', 'description 4');
 
 INSERT INTO favourites (user_id, content_post_id)
 VALUES 

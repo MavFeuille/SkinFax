@@ -6,27 +6,20 @@ const routers = function (pool) {
 
   router.get('/profile', function (req, res) {
 
-    
-    const userProfileQueryString = `
-    SELECT username, profile_picture_url FROM users
+    const queryString = `
+    SELECT username, profile_picture_url, content_posts.image_video_url, content_posts.description, content_posts.created FROM users
     JOIN content_posts ON content_posts.user_id = users.id
-    WHERE users.id = 1;`
+    WHERE users.id = 1
+    ORDER BY created DESC;`
 
-    const queryForAllPostString = `
-    SELECT * FROM content_posts
-    WHERE user_id = 1;
-    `
-    
-    pool.query(userProfileQueryString)
+    pool.query(queryString)
       .then((data) => {
         res.json(data.rows)
       })
       .catch(err => {
         console.log('error:', err.message);
       })
-
-   
-     
+      
   });
 
   //only return router
