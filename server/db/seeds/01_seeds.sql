@@ -33,27 +33,27 @@ VALUES
 (10,2, 'url', 'My message isn’t perfectly defined. I have, as a human being, fallen to peer pressure.'),
 (11,2, 'url', 'If I was just a fan of music, I would think that I was the number one artist in the world.'),
 (12,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,8, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,9, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,8, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,7, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,6, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,5, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(12,5, 'url', 'I bet no one knew, I got no one new. I know I said I’m through, but got love for you.'),
-(12,7, 'url', 'My greatest pain in life is that I will never be able to see myself perform live.'),
-(12,8, 'url', 'Would you believe in what you believe in if you were the only one who believed it?'),
-(12,9, 'url', 'I’ll say things that are serious and put them in a joke form so people can enjoy them. We laugh to keep from crying.'),
-(12,10, 'url', 'Sometimes people write novels and they just be so wordy and so self-absorbed.'),
-(12,10, 'url', 'People always say that you can’t please everybody. I think that’s a cop-out. Why not attempt it? ‘Cause think of all the people you will please if you try.'),
-(12,11, 'url', 'People never change. They just become better at hiding who they really are.'),
-(12,11, 'url', 'I could let these dream killers kill my self-esteem, or use my arrogance as a steam to power my dreams.'),
-(12,12, 'url', 'The prettiest people do the ugliest things.'),
-(12,12, 'url', 'Love your haters, they’re your biggest fans.');
+(13,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(14,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(15,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(16,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(17,8, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(18,9, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(19,8, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(20,7, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(21,6, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(22,3, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(23,5, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(24,5, 'url', 'I bet no one knew, I got no one new. I know I said I’m through, but got love for you.'),
+(25,7, 'url', 'My greatest pain in life is that I will never be able to see myself perform live.'),
+(26,8, 'url', 'Would you believe in what you believe in if you were the only one who believed it?'),
+(27,9, 'url', 'I’ll say things that are serious and put them in a joke form so people can enjoy them. We laugh to keep from crying.'),
+(28,10, 'url', 'Sometimes people write novels and they just be so wordy and so self-absorbed.'),
+(29,10, 'url', 'People always say that you can’t please everybody. I think that’s a cop-out. Why not attempt it? ‘Cause think of all the people you will please if you try.'),
+(30,11, 'url', 'People never change. They just become better at hiding who they really are.'),
+(31,11, 'url', 'I could let these dream killers kill my self-esteem, or use my arrogance as a steam to power my dreams.'),
+(32,12, 'url', 'The prettiest people do the ugliest things.'),
+(33,12, 'url', 'Love your haters, they’re your biggest fans.');
 
 INSERT INTO favourites (user_id, content_post_id)
 VALUES 
@@ -149,7 +149,7 @@ VALUES
 (3,'comment 21',2),
 (10,'comment 22',1),
 (13,'comment 23',1),
-(12,'comment 24',8),
+(12,'comment 24',8);
 
 INSERT INTO likes (user_id, content_post_id, comment_id)
 VALUES 
