@@ -16,12 +16,13 @@ CREATE TABLE users (
 );
 
 CREATE TABLE content_posts (
-  id SERIAL PRIMARY KEY NOT NULL,
+  id SERIAL PRIMARY KEY NOT NULL AUTO_INCREMENT,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   image_video_url VARCHAR(255) NOT NULL,
   description VARCHAR(1024) NOT NULL,
   created timestamp default current_timestamp
 );
+
 
 CREATE TABLE favourites (
   id SERIAL PRIMARY KEY NOT NULL,
