@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-  const [value, setValue] = useState([])
+  const [favourites, setFavourites] = useState([])
 
   useEffect(() => {
     // using Axios to fetch data from the database
-    axios.get("/api/forum")
+    axios.get("/api/favourites")
       .then((res) => {
-        setValue(res.data) // set value
+        setFavourites(res.data) // set favourites
       })
       .catch((err) => {
         console.log(err.message)
@@ -18,14 +18,14 @@ function App() {
   }, [])
 
   // map over array of objects
-  const users = value.map((obj) => {
+  const usersFavourites = favourites.map((obj) => {
     return (
       <div>
         <p>
-          {obj.content}
+          {obj.description}
         </p>
         <p>
-          {obj.name}
+          {obj.created}
         </p>
       </div>
     )
@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        {users}
+        {usersFavourites}
       </div>
     </div>
   );
