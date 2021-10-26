@@ -25,10 +25,7 @@ const routers = function (pool) {
         console.log('error:', err.message);
         return next (err)
       })
-   
-      
   });
-
 
   router.get('/profile/posts', function (req, res, next) {
 
@@ -46,8 +43,7 @@ const routers = function (pool) {
         console.log('error:', err.message);
         return next (err)
       })
-   
-      
+
   });
   //only return router
   return router;
