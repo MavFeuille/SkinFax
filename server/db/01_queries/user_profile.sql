@@ -1,6 +1,6 @@
 --- Display User's name and display picture in the profile
 SELECT username, profile_picture_url FROM users
-JOIN content_posts ON content_posts.user_id = users.id
+-- JOIN content_posts ON content_posts.user_id = users.id
 WHERE users.id = 1;
 
 -- Display all the posts that the user created
