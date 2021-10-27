@@ -4,12 +4,12 @@ VALUES
 ('luigi', 'luigi@deviantart.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://ssb.wiki.gallery/images/6/67/Luigi_SSBB.jpg', TRUE),
 ('Princess Peach', 'peach@gmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://pbs.twimg.com/profile_images/1317551648617730048/JY6m4Hfh.jpg', TRUE);
 
-INSERT INTO content_posts (id, user_id, image_video_url, description)
+INSERT INTO content_posts (user_id, image_video_url, description)
 VALUES 
-(1,2, 'url','description 1'),
-(2,3, 'url', 'description 2'),
-(3,1, 'url', 'description 3'),
-(4,1, 'url', 'description 4');
+(2, 'url','description 1'),
+(3, 'url', 'description 2'),
+(1, 'url', 'description 3'),
+(1, 'url', 'description 4');
 
 INSERT INTO favourites (user_id, content_post_id)
 VALUES 

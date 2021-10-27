@@ -17,12 +17,14 @@ const profileRouter = require('./routes/profile');
 const favouritesRouter = require('./routes/favourites');
 const dmRouter = require('./routes/direct_messages');
 const quizRouter = require('./routes/quiz');
+const createPostRouter = require('./routes/create_post');
 
 app.use('/api', mainFeedRouter(pool));
 app.use('/api', profileRouter(pool));
 app.use('/api', favouritesRouter(pool));
 app.use('/api', dmRouter(pool));
 app.use('/api', quizRouter(pool));
+app.use('/api', createPostRouter(pool));
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 
