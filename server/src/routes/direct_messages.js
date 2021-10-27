@@ -4,7 +4,9 @@ const router = express.Router();
 const routers = function (pool) {
 
   router.get('/direct_messages', function (req, res, next) {
-
+    /*array of receiver and sender data 
+    from_user_id = sender
+    to_user_id = receiver*/
     const queryString = `
     SELECT *
     FROM direct_messages
