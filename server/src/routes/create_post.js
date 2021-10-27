@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const cloudinaryWithConfig = require('../cloudinary_config');
 
 // function that will contain all the get routes
 const routers = function (pool) {
@@ -19,22 +20,38 @@ const routers = function (pool) {
  
   });
 
-  // router.post('/create_post', function (req, res) {
+  router.post('/create_post', async (req, res) => {
+    const queryString = `
+    INSERT INTO content_posts (user_id, image_video_url, description)
+    VALUES  
+    ($1, $2, $3)
+    RETURNING *;
+    `
+    try {
+      const fileString = req.body.data;
+      // console.log("🚀 ~ file: upload.js ~ line 10 ~ fileString", fileString);
+      const uploadResponse = await cloudinaryWithConfig.uploader.upload(
+        fileString, {
+        upload_preset: "skinfax_setup"
+      })
+      pool.query(queryString,[1, uploadResponse.secure_url, req.body.text])
+      .then((data) => {
+        res.json(data.rows);
+      })
+      .catch(err => {
+        console.log('error:', err.message);
+      });
 
-  //   const queryString = `
-  //   INSERT INTO content_posts (user_id, image_video_url, description)
-  //   VALUES 
-  //   (2, 'url','Luigi is trying to say something');`
-
-  //   pool.query(queryString)
-  //     .then((data) => {
-  //       res.json(data.rows)
-  //     })
-  //     .catch(err => {
-  //       console.log('error:', err.message);
-  //     });
-  // });
-  //only return router
+      console.log("🚀 ~ file: upload.js ~ line 33 ~ uploadResponse", uploadResponse)
+      // res.json({message: "SEEMS OK!"}).send();
+    } catch (error) {
+      console.log("ERROR fROM line 34 -- ", error)
+      res.status(500).json({errror: "Something's wrong..."});
+    }
+    
+    // return res.redirect('./profile');
+  });
+  // only return router
   return router;
 }
 
