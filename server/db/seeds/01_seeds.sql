@@ -19,15 +19,15 @@ VALUES
 ('KimmyKW', 'kim_kardashian@gmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://pbs.twimg.com/profile_images/1317551648617730048/JY6m4Hfh.jpg', TRUE),
 ('lovelovesjoe', 'lovejoe@gmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://pbs.twimg.com/profile_images/1317551648617730048/JY6m4Hfh.jpg', TRUE);
 
-INSERT INTO content_posts (user_id, image_video_url, description)
+INSERT INTO content_posts (id, user_id, image_video_url, description)
 VALUES 
-(1,1, 'url','For me, money is not my definition of success. Inspiring people is a definition of success.'),
+(1,1, 'url', 'For me, money is not my definition of success. Inspiring people is a definition of success.'),
 (2,2, 'url', 'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.'),
-(3,3, 'url', 'Coming together is a beginning; keeping together is progress; working together is success.'),
-(4,4, 'url', 'However difficult life may seem, there is always something you can do and succeed at.'),
-(5,5, 'url', 'I still think I am the greatest.'),
-(6,6, 'url', 'Keep your nose out the sky, keep your heart to god, and keep your face to the raising sun.'),
-(7,7, 'url', 'If you have the opportunity to play this game of life you need to appreciate every moment. a lot of people don’t appreciate the moment until it’s passed.'),
+(3,2, 'url', 'Coming together is a beginning; keeping together is progress; working together is success.'),
+(4,3, 'url', 'However difficult life may seem, there is always something you can do and succeed at.'),
+(5,2, 'url', 'I still think I am the greatest.'),
+(6,2, 'url', 'Keep your nose out the sky, keep your heart to god, and keep your face to the raising sun.'),
+(7,2, 'url', 'If you have the opportunity to play this game of life you need to appreciate every moment. a lot of people don’t appreciate the moment until it’s passed.'),
 (8,8, 'url', 'I feel like I’m too busy writing history to read it.'),
 (9,9, 'url', 'Know your worth! People always act like they’re doing more for you than you’re doing for them.'),
 (10,10, 'url', 'My message isn’t perfectly defined. I have, as a human being, fallen to peer pressure.'),

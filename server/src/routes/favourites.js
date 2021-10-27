@@ -11,7 +11,7 @@ const routers = function (pool) {
     FROM content_posts
     JOIN favourites ON favourites.content_post_id = content_posts.id
     JOIN users ON content_posts.user_id = users.id
-    WHERE favourites.user_id = 3
+    WHERE favourites.user_id = 2
     ORDER BY created DESC;`;
 
     pool.query(queryString)

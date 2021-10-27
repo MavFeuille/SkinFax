@@ -1,0 +1,44 @@
+.user--profile-section {
+  @include flex;
+  justify-content: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto 20px;
+  padding: 20px 20px 50px;
+  @include underline;
+
+  .user--flex-wrapper {
+    @include flex;
+    justify-content: space-around;
+    width: inherit;
+
+    .username {
+      font-weight: bold;
+      text-transform: capitalize;
+      margin-left: 20px;
+    }
+
+    .user--profile-picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      padding: 1.5px;
+    }
+
+    .user--profile-followers {
+    }
+  }
+}
+
+.user--posts {
+  @include flex($align-items: flex-start);
+  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+
+  .user--post {
+    width: 333px;
+  }
+}

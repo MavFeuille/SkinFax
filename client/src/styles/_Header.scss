@@ -1,0 +1,32 @@
+header {
+  @include underline;
+  margin-bottom: 20px;
+
+  nav {
+    @include flex;
+    justify-content: space-between;
+    padding: 10px;
+    max-width: 1500px;
+    width: 90%;
+    margin: 0 auto;
+    .logo {
+      font-family: "Noto Serif Display", serif;
+    }
+
+    ul {
+      @include flex;
+      justify-content: space-between;
+      list-style-type: none;
+
+      li {
+        margin: 0 20px;
+        cursor: pointer;
+
+        .fas,
+        .far {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

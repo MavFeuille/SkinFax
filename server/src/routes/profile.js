@@ -7,11 +7,13 @@ const routers = function (pool) {
   router.get('/profile', function (req, res, next) {
 
     const queryString = `
-    SELECT username, profile_picture_url FROM users
-    WHERE users.id = 1`
+    SELECT users.username, users.profile_picture_url, count(followers.user_id) as followers FROM users
+    JOIN followers on followers.user_id = users.id
+    WHERE users.id = 3
+    GROUP BY users.id;`
 
 
-    return pool.query(queryString) 
+    return pool.query(queryString)
       .then((data) => {
         const profile = data.rows[0];
 
@@ -19,11 +21,11 @@ const routers = function (pool) {
           return res.json(profile)
         }
         return res.status(404).send("Profile not found")
-    
+
       })
       .catch(err => {
         console.log('error:', err.message);
-        return next (err)
+        return next(err)
       })
   });
 
@@ -31,17 +33,17 @@ const routers = function (pool) {
 
     const queryString = `
     SELECT * FROM content_posts
-    WHERE user_id = 1;`
+    WHERE user_id = 3;`
 
 
-    return pool.query(queryString) 
+    return pool.query(queryString)
       .then((data) => {
         const posts = data.rows;
-          return res.json(posts);
+        return res.json(posts);
       })
       .catch(err => {
         console.log('error:', err.message);
-        return next (err)
+        return next(err)
       })
 
   });
