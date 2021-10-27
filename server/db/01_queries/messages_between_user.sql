@@ -14,7 +14,7 @@ WHERE users.username = 'luigi';
 --from_user_id = sender
 --to_user_id = receiver
 
-SELECT *
+SELECT DISTINCT *
 FROM direct_messages
 INNER JOIN(                                     
 SELECT MAX(id) as id FROM (
