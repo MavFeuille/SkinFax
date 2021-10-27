@@ -7,12 +7,12 @@ const routers = function (pool) {
   router.get('/favourites', function (req, res) {
 
     const queryString = `  
-      SELECT description, created
-      FROM content_posts
-      JOIN favourites ON content_post_id = content_posts.id
-      JOIN users ON favourites.user_id = users.id
-      WHERE users.id = 3
-      ORDER BY created DESC;`
+    SELECT image_video_url, description, created, users.username
+    FROM content_posts
+    JOIN favourites ON favourites.content_post_id = content_posts.id
+    JOIN users ON content_posts.user_id = users.id
+    WHERE favourites.user_id = 3
+    ORDER BY created DESC;`;
 
     pool.query(queryString)
       .then((data) => {
@@ -44,12 +44,12 @@ const routers = function (pool) {
 
   router.post("/delete/:id", (req, res) => {
 
-    const user_id = req.session.user_id;
-    const removeItem = req.params.id;
-
     const queryString = `
     DELETE FROM favourites
-    WHERE user_id = 2 AND favourites.id = 4;`;
+    WHERE user_id = $1 AND favourites.id = $2;`;
+
+    const user_id = req.session.user_id;
+    const removeItem = req.params.id;
 
     const val = [user_id, removeItem]
 
