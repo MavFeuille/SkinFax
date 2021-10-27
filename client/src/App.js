@@ -1,50 +1,22 @@
 import './App.css';
-import axios from "axios";
-import { useState, useEffect } from 'react';
-import CreatePost from './components/Create_post';
+import { useState } from 'react';
+import Favourites from './components/Favourites';
+import Home from './components/Home';
+import Profile from './components/Profile';
+import Header from './components/Header';
+import { HOME_PAGE, PROFILE_PAGE, FAV_PAGE } from './components/NavItems'
 
 function App() {
 
-  const [favourites, setFavourites] = useState([])
-
-  useEffect(() => {
-    // using Axios to fetch data from the database
-    Promise.all([
-      axios.get("/api/profile"),
-      axios.get("/api/create_post")
-    ]).then ((res) => {
-      setValue(res.data)
-    }).catch ((err) => {
-      console.log(err.message)
-    })
-    // axios.get("/api/profile")
-    //   .then((res) => {
-    //     setValue(res.data) // set value
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message)
-    //   })
-  }, [])
-
-  // map over array of objects
-  // const users = value.map((obj) => {
-  //   return (
-  //     <div>
-  //       <p>
-  //         {obj.content}
-  //       </p>
-  //       <p>
-  //         {obj.name}
-  //       </p>
-  //     </div>
-  //   )
-  // })
+  const [page, setPage] = useState("Home")
 
   return (
     <div className="App">
       <div>
-        <CreatePost />
-        testing
+        <Header setPage={setPage} />
+        {page === HOME_PAGE && <Home />}
+        {page === PROFILE_PAGE && <Profile />}
+        {page === FAV_PAGE && <Favourites />}
       </div>
     </div>
   );
