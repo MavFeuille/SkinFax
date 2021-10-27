@@ -19,7 +19,7 @@ VALUES
 ('KimmyKW', 'kim_kardashian@gmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://pbs.twimg.com/profile_images/1317551648617730048/JY6m4Hfh.jpg', TRUE),
 ('lovelovesjoe', 'lovejoe@gmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://pbs.twimg.com/profile_images/1317551648617730048/JY6m4Hfh.jpg', TRUE);
 
-INSERT INTO content_posts (id, user_id, image_video_url, description)
+INSERT INTO content_posts (user_id, image_video_url, description)
 VALUES 
 (1,1, 'url','For me, money is not my definition of success. Inspiring people is a definition of success.'),
 (2,2, 'url', 'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.'),
