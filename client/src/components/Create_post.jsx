@@ -12,7 +12,13 @@ export default function CreatePost() {
     previewFile(file)
   }
 
-
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    }
+  }
    useEffect(() => {  
     axios.get("/api/create_post")
     .then ((res) => {
