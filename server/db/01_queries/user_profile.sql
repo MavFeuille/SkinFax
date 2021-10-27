@@ -1,3 +1,12 @@
+---- >>>>>> shows username, follwing, follower, posts <<<<<<< -----
+SELECT users.username, f.user_id, f2.follower_user_id, count(DISTINCT content_posts.id) as post FROM users
+JOIN followers f ON f.follower_user_id = users.id
+JOIN followers f2 ON f2.user_id = users.id
+JOIN content_posts on content_posts.user_id = users.id
+WHERE users.id = 2;
+
+
+
 --- Display User's name and display picture in the profile
 SELECT username, profile_picture_url, count(followers.follower_user_id) FROM users
 WHERE users.id = 1;
@@ -63,12 +72,6 @@ JOIN content_posts on content_posts.user_id = users.id
 WHERE users.id = 2
 GROUP BY users.username;
 
----- >>>>>> shows username, follwing, follower, posts <<<<<<< -----
-SELECT users.username, f.user_id, f2.follower_user_id, count(DISTINCT content_posts.id) as post FROM users
-JOIN followers f ON f.follower_user_id = users.id
-JOIN followers f2 ON f2.user_id = users.id
-JOIN content_posts on content_posts.user_id = users.id
-WHERE users.id = 2;
 
 -- Display all the posts that the user created
 SELECT * FROM content_posts
