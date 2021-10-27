@@ -18,16 +18,16 @@ WHERE users.username = 'luigi';
 
 SELECT *
 FROM direct_messages
-INNER JOIN(
+INNER JOIN(                                     
 SELECT MAX(id) as id FROM (
 SELECT MAX(id) as id, from_user_id as contact
 FROM direct_messages
-WHERE to_user_id = 'luigi'
+WHERE to_user_id = 2
 GROUP BY from_user_id
 UNION ALL
 SELECT MAX(id) as id, to_user_id as contact
 FROM direct_messages
-WHERE from_user_id = 'Princess Peach'
+WHERE from_user_id = 3
 GROUP BY to_user_id
 ) t GROUP BY contact
 ) d
