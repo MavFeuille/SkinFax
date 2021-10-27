@@ -19,21 +19,21 @@ const routers = function (pool) {
  
   });
 
-  router.post('/create_post', function (req, res) {
+  // router.post('/create_post', function (req, res) {
 
-    const queryString = `
-    INSERT INTO content_posts (user_id, image_video_url, description)
-    VALUES 
-    (2, 'url','Luigi is trying to say something');`
+  //   const queryString = `
+  //   INSERT INTO content_posts (user_id, image_video_url, description)
+  //   VALUES 
+  //   (2, 'url','Luigi is trying to say something');`
 
-    pool.query(queryString)
-      .then((data) => {
-        res.json(data.rows)
-      })
-      .catch(err => {
-        console.log('error:', err.message);
-      });
-  });
+  //   pool.query(queryString)
+  //     .then((data) => {
+  //       res.json(data.rows)
+  //     })
+  //     .catch(err => {
+  //       console.log('error:', err.message);
+  //     });
+  // });
   //only return router
   return router;
 }
