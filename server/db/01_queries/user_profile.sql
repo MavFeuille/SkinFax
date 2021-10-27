@@ -11,6 +11,34 @@ WHERE users.id = 3
 GROUP BY users.id;
 
  
+
+--- luigi is following 2 person
+SELECT users.username, followers.* FROM users
+JOIN followers ON followers.follower_user_id = users.id
+WHERE users.id = 2;
+
+
+SELECT users.username, count(followers.user_id) FROM users
+JOIN followers ON followers.follower_user_id = users.id
+WHERE users.id = 2
+GROUP BY users.username;
+
+--- no. of ppl follow me
+SELECT users.username, count(followers.follower_user_id) FROM users
+JOIN followers ON followers.follower_user_id = users.id
+WHERE users.id = 2
+GROUP BY users.username;
+
+
+---- no. of ppl following luigi
+SELECT users.username, followers.* FROM users
+JOIN followers ON followers.user_id = users.id
+WHERE users.id = 2;
+
+SELECT users.username, count(followers.follower_user_id) FROM users
+JOIN followers ON followers.user_id = users.id
+WHERE users.id = 2
+GROUP BY users.username;
  
 -- JOIN content_posts ON content_posts.user_id = users.id
  
@@ -20,8 +48,27 @@ JOIN followers on followers.follower_user_id = users.id
 WHERE users.id = 3
 GROUP BY users.id;
  
- 
 
+--
+SELECT users.username, f.user_id, f2.follower_user_id FROM users
+JOIN followers f ON f.follower_user_id = users.id
+JOIN followers f2 ON f2.user_id = users.id
+WHERE users.id = 2;
+
+--- count followers and count following
+SELECT users.username, count(DISTINCT f.user_id) as following, count(DISTINCT f2.follower_user_id) as follower, count(DISTINCT content_posts.id) as posts FROM users
+JOIN followers f ON f.follower_user_id = users.id
+JOIN followers f2 ON f2.user_id = users.id
+JOIN content_posts on content_posts.user_id = users.id
+WHERE users.id = 2
+GROUP BY users.username;
+
+---- >>>>>> shows username, follwing, follower, posts <<<<<<< -----
+SELECT users.username, f.user_id, f2.follower_user_id, count(DISTINCT content_posts.id) as post FROM users
+JOIN followers f ON f.follower_user_id = users.id
+JOIN followers f2 ON f2.user_id = users.id
+JOIN content_posts on content_posts.user_id = users.id
+WHERE users.id = 2;
 
 -- Display all the posts that the user created
 SELECT * FROM content_posts
