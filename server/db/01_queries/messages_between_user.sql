@@ -24,9 +24,7 @@ SELECT MAX(id) as id, from_user_id as contact
 FROM direct_messages
 WHERE to_user_id = 'luigi'
 GROUP BY from_user_id
-
 UNION ALL
-
 SELECT MAX(id) as id, to_user_id as contact
 FROM direct_messages
 WHERE from_user_id = 'Princess Peach'
