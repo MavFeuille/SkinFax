@@ -6,7 +6,7 @@ export default function CreatePost() {
   const [fileInputState, setFileInputState] = useState('');
   const [previewSource, setPreviewSource] = useState('')
   const [selectedFile, setSelectedFile] = useState('');
-  const [changeOnInput, setChangeOnInput] = useState('');
+  const [textInputState, setTextInputState] = useState('');
   const handleFileInputChange= (event) => {
     const file = event.target.files[0];
     console.log(event.target.files[0]);
@@ -41,7 +41,7 @@ export default function CreatePost() {
     try {
       await fetch('/api/create_post', {
         method: 'POST',
-        body: JSON.stringify({data: base64EncodedImage, text:"Testing"}),
+        body: JSON.stringify({data: base64EncodedImage, text: textInputState}),
         headers: {'Content-type': 'application/json'}
 
       }).then((res)=> {
@@ -59,11 +59,18 @@ export default function CreatePost() {
         <h1>Upload</h1>
         <form onSubmit={handleSubmitFile} className="form">
           <input
-           type="file"
-           name="image"
-           onChange={handleFileInputChange} 
-           value={fileInputState} 
-           className="form-input" />
+            type="file"
+            name="image"
+            onChange={handleFileInputChange} 
+            value={fileInputState} 
+            className="form-input" />
+          <input
+            type="text"
+            name="Description"
+            placeholder="Write a caption... "
+            value={textInputState}
+            onChange={(event) => (setTextInputState(event.target.value))}
+            className="form-input"/>
        
         <button className='btn' type="submit">Submit</button>
         </form>
