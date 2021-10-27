@@ -17,19 +17,7 @@ import DirectMessage from './components/Direct_messages';
 
   const [page, setPage] = useState("Home")
 const App = () => {
-  // const [favourites, setFavourites] = useState([])
 
-  // useEffect(() => {
-  //   // using Axios to fetch data from the database
-  //   Promise.all([
-  //     axios.get("/api/profile"),
-  //     axios.get("/api/create_post")
-  //   ]).then ((res) => {
-  //     setValue(res.data)
-  //   }).catch ((err) => {
-  //     console.log(err.message)
-  //   })
-  // }, [])
   return (
     <div className="App">
       <div>
