@@ -5,9 +5,12 @@ import io from 'socket.io-client';
 
 import axios from 'axios';
 // import {Link} from 'react-router-dom';
-import './Direct_messages.css';
-// import Join from '../components/Join';
-// const socket = require('socket.io');
+import './DirectMessagesComp.css';
+import InfoBar from './InfoBar';
+import Input from './Input';
+
+
+// let socket;
 
 export default function DirectMessages(props) {
   //stores the immutable val of socket to be used elsewhere ex. state w/o re-render
@@ -71,23 +74,26 @@ export default function DirectMessages(props) {
   }
 console.log('message____', message)
   
-
+//allows for set/call/send msgs from input file by passing as props
   return (
     <div className="outerContainer">
        <div className="container">
+         <InfoBar room={room}/>
+         <Input type="text" />
       <h1>Slidding Into the DMs</h1>
-      {JSON.stringify(messages)}
-        <input 
-        value={message}
-        onChange={(event) => setMessage(event.target.value)}
-        //actually send msgs
-        onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-        // type="text" 
-        />
+      {JSON.stringify(messages, "map over msg here")}
+     <input message={message} setMessage={setMessage} sendMessage={sendMessage} />
       </div>
     </div>
   );
 }
+/* <input 
+value={message}
+onChange={(event) => setMessage(event.target.value)}
+//actually send msgs
+onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
+// type="text" 
+/> */
 
 // {userMessages}
 
