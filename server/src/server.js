@@ -19,7 +19,7 @@ const quizRouter = require('./routes/quiz');
 const createPostRouter = require('./routes/create_post');
 
 
-app.use(express.json({ limit: '50mb' }));
+app.use(express.json({ limit: '100mb' }));
 app.use('/api', mainFeedRouter(pool));
 app.use('/api', profileRouter(pool));
 app.use('/api', favouritesRouter(pool));

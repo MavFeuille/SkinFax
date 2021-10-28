@@ -32,6 +32,8 @@ const routers = function (pool) {
         fileString, {
         upload_preset: "skinfax_setup"
       })
+
+
       pool.query(queryString,[2, uploadResponse.secure_url, req.body.text])
       .then((data) => {
         res.json(data.rows);
