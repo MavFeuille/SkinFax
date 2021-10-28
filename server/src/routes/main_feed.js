@@ -17,18 +17,34 @@ const routers = function (pool) {
     //   res.json(publicIds);
 
     
-
+    //1
     // SELECT users.username as username, image_video_url, description, created 
     // FROM content_posts
     // JOIN users ON content_posts.user_id = users.id
     // WHERE content_posts.user_id = 2
     // ORDER BY created DESC;
 
+    //2
+    // SELECT users.username as following_user, image_video_url, description, created 
+    // FROM content_posts
+    // JOIN users ON content_posts.user_id = users.id
+    // JOIN followers ON followers.user_id = users.id 
+    // WHERE followers.follower_user_id = 2 AND content_posts.user_id = 2
+    // ORDER BY created DESC;
+
+    // SELECT users.username, f.user_id, f2.follower_user_id, count(DISTINCT content_posts.id) as post FROM users
+    // JOIN followers f ON f.follower_user_id = users.id
+    // JOIN followers f2 ON f2.user_id = users.id
+    // JOIN content_posts on content_posts.user_id = users.id
+    // WHERE users.id = 2
+    // GROUP BY users.username;
+
+
     const queryString = `
-    SELECT users.username as following_user, image_video_url, description, created FROM content_posts
+    SELECT users.username as username, image_video_url, description, created 
+    FROM content_posts
     JOIN users ON content_posts.user_id = users.id
-    JOIN followers ON followers.user_id = users.id 
-    WHERE followers.follower_user_id = 2 AND content_posts.user_id = 2
+    WHERE content_posts.user_id = 2
     ORDER BY created DESC;`
 
     pool.query(queryString)
