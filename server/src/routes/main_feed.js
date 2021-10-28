@@ -10,11 +10,11 @@ const routers = function (pool) {
     const { resources } = await cloudinaryWithConfig.search.expression(
       'folder:skinfax_setup'
       ).sort_by('public_id', 'desc')
-      .max_results(500)
+      .max_results(30)
       .execute();
 
       const publicIds = resources.map(file => file.public_id)
-      res.send(publicIds);
+      res.json(publicIds);
 
 
     const queryString = `
