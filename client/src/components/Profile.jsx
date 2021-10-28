@@ -38,8 +38,14 @@ export default function Profile() {
         <div className="user--flex-wrapper">
         <img className="user--profile-picture" src={state.userProfile.profile_picture_url} alt="" />
         <span className="username">{state.userProfile.username}</span>
-        <span className="user--profile-followers">
-          {state.userProfile.followers} Followers
+        <span className="user--profile-items">
+          {state.userProfile.posts} Posts
+        </span>
+        <span className="user--profile-items">
+          {state.userProfile.follower} Followers
+        </span>
+        <span className="user--profile-items">
+          {state.userProfile.following} Following
         </span>
         </div>
       </section>

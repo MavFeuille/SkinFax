@@ -7,12 +7,12 @@ const routers = function (pool) {
   router.get('/profile', function (req, res, next) {
 
     const queryString = `
-    SELECT users.username, count(DISTINCT f.user_id) as following, count(DISTINCT f2.follower_user_id) as follower, count(DISTINCT content_posts.id) as posts FROM users
+    SELECT users.username, users.profile_picture_url, count(DISTINCT f.user_id) as following, count(DISTINCT f2.follower_user_id) as follower, count(DISTINCT content_posts.id) as posts FROM users
     JOIN followers f ON f.follower_user_id = users.id
     JOIN followers f2 ON f2.user_id = users.id
     JOIN content_posts on content_posts.user_id = users.id
     WHERE users.id = 2
-    GROUP BY users.username;`
+    GROUP BY users.username, users.profile_picture_url;`
 
 
     return pool.query(queryString)
