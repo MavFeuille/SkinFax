@@ -1,10 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const cloudinaryWithConfig = require('../cloudinary_config');
 
 // function that will contain all the get routes
 const routers = function (pool) {
 
-  router.get('/', function (req, res) {
+  router.get('/', async (req, res) => {
+
+    const { resources } = await cloudinaryWithConfig.search.expression(
+      'folder:skinfax_setup'
+      ).sort_by('public_id', 'desc')
+      .max_results(500)
+      .execute();
+
+      const publicIds = resources.map(file => file.public_id)
+      res.send(publicIds);
+
 
     const queryString = `
     SELECT users.username as following_user, image_video_url, description, created FROM content_posts

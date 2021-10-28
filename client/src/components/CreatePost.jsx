@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function CreatePost() {
-  const [value, setValue] = useState([])
+  const [createPost, setCreatePost] = useState([])
   const [fileInputState, setFileInputState] = useState('');
   const [previewSource, setPreviewSource] = useState('')
   const [selectedFile, setSelectedFile] = useState('');
@@ -23,7 +23,7 @@ export default function CreatePost() {
    useEffect(() => {  
     axios.get("/api/create_post")
     .then ((res) => {
-       setValue(res.data)
+       setCreatePost(res.data)
     }).catch ((err) => {
        console.log (err)
    })
@@ -34,7 +34,6 @@ export default function CreatePost() {
     event.preventDefault();
 
     if(!previewSource) return;
-
     uploadFile(previewSource);
 
   }
@@ -46,11 +45,10 @@ export default function CreatePost() {
         method: 'POST',
         body: JSON.stringify({data: base64EncodedImage, text: textInputState}),
         headers: {'Content-type': 'application/json'}
-        
       }).then((res)=> {
         return res.json();
       }).then((res)=> {
-        window.location.href = '/api/';
+          window.location.href = '/api/';
         console.log("Response from fetch in Line 48: ", res);
       })
     } catch (err) {
@@ -58,9 +56,10 @@ export default function CreatePost() {
       console.log(err);
     }
   }
+
     return(
       <div>
-        <h1>Upload</h1>
+       
         <form onSubmit={handleSubmitFile} className="form">
           <input
             type="file"
