@@ -3,8 +3,16 @@ SELECT users.username, f.user_id, f2.follower_user_id, count(DISTINCT content_po
 JOIN followers f ON f.follower_user_id = users.id
 JOIN followers f2 ON f2.user_id = users.id
 JOIN content_posts on content_posts.user_id = users.id
-WHERE users.id = 2;
+WHERE users.id = 2
+GROUP BY users.username;
 
+
+SELECT users.username, count(DISTINCT f.user_id) as following, count(DISTINCT f2.follower_user_id) as follower, count(DISTINCT content_posts.id) as posts FROM users
+JOIN followers f ON f.follower_user_id = users.id
+JOIN followers f2 ON f2.user_id = users.id
+JOIN content_posts on content_posts.user_id = users.id
+WHERE users.id = 2
+GROUP BY users.username;
 
 
 --- Display User's name and display picture in the profile

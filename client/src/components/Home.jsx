@@ -3,12 +3,12 @@ import axios from "axios";
 
 
 export default function Home() {
-  const [value, setValue] = useState([])
+  const [home, setHome] = useState([])
 
   useEffect(() => {  
     axios.get("/")
     .then ((res) => {
-       setValue(res.data)
+       setHome(res.data)
     }).catch ((err) => {
        console.log (err)
    })
@@ -16,7 +16,7 @@ export default function Home() {
 
   return(
     <h1>Home</h1>
-
+    
   
   )
 }

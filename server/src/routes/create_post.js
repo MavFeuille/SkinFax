@@ -16,8 +16,6 @@ const routers = function (pool) {
       .catch(err => {
         console.log('error:', err.message);
       });
-    
- 
   });
 
   router.post('/create_post', async (req, res) => {
@@ -49,8 +47,10 @@ const routers = function (pool) {
       res.status(500).json({errror: "Something's wrong..."});
     }
     
-    // return res.redirect('./profile');
   });
+
+  
+
   // only return router
   return router;
 }

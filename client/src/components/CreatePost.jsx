@@ -32,8 +32,11 @@ export default function CreatePost() {
   const handleSubmitFile = (event) => {
     console.log("submitting file...")
     event.preventDefault();
+
     if(!previewSource) return;
+
     uploadFile(previewSource);
+
   }
 
   const uploadFile = async (base64EncodedImage) => {
@@ -43,10 +46,11 @@ export default function CreatePost() {
         method: 'POST',
         body: JSON.stringify({data: base64EncodedImage, text: textInputState}),
         headers: {'Content-type': 'application/json'}
-
+        
       }).then((res)=> {
         return res.json();
       }).then((res)=> {
+        window.location.href = '/api/';
         console.log("Response from fetch in Line 48: ", res);
       })
     } catch (err) {

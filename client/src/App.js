@@ -3,8 +3,8 @@ import Favourites from './components/Favourites';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Header from './components/Header';
-import { HOME_PAGE, PROFILE_PAGE, FAV_PAGE } from './components/NavItems'
-import CreatePost from './components/Create_post';
+import { HOME_PAGE, PROFILE_PAGE, FAV_PAGE, CREATE_POST } from './components/NavItems'
+import CreatePost from './components/CreatePost';
 
 import './App.css';
 
@@ -19,7 +19,9 @@ function App() {
         {page === HOME_PAGE && <Home />}
         {page === PROFILE_PAGE && <Profile />}
         {page === FAV_PAGE && <Favourites />}
-        <CreatePost />
+        {page === CREATE_POST && <CreatePost />}
+
+ 
       </div>
     </div>
   );
