@@ -19,8 +19,8 @@ export default function DirectMessages(props) {
   const [messages, setMessages] = useState([]);
   //tracks every single msg
   const [message, setMessage] = useState('');
-  // const [room, setRoom] = useState('');
-  // const [name, setName] = useState('');
+  const [room, setRoom] = useState('');
+  const [name, setName] = useState('');
   let location = useLocation();
 
 
@@ -74,26 +74,25 @@ export default function DirectMessages(props) {
   }
 console.log('message____', message)
   
-//allows for set/call/send msgs from input file by passing as props
+
   return (
     <div className="outerContainer">
        <div className="container">
          <InfoBar room={room}/>
          <Input type="text" />
       <h1>Slidding Into the DMs</h1>
-      {JSON.stringify(messages, "map over msg here")}
-     <input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+      {JSON.stringify(messages)}
+        <input 
+        value={message}
+        onChange={(event) => setMessage(event.target.value)}
+        //actually send msgs
+        onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
+        // type="text" 
+        />
       </div>
     </div>
   );
 }
-/* <input 
-value={message}
-onChange={(event) => setMessage(event.target.value)}
-//actually send msgs
-onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-// type="text" 
-/> */
 
 // {userMessages}
 
