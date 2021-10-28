@@ -40,9 +40,10 @@ io.on('connection', (socket) => {
 
   //view event from direct messages when its being emitted, grants access to name/room on backend
   
-  socket.on('join',({name, room}, callback) => {
-    console.log({name, room})
+  socket.on('Join',({name, room}, callback) => {
+    // console.log({name, room})
     //triggers a response after event emitted
+    // console.log('join event triggered=====')
 
     //addUser funct expects err/user
     const {error, user} = addUser({id: socket.id, name, room});
@@ -52,9 +53,9 @@ io.on('connection', (socket) => {
 
     //emitted from backend -> frontend
     socket.emit('message', {user: 'admin', text: `${user.name}, welcome to the new room ${user.room}`})
-
+    // console.log('user____', user)
     // sends msg to e/o
-    socket.broadcast.to(user.room.emit('message', {user: 'admin', text:`${user.name}, just joined!`}))
+    socket.broadcast.to(user.room).emit('message', {user: 'admin', text:`${user.name}, just joined!`})
 
     socket.join(user.room);
     callback();
@@ -64,6 +65,7 @@ io.on('connection', (socket) => {
   //expects event on backend than transfers -> frontend
   socket.on('sendMessage',(message, callback)=> {
     const user = getUser(socket.id)
+    // console.log('user____test', user)
     io.to(user.room).emit('message', {user: user.name, text: message})
 
     callback();

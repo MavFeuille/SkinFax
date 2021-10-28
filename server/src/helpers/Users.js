@@ -9,13 +9,14 @@ const addUser = ({id, name, room})=>{
  room = room.trim().toLowerCase();
 
  //user tries to sign up to same room w/ same username
- const existingUser = user.find((user)=> user.room === room && user.name === name);
+ const existingUser = users.find((user)=> user.room === room && user.name === name);
 //checks if user exists already
  if (existingUser) return {error: 'username taken'};
 /*makes a new user
 pushes new user into empty arr and returns*/
  const user = {id, name, room};
- user.push(user);
+ users.push(user);
+ console.log('users add___', users)
  return {user}
 }
 
@@ -29,12 +30,13 @@ const removeUser = (id)=>{
 }
 
 const getUser = (id)=> {
-  users.find((user)=> user.id === id)
+  console.log('users and id test___', users, id)
+  return users.find((user)=> user.id === id)
   
 }
 
 const getUsersInRoom = (room)=>{
-  users.filter((user)=> user.room === room)
+ return users.filter((user)=> user.room === room)
 }
 
 
