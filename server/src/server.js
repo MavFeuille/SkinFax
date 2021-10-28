@@ -33,15 +33,44 @@ app.use('/api', quizRouter(pool));
 app.use('/api', createPostRouter(pool));
 
 //connected as a client-side socket
+//if err auto removed from funct
 io.on('connection', (socket) => {
   console.log('we have new connection!!!');
   //area manages a specific socket that just joined
 
   //view event from direct messages when its being emitted, grants access to name/room on backend
+  
   socket.on('join',({name, room}, callback) => {
     console.log({name, room})
     //triggers a response after event emitted
+
+    //addUser funct expects err/user
+    const {error, user} = addUser({id: socket.id, name, room});
+
+    //kicks out
+    if(error) return callback(error);
+
+    //emitted from backend -> frontend
+    socket.emit('message', {user: 'admin', text: `${user.name}, welcome to the new room ${user.room}`})
+
+    // sends msg to e/o
+    socket.broadcast.to(user.room.emit('message', {user: 'admin', text:`${user.name}, just joined!`}))
+
+    socket.join(user.room);
+    callback();
   })
+
+  //events for user generated msgs
+  //expects event on backend than transfers -> frontend
+  socket.on('sendMessage',(message, callback)=> {
+    const user = getUser(socket.id)
+    io.to(user.room).emit('message', {user: user.name, text: message})
+
+    callback();
+  } )
+
+
+
   //no param b/c user just left
   socket.on('disconnect', () => {
     console.log('user just left');
