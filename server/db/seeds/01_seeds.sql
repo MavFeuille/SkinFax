@@ -134,7 +134,8 @@ VALUES
 (3,'comment 21',2),
 (10,'comment 22',1),
 (13,'comment 23',1),
-(12,'comment 24',8);
+(12,'comment 24',8),
+(3, 'Princess Peach likes Luigi''s post!', 2);
 
 INSERT INTO likes (user_id, content_post_id, comment_id)
 VALUES 
