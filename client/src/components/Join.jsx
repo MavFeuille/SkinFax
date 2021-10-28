@@ -19,14 +19,13 @@ const [room, setRoom] = useState('');
         <div><input placeholder="Room" className="joinInput" type="text" onChange={(event)=>setRoom(event.target.value)}/></div>
         <Link 
         //prevent press of button w/o a name and room chosen
-        onClick={event => (!name || !room) ? event.preventDefault() : null} to={`/direct_messages ?name=${name}&room=${room}`}>
+        onClick={event => (!name || !room) ? event.preventDefault() : null} to={`/DirectMessages?name=${name}&room=${room}`}>
         <button
           className="button mt-20" type="submit">Sign In
           </button>
         </Link>
-    // </div>
-    
-    // </div>
+     </div>
+    </div>
   )
 }
 

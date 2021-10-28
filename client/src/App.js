@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import Favourites from './components/Favourites';
 import Home from './components/Home';
 import Profile from './components/Profile';
@@ -15,14 +15,14 @@ import DirectMessage from './components/Direct_messages';
 
 //user first views pg= join component pass login info to query str, then passes data to chat
 
-  const [page, setPage] = useState("Home")
 const App = () => {
+  const [page, setPage] = useState("Home")
 
   return (
     <Router>
     <div className="App">
       <nav>
-        <Link to="/DirectM"> direct msg  </Link>
+        <Link to="/DirectMessages"> direct msg  </Link>
         <Link to="/Join"> Join  </Link>
         </nav>
       <div>
@@ -32,7 +32,7 @@ const App = () => {
         {page === FAV_PAGE && <Favourites />}
         testing
         <Switch>
-          <Route path="/DirectM"> 
+          <Route path="/DirectMessages"> 
         <DirectMessage />
         </Route>
         <Route path="/Join">

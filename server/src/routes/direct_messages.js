@@ -8,7 +8,7 @@ const routers = function (pool) {
     from_user_id = sender
     to_user_id = receiver*/
     const queryString = `
-    SELECT *
+    SELECT DISTINCT *
     FROM direct_messages
     INNER JOIN(                                     
     SELECT MAX(id) as id FROM (

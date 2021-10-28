@@ -12,6 +12,7 @@ const http = require('http');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+const { addUser, removeUser, getUser, getUsersInRoom} = require('./helpers/Users')
 //_____________________________
 const dbParams = require('./dbConfig');
 const {Pool} = require('pg');
@@ -36,13 +37,18 @@ io.on('connection', (socket) => {
   console.log('we have new connection!!!');
   //area manages a specific socket that just joined
 
+  //view event from direct messages when its being emitted, grants access to name/room on backend
+  socket.on('join',({name, room}, callback) => {
+    console.log({name, room})
+    //triggers a response after event emitted
+  })
   //no param b/c user just left
   socket.on('disconnect', () => {
     console.log('user just left');
   });
 });
 
-app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
+server.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 
 // const bodyParser = require ('body-parser');
 // const sass = require ('node-sass-middleware');
