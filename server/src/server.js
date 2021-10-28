@@ -65,7 +65,8 @@ io.on('connection', (socket) => {
   //expects event on backend than transfers -> frontend
   socket.on('sendMessage',(message, callback)=> {
     const user = getUser(socket.id)
-    // console.log('user____test', user)
+    console.log('message____test', message)
+    console.log('soc id____test', socket.id, user)
     io.to(user.room).emit('message', {user: user.name, text: message})
 
     callback();
