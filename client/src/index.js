@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
+//a basic boilerplate code neeeded for ecvery react app
 ReactDOM.render(
   <App />, document.getElementById('root')
 );

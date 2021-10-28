@@ -6,11 +6,17 @@ require('dotenv').config();
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || 'development';
 const express = require('express');
+//___new vars for sockeetio____
+const socketio = require('socket.io');
+const http = require('http');
 const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+//_____________________________
 const dbParams = require('./dbConfig');
-const { Pool } = require('pg');
+const {Pool} = require('pg');
 const pool = new Pool(dbParams);
-const cloudinaryWithConfig = require('./cloudinary_config')
+const cloudinaryWithConfig = require('./cloudinary_config');
 const mainFeedRouter = require('./routes/main_feed');
 const profileRouter = require('./routes/profile');
 const favouritesRouter = require('./routes/favourites');
@@ -24,6 +30,17 @@ app.use('/api', favouritesRouter(pool));
 app.use('/api', dmRouter(pool));
 app.use('/api', quizRouter(pool));
 app.use('/api', createPostRouter(pool));
+
+//connected as a client-side socket
+io.on('connection', (socket) => {
+  console.log('we have new connection!!!');
+  //area manages a specific socket that just joined
+
+  //no param b/c user just left
+  socket.on('disconnect', () => {
+    console.log('user just left');
+  });
+});
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 
