@@ -7,6 +7,7 @@ export default function CreatePost() {
   const [previewSource, setPreviewSource] = useState('')
   const [selectedFile, setSelectedFile] = useState('');
   const [textInputState, setTextInputState] = useState('');
+  
   const handleFileInputChange= (event) => {
     const file = event.target.files[0];
     console.log(event.target.files[0]);

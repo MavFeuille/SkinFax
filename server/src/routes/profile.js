@@ -34,8 +34,8 @@ const routers = function (pool) {
   router.get('/profile/posts', function (req, res, next) {
 
     const queryString = `
-    SELECT * FROM content_posts
-    WHERE user_id = 3;`
+    SELECT image_video_url, description, created  FROM content_posts
+    WHERE user_id = 1;`
 
 
     return pool.query(queryString)

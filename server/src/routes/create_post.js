@@ -34,7 +34,7 @@ const routers = function (pool) {
       })
 
 
-      pool.query(queryString,[2, uploadResponse.secure_url, req.body.text])
+      pool.query(queryString,[1, uploadResponse.secure_url, req.body.text])
       .then((data) => {
         res.json(data.rows);
       })

@@ -44,7 +44,7 @@ const routers = function (pool) {
     SELECT users.username as username, image_video_url, description, created 
     FROM content_posts
     JOIN users ON content_posts.user_id = users.id
-    WHERE content_posts.user_id = 2
+    WHERE content_posts.user_id = 1
     ORDER BY created DESC;`
 
     pool.query(queryString)
