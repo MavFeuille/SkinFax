@@ -6,7 +6,7 @@ import io from 'socket.io-client';
 import axios from 'axios';
 // import {Link} from 'react-router-dom';
 import './Direct_messages.css';
-// import Join from '../components/Join';
+
 // const socket = require('socket.io');
 
 export default function DirectMessages(props) {
