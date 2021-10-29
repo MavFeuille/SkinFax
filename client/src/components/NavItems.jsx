@@ -1,8 +1,8 @@
-export const HOME_PAGE = "Home"
-export const PROFILE_PAGE = "Shop"
-export const FAV_PAGE = "favourites"
-export const CREATE_POST = "create_post"
-export const LOGIN = "login"
+export const HOME_PAGE = "Home";
+export const PROFILE_PAGE = "Shop";
+export const FAV_PAGE = "favourites";
+export const CREATE_POST = "create_post";
+export const LOGIN = "login";
 
 
 export default function NavItems(props) {
