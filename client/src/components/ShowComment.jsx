@@ -1,16 +1,12 @@
-import { useState } from "react";
 import axios from "axios";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 
 export default function CommentForm() {
   const [comment, setComment] = useState("");
   
-  const clearInput = () => {
-    setComment("");
-  }
+  // const clearInput = () => {
+  //   setComment("");
+  // }
   
   const handleSubmitComment = (event) => {
     event.preventDefault();
@@ -27,12 +23,10 @@ export default function CommentForm() {
   const postComment = async (comment) => {
     console.log("🚀 ~ file: CommentForm.jsx ~ line 20 ~ postComment ~ comment", comment)
     
-
-
-    axios.post('/api/comments/postComment', {comment: comment})
+    axios.post('/api/comments/postComment', comment)
       .then((res) => {
-        clearInput();
-        console.log("🚀 ~ file: CommentForm.jsx ~ line 33 ~ .then ~ res", res)
+        console.log("🚀 ~ file: CommentForm.jsx ~ line 28 ~ .then ~ res", res)
+        
       })
   }
 
@@ -56,4 +50,3 @@ export default function CommentForm() {
     </div>
     
   )
-}

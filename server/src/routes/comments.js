@@ -12,7 +12,7 @@ const routers = function (pool) {
     SELECT users.username as username, comments.comment, comments.created FROM comments
     JOIN content_posts ON content_post_id = content_posts.id
     JOIN users ON content_posts.user_id = users.id
-    WHERE content_posts.id = $1
+    WHERE content_posts.id = 1
     ORDER BY created DESC;`
 
     pool.query(queryString, [26])
@@ -28,18 +28,20 @@ const routers = function (pool) {
   //Post comments
   router.post('/postComment', async (req, res) => {
     
-    console.log("🚀 ~ file: comments.js ~ line 38 ~ router.post ~ req.body.text", req.body.text)
+    console.log("🚀 ~ file: comments.js ~ line 31 ~ router.post ~ req.body", req.body.comment);
+
     const queryString = `
     INSERT INTO comments (user_id, comment, content_post_id)
     VALUES 
     ($1, $2, $3)
     RETURNING *;`
 
-    const value = [1, req.body.text, 26];
+    const value = [1, req.body.comment, 26];
     
       pool.query(queryString, value)
         .then((data) => {
-          res.json(data.rows);
+          console.log("🚀 ~ file: comments.js ~ line 43 ~ .then ~ data", data)
+          res.json(data.rows[0]);
         })
         .catch(err => {
           console.log('error:', err.message);

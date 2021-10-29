@@ -51,7 +51,10 @@ export default function Home() {
         <span onClick={() => console.log ("Liked! ")}><IoHeartOutline /></span>
         <span onClick={() => console.log ("Clicked for comment! ")}><IoChatbubbleOutline /></span>
         <span onClick={() => console.log ("Saved! ")}><IoBookmarkOutline /></span>
+      <div>
         <CommentForm />
+      </div>
+        
       </div>
     )
   })
