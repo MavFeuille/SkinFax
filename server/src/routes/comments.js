@@ -5,92 +5,48 @@ const router = express.Router();
 // function that will contain all the get routes
 const routers = function (pool) {
 
-  // only getting logged in user's post
+  // render CommentForm 
   router.get('/', function (req, res) {
 
     const queryString = `
-    SELECT users.id, users.username as username, image_video_url, description, created 
-    FROM content_posts
+    SELECT users.username as username, comments.comment, comments.created FROM comments
+    JOIN content_posts ON content_post_id = content_posts.id
     JOIN users ON content_posts.user_id = users.id
-    JOIN followers ON content_posts.user_id = followers.user_id
-    WHERE content_posts.user_id = 1
+    WHERE content_posts.id = $1
     ORDER BY created DESC;`
 
-    pool.query(queryString)
+    pool.query(queryString, [26])
       .then((data) => {
-        res.json(data.rows)
+        const comments = data.rows;
+        res.json(comments);
       })
       .catch(err => {
         console.log('error:', err.message);
       });
   });
 
-  // get all following's posts
-  router.get('/getFollowingPost', function (req, res) {
+  //Post comments
+  router.post('/postComment', async (req, res) => {
+    
+    console.log("🚀 ~ file: comments.js ~ line 38 ~ router.post ~ req.body.text", req.body.text)
     const queryString = `
-    SELECT users.id, users.username as username, image_video_url, description, created FROM content_posts
-    JOIN users ON content_posts.user_id = users.id
-    JOIN followers ON followers.user_id = users.id 
-    WHERE followers.follower_user_id = 2
-    ORDER BY created DESC;`
-
-    pool.query(queryString)
-      .then((data) => {
-        res.json(data.rows)
-      })
-      .catch(err => {
-        console.log('error:', err.message);
-      });
-  });
-
-  router.get('/create_post', function (req, res) {
-    const queryString = `
-    SELECT * FROM content_posts;`
-
-    pool.query(queryString)
-      .then((data) => {
-        res.json(data.rows)
-      })
-      .catch(err => {
-        console.log('error:', err.message);
-      });
-  });
-
-
-  router.post('/create_post', async (req, res) => {
-    console.log("🚀 ~ file: posts.js ~ line 82 ~ router.post ~ req.body", req.body)
-    const queryString = `
-    INSERT INTO content_posts (user_id, image_video_url, description)
-    VALUES  
+    INSERT INTO comments (user_id, comment, content_post_id)
+    VALUES 
     ($1, $2, $3)
     RETURNING *;`
-    try {
-      const fileString = req.body.data;
-      // console.log("🚀 ~ file: upload.js ~ line 10 ~ fileString", fileString);
-      const uploadResponse = await cloudinaryWithConfig.uploader.upload(
-        fileString, {
-        upload_preset: "skinfax_setup"
-      })
 
-
-      pool.query(queryString,[3, uploadResponse.secure_url, req.body.text])
-      .then((data) => {
-        res.json(data.rows);
-      })
-      .catch(err => {
-        console.log('error:', err.message);
-      });
-
-      console.log("🚀 ~ file: upload.js ~ line 33 ~ uploadResponse", uploadResponse)
-      
-    } catch (error) {
-      console.log("ERROR fROM line 34 -- ", error)
-      res.status(500).json({errror: "Something's wrong..."});
-    }
+    const value = [1, req.body.text, 26];
     
+      pool.query(queryString, value)
+        .then((data) => {
+          res.json(data.rows);
+        })
+        .catch(err => {
+          console.log('error:', err.message);
+          res.status(500).json({errror: "Something's wrong..."});
+        });
   });
 
-  
   //only return router
   return router;
 }

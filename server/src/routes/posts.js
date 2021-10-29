@@ -5,7 +5,7 @@ const cloudinaryWithConfig = require('../cloudinary_config');
 // function that will contain all the get routes
 const routers = function (pool) {
 
-  // only getting logged in user's post
+  // only getting the logged in user's post
   router.get('/getUserPost', function (req, res) {
 
     const queryString = `
@@ -56,7 +56,7 @@ const routers = function (pool) {
       });
   });
 
-
+  // Create new post
   router.post('/create_post', async (req, res) => {
     console.log("🚀 ~ file: posts.js ~ line 82 ~ router.post ~ req.body", req.body)
     const queryString = `
