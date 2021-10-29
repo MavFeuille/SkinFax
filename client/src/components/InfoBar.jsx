@@ -16,7 +16,7 @@ export default function InfoBar({room}){
     <div className="rightInnerContainer"> 
     {/*used to rely on the parsed query str for location which became location.state} 
     when user clicks= leave chat*/}
-      <a href="/">img src={closeIcon} alt="close image</a>
+      <a href="/">button</a>
     </div>
     </div>
   )
