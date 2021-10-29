@@ -16,8 +16,8 @@ export default function DirectMessages(props) {
   const [messages, setMessages] = useState([]);
   //tracks every single msg
   const [message, setMessage] = useState('');
-  // const [room, setRoom] = useState('');
-  // const [name, setName] = useState('');
+  const [room, setRoom] = useState('');
+  const [name, setName] = useState('');
   let location = useLocation();
 
 
