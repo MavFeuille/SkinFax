@@ -8,23 +8,6 @@ export default function Profile() {
   });
 
   useEffect(() => {
-<<<<<<< HEAD
-    Promise.all([
-      axios.get(`/api/profiles/`),
-      axios.get('/api/posts/getUserPost')
-    ])
-    .then((all) => {
-      const userProfile = all[0].data;
-      console.log("🚀 ~ file: Profile.jsx ~ line 17 ~ .then ~ userProfile", userProfile)
-      const userPosts = all[1].data;
-      console.log("🚀 ~ file: Profile.jsx ~ line 19 ~ .then ~ userPosts", userPosts)
-      setState(prev => ({...prev, userProfile, userPosts}))
-    })
-    .catch((err) => {
-      console.log(err.message);
-    })
-  }, [])
-=======
     Promise.all([axios.get(`/api/profile`), axios.get("/api/posts/user_posts")])
       .then((all) => {
         const userProfile = all[0].data;
@@ -36,7 +19,6 @@ export default function Profile() {
         console.log(err.message);
       });
   }, []);
->>>>>>> 60413a5b320fad8f31dd18b69948249ac7d6d09e
 
   //To render the list of user's posts
   const userPosts = state.userPosts.map((obj) => {

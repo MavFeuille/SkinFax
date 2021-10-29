@@ -21,27 +21,14 @@ app.use(express.json({ limit: '100mb' }));
 const postsRouter = require('./routes/posts');
 const profileRouter = require('./routes/profile');
 const favouritesRouter = require('./routes/favourites');
-<<<<<<< HEAD
-const messageRouter = require('./routes/messages');
-const loginRouter = require('./routes/login');
 const commentsRouter = require('./routes/comments');
-// const quizRouter = require('./routes/quiz');
-// const postRouter = require('./routes/create_post');
-=======
 const messagesRouter = require('./routes/messages');
->>>>>>> 60413a5b320fad8f31dd18b69948249ac7d6d09e
 
 app.use('/api/posts', postsRouter(pool));
 app.use('/api/profile', profileRouter(pool));
 app.use('/api/favourites', favouritesRouter(pool));
-<<<<<<< HEAD
-app.use('/api/messages', messageRouter(pool));
-app.use('/api/login', loginRouter(pool));
 app.use('/api/comments', commentsRouter(pool));
-
-=======
 app.use('/api/messages', messagesRouter(pool));
->>>>>>> 60413a5b320fad8f31dd18b69948249ac7d6d09e
 
 // LOGIN/REGISTER --------------------------------------------
 const usersRouter = require('./routes/users');
