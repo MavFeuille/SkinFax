@@ -6,9 +6,8 @@ import { Form, FloatingLabel } from 'react-bootstrap';
 
 export default function Home() {
   const [home, setHome] = useState([]);
-  const [heart, setHeart] = useState([])
-  
-  useEffect(() => { 
+
+  useEffect(() => {
     Promise.all([
       axios.get("/api/posts/user_posts"),
       axios.get("/api/posts/follow_posts"),
@@ -16,14 +15,11 @@ export default function Home() {
       .then((all) => {
         const userPosts = all[0].data;
         const followingPosts = all[1].data;
+        const combinedPosts = userPosts.concat(followingPosts);
 
-      const followingPosts =all[1].data;
-            
-      const combinedPosts = userPosts.concat(followingPosts)
-      
-      combinedPosts.sort((a, b) => {
-        const date1 = new Date(a.created.replace(' ', "T"));
-        const unixDate1 = Math.floor(date1.getTime()/1000);
+        combinedPosts.sort((a, b) => {
+          const date1 = new Date(a.created.replace(" ", "T"));
+          const unixDate1 = Math.floor(date1.getTime() / 1000);
 
         const date2 = new Date(b.created.replace(' ', "T"));
         const unixDate2 = Math.floor(date2.getTime()/1000);
