@@ -12,31 +12,30 @@ const { Pool } = require('pg');
 const pool = new Pool(dbParams);
 const bodyParser = require('body-parser');
 const cloudinaryWithConfig = require('./cloudinary_config')
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json({ limit: '100mb' }));
+
+// APP ROUTES -----------------------------------------------
 const postsRouter = require('./routes/posts');
 const profileRouter = require('./routes/profile');
 const favouritesRouter = require('./routes/favourites');
-const messageRouter = require('./routes/messages');
-const loginRouter = require('./routes/login');
-// const quizRouter = require('./routes/quiz');
-// const postRouter = require('./routes/create_post');
+const messagesRouter = require('./routes/messages');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.json({ limit: '100mb' }));
 app.use('/api/posts', postsRouter(pool));
-app.use('/api/profiles', profileRouter(pool));
+app.use('/api/profile', profileRouter(pool));
 app.use('/api/favourites', favouritesRouter(pool));
-app.use('/api/messages', messageRouter(pool));
-app.use('/api/login', loginRouter(pool));
+app.use('/api/messages', messagesRouter(pool));
 
-// app.use('/api/quizes', quizRouter(pool));
-// app.use('/api/', postRouter(pool));
+// LOGIN/REGISTER --------------------------------------------
+const usersRouter = require('./routes/users');
 
+app.use('/api/users', usersRouter(pool));
 
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 
-// const bodyParser = require ('body-parser');
 // const sass = require ('node-sass-middleware');
 // const morgan = require ('morgan');
 // const bcryptjs = require ('bcryptjs');

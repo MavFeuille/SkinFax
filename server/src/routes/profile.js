@@ -14,7 +14,6 @@ const routers = function (pool) {
     WHERE users.id = 2
     GROUP BY users.username, users.profile_picture_url;`
 
-
     return pool.query(queryString)
       .then((data) => {
         const profile = data.rows[0];
@@ -31,30 +30,9 @@ const routers = function (pool) {
       })
   });
 
-  router.get('/profile/posts', function (req, res, next) {
-
-    const queryString = `
-    SELECT image_video_url, description, created  FROM content_posts
-    WHERE user_id = 1;`
-
-
-    return pool.query(queryString)
-      .then((data) => {
-        const posts = data.rows;
-        return res.json(posts);
-      })
-      .catch(err => {
-        console.log('error:', err.message);
-        return next(err)
-      })
-
-  });
   //only return router
   return router;
 }
 
 // only export the function
 module.exports = routers;
-
-//know which user is being retrieved, u can get profil + results /users seperately. also $1 etc
-

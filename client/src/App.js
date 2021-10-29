@@ -3,10 +3,11 @@ import Favourites from './components/Favourites';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Header from './components/Header';
-import { HOME_PAGE, PROFILE_PAGE, FAV_PAGE, CREATE_POST, LOGIN } from './components/NavItems'
+import { HOME_PAGE, PROFILE_PAGE, FAV_PAGE, CREATE_POST, LOGIN, REGISTER } from './components/NavItems'
 import CreatePost from './components/CreatePost';
 import Login from './components/Login';
-import 'bootstrap';
+import Register from './components/Register';
+// import 'bootstrap';
 
 import './App.css';
 
@@ -31,6 +32,7 @@ function App() {
         {page === FAV_PAGE && <Favourites />}
         {page === CREATE_POST && <CreatePost />}
         {page === LOGIN && <Login />}
+        {page === REGISTER && <Register />}
 
 
       </div>
