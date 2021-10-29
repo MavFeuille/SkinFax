@@ -4,20 +4,6 @@ import axios from "axios";
 export default function Home() {
   const [home, setHome] = useState([]);
 
-  // const [imageIds, setImageIds] = useState();
-
-  // const loadImages = async () => {
-  //   try {
-  //     const res = await fetch('/api/');
-  //     const data = await res.json();
-  //     console.log("🚀 ~ file: Home.jsx ~ line 13 ~ loadImages ~ data", data)
-  //     setImageIds(data);
-  //     console.log("🚀 ~ file: Home.jsx ~ line 17 ~ loadImages ~ setImageIds(data)", setImageIds(data))
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
   useEffect(() => {
     Promise.all([
       axios.get("/api/posts/user_posts"),
@@ -26,7 +12,6 @@ export default function Home() {
       .then((all) => {
         const userPosts = all[0].data;
         const followingPosts = all[1].data;
-
         const combinedPosts = userPosts.concat(followingPosts);
 
         combinedPosts.sort((a, b) => {
