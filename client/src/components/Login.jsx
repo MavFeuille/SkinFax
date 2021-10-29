@@ -1,53 +1,37 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 
-export default function Login() {
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
+export default function Login(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const onSubmit = (event) => {
     event.preventDefault();
-    axios
-      .post("/api/users/login", {
-        username: user.email,
-        password: user.password,
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    props.login(email, password);
   };
 
   return (
-    <form onSubmit={onSubmit} className="form">
-      <input
-        type="email"
-        name="email"
-        placeholder="Enter email..."
-        value={user.username}
-        onChange={(event) =>
-          setUser((prev) => ({ ...prev, email: event.target.value }))
-        }
-        className="form-input"
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Enter password..."
-        value={user.password}
-        onChange={(event) =>
-          setUser((prev) => ({ ...prev, password: event.target.value }))
-        }
-        className="form-input"
-      />
+    <>
+      <form onSubmit={onSubmit} className="form">
+        <input
+          type="email"
+          placeholder="Enter email..."
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          className="form-input"
+        />
+        <input
+          type="password"
+          placeholder="Enter password..."
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          className="form-input"
+        />
 
-      <button className="btn" type="submit">
-        Login
-      </button>
-    </form>
+        <button className="btn" type="submit">
+          Login
+        </button>
+      </form>
+      {props.status && <div>{props.status}</div>}
+    </>
   );
 }

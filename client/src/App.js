@@ -3,42 +3,34 @@ import Favourites from './components/Favourites';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Header from './components/Header';
-import { HOME_PAGE, PROFILE_PAGE, FAV_PAGE, CREATE_POST, LOGIN, REGISTER } from './components/NavItems'
+import { HOME_PAGE, PROFILE_PAGE, FAV_PAGE, CREATE_POST } from './components/NavItems'
 import CreatePost from './components/CreatePost';
 import Login from './components/Login';
-import Register from './components/Register';
 // import 'bootstrap';
 
+import useAuth from './hooks/useAuth';
 
-import './App.scss';
 import './App.css';
-
-// setUser={setUser} user={user}
 
 function App() {
 
+  const { user, login, logout, status } = useAuth();
+
   const [page, setPage] = useState("Home")
-  // const [user, setUser] = useState()
 
   return (
-
-
     <div className="App">
-      {/* { !user && <Login setUser={setUser} />}
+      {!user && <Login login={login} status={status} />}
 
-      { (user) &&  */}
-      <div>
-        <Header setPage={setPage} />
-        {page === HOME_PAGE && <Home />}
-        {page === PROFILE_PAGE && <Profile />}
-        {page === FAV_PAGE && <Favourites />}
-        {page === CREATE_POST && <CreatePost />}
-        {page === LOGIN && <Login />}
-        {page === REGISTER && <Register />}
-
-
-      </div>
-      {/* } */}
+      {(user) &&
+        <div>
+          <Header setPage={setPage} user={user} logout={logout} />
+          {page === HOME_PAGE && <Home />}
+          {page === PROFILE_PAGE && <Profile />}
+          {page === FAV_PAGE && <Favourites />}
+          {page === CREATE_POST && <CreatePost />}
+        </div>
+      }
     </div>
   );
 }

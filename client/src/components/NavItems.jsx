@@ -36,19 +36,13 @@ export default function NavItems(props) {
       >
         create post
       </li>
+      <li>{props.user.email}</li>
       <li
         onClick={() => {
-          props.setPage(LOGIN);
+          props.logout();
         }}
       >
-        Login
-      </li>
-      <li
-        onClick={() => {
-          props.setPage(REGISTER);
-        }}
-      >
-        Register
+        Logout
       </li>
     </ul>
   );

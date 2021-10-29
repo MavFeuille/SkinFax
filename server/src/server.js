@@ -31,9 +31,9 @@ app.use('/api/comments', commentsRouter(pool));
 app.use('/api/messages', messagesRouter(pool));
 
 // LOGIN/REGISTER --------------------------------------------
-const usersRouter = require('./routes/users');
+// const usersRouter = require('./routes/users');
 
-app.use('/api/users', usersRouter(pool));
+// app.use('/api/users', usersRouter(pool));
 
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
