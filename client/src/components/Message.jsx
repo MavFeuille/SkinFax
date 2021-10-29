@@ -1,5 +1,6 @@
 import React from 'react';
 import './Message.css';
+import DirectMessage from './Direct_messages';
 
 //msg is an obj w/ user+text
 export default function Message({message:{user, text}, name}) {

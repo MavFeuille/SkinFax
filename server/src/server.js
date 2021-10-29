@@ -58,6 +58,8 @@ io.on('connection', (socket) => {
     socket.broadcast.to(user.room).emit('message', {user: 'admin', text:`${user.name}, just joined!`})
 
     socket.join(user.room);
+
+    io.to(user.room).emit('roomData', {room: user.room, users: getUsersInRoom(user.room)})
     callback();
   })
 
@@ -68,6 +70,8 @@ io.on('connection', (socket) => {
     console.log('message____test', message)
     console.log('soc id____test', socket.id, user)
     io.to(user.room).emit('message', {user: user.name, text: message})
+    io.to(user.room).emit('roomData', {user: user.room, users: getUsersInRoom(user.room)})
+
 
     callback();
   } )
