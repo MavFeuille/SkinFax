@@ -7,6 +7,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 export default function CommentForm() {
   const [comment, setComment] = useState("");
+  const [label, setLabel] = useState("Write a comment...")
   
   const clearInput = () => {
     setComment("");
@@ -39,7 +40,7 @@ export default function CommentForm() {
   return (
     <div>
       <Form onSubmit={handleSubmitComment}>
-        <FloatingLabel controlId="floatingTextarea" label="Write a comment..." className="mb-3">
+        <FloatingLabel controlId="floatingTextarea" label={label} className="mb-3" onFocus={(event) => {setLabel("")}}>
           <Form.Control 
             as="textarea" 
             placeholder="Leave a comment here" 

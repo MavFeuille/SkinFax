@@ -36,7 +36,7 @@ const routers = function (pool) {
     ($1, $2, $3)
     RETURNING *;`
 
-    const value = [1, req.body.comment, 26];
+    const value = [1, req.body.comment, 2];
     
       pool.query(queryString, value)
         .then((data) => {

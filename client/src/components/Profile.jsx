@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import CommentForm from "./CommentForm";
+import { IoChatbubbleOutline, IoHeartOutline, IoHeartSharp, IoBookmarkOutline, IoRocketSharp } from "react-icons/io5";
+
 
 export default function Profile() {
   const [state, setState] = useState({
@@ -30,12 +33,19 @@ export default function Profile() {
         <p>{obj.description}</p>
         <span>{obj.created}</span>
         <div>
-          <span>
-            <i class="bi bi-heart"></i>
+          <span onClick={() => console.log ("Liked! ")}>
+            <IoHeartOutline />
           </span>
-          <span>
-            <i class="far fa-comment"></i>
+          <span onClick={() => {console.log ("Clicked for comment! ")}}>
+            <IoChatbubbleOutline />
           </span>
+          <span onClick={() => console.log ("Saved! ")}>
+            <IoBookmarkOutline />
+          </span>
+        </div>
+        <div>
+          <CommentForm />
+          
         </div>
       </div>
     );
