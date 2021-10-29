@@ -70,24 +70,29 @@ export default function DirectMessages(props) {
     }
   }
 console.log('message____', message)
-  
+  let placeholder = 'type here';
 
   return (
     <div className="outerContainer">
        <div className="container">
-      <h1>Slidding Into the DMs</h1>
+      <h1 className="header">Slidding Into the DMs</h1>
       {JSON.stringify(messages)}
         <input 
         value={message}
+        // placeholder={placeholder}
         onChange={(event) => setMessage(event.target.value)}
         //actually send msgs
         onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
         // type="text" 
         />
+         <button className="sendButton" onClick={(event)=> sendMessage(event)}>Send</button>
       </div>
     </div>
   );
 }
+//placeholder message breaks onclick etc funct
+//loose-ends: invite only to chatrooms
+//
 
 // {userMessages}
 
