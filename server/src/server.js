@@ -17,6 +17,7 @@ const profileRouter = require('./routes/profile');
 const favouritesRouter = require('./routes/favourites');
 const messageRouter = require('./routes/messages');
 const loginRouter = require('./routes/login');
+const commentsRouter = require('./routes/comments');
 // const quizRouter = require('./routes/quiz');
 // const postRouter = require('./routes/create_post');
 
@@ -28,6 +29,8 @@ app.use('/api/profiles', profileRouter(pool));
 app.use('/api/favourites', favouritesRouter(pool));
 app.use('/api/messages', messageRouter(pool));
 app.use('/api/login', loginRouter(pool));
+app.use('/api/comments', commentsRouter(pool));
+
 
 // app.use('/api/quizes', quizRouter(pool));
 // app.use('/api/', postRouter(pool));

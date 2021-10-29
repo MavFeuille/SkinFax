@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import CommentForm from "./CommentForm";
 import { IoChatbubbleOutline, IoHeartOutline, IoHeartSharp, IoBookmarkOutline, IoRocketSharp } from "react-icons/io5";
 import { Form, FloatingLabel } from 'react-bootstrap';
 
@@ -40,7 +41,6 @@ export default function Home() {
 
   const combinedPosts = home.map((obj, index) => {
     
-    console.log("obj", obj)
     return (
 
       <div key={index}> 
@@ -51,22 +51,18 @@ export default function Home() {
         <span onClick={() => console.log ("Liked! ")}><IoHeartOutline /></span>
         <span onClick={() => console.log ("Clicked for comment! ")}><IoChatbubbleOutline /></span>
         <span onClick={() => console.log ("Saved! ")}><IoBookmarkOutline /></span>
-        <Form>
-          <FloatingLabel controlId="floatingTextarea" label="Comments" className="mb-3">
-            <Form.Control as="textarea" placeholder="Write a comment here" />
-            <span onClick={() => console.log("Firing comments....")}><IoRocketSharp /></span>
-          </FloatingLabel>
-        </Form>
+        <CommentForm />
       </div>
     )
   })
-  console.log("🚀 ~ file: Home.jsx ~ line 84 ~ combinedPosts ~ combinedPosts", combinedPosts)
-
+  // console.log("🚀 ~ file: Home.jsx ~ line 84 ~ combinedPosts ~ combinedPosts", combinedPosts)
+  
   return(
-
+    
     <div>
     <h1 className="title">Home</h1>
     {combinedPosts}
+    
   
     {/* {followingPosts} */}
   
