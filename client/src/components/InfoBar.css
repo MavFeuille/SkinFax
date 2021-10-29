@@ -12,8 +12,10 @@
   flex: 0.5;
   display: flex;
   align-items: center;
-  margin-left: 5%;
+  margin-left: 0.2%;
+  margin-top: 0.2%;
   color: white;
+  background-color: black;
 }
 
 .rightInnerContainer {
@@ -21,6 +23,8 @@
   flex: 0.5;
   justify-content: flex-end;
   margin-right: 5%;
+  background-color: rgb(10, 131, 245);
+
 }
 
 .onlineIcon {
