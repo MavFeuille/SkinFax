@@ -5,15 +5,19 @@ const cloudinaryWithConfig = require('../cloudinary_config');
 // function that will contain all the get routes
 const routers = function (pool) {
 
+<<<<<<< HEAD
   // only getting the logged in user's post
   router.get('/getUserPost', function (req, res) {
+=======
+  // only getting logged in user's post
+  router.get('/user_posts', function (req, res) {
+>>>>>>> 60413a5b320fad8f31dd18b69948249ac7d6d09e
 
     const queryString = `
     SELECT users.id, users.username as username, image_video_url, description, created 
     FROM content_posts
     JOIN users ON content_posts.user_id = users.id
-    JOIN followers ON content_posts.user_id = followers.user_id
-    WHERE content_posts.user_id = 1
+    WHERE content_posts.user_id = 2
     ORDER BY created DESC;`
 
     pool.query(queryString)
@@ -26,7 +30,7 @@ const routers = function (pool) {
   });
 
   // get all following's posts
-  router.get('/getFollowingPost', function (req, res) {
+  router.get('/follow_posts', function (req, res) {
     const queryString = `
     SELECT users.id, users.username as username, image_video_url, description, created FROM content_posts
     JOIN users ON content_posts.user_id = users.id
@@ -73,24 +77,24 @@ const routers = function (pool) {
       })
 
 
-      pool.query(queryString,[3, uploadResponse.secure_url, req.body.text])
-      .then((data) => {
-        res.json(data.rows);
-      })
-      .catch(err => {
-        console.log('error:', err.message);
-      });
+      pool.query(queryString, [3, uploadResponse.secure_url, req.body.text])
+        .then((data) => {
+          res.json(data.rows);
+        })
+        .catch(err => {
+          console.log('error:', err.message);
+        });
 
       console.log("🚀 ~ file: upload.js ~ line 33 ~ uploadResponse", uploadResponse)
-      
+
     } catch (error) {
       console.log("ERROR fROM line 34 -- ", error)
-      res.status(500).json({errror: "Something's wrong..."});
+      res.status(500).json({ errror: "Something's wrong..." });
     }
-    
+
   });
 
-  
+
   //only return router
   return router;
 }
