@@ -4,7 +4,7 @@ const router = express.Router();
 // function that will contain all the get routes
 const routers = function (pool) {
 
-  router.get('/profile', function (req, res, next) {
+  router.get('/', function (req, res, next) {
 
     const queryString = `
     SELECT users.username, users.profile_picture_url, count(DISTINCT f.user_id) as following, count(DISTINCT f2.follower_user_id) as follower, count(DISTINCT content_posts.id) as posts FROM users

@@ -3,7 +3,7 @@ const router = express.Router();
 // function that will contain all the get routes;
 const routers = function (pool) {
 
-  router.get('/direct_messages', function (req, res, next) {
+  router.get('/', function (req, res, next) {
 
     const queryString = `
     SELECT *

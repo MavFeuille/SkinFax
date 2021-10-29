@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
 
+
 export default function Profile() {
   const [state, setState] = useState({
     userProfile: {},
@@ -8,10 +9,12 @@ export default function Profile() {
   })
   const [previewSource, setPreviewSource] = useState('')
 
+  // axios.get(`/api/profiles/${userID}`)
+
   useEffect(() => {
     Promise.all([
-      axios.get('/api/profile'),
-      axios.get('/api/profile/posts')
+      axios.get(`/api/profiles/`),
+      axios.get('/api/posts')
     ])
     .then((all) => {
       const userProfile = all[0].data;
@@ -33,6 +36,10 @@ export default function Profile() {
       <img src={obj.image_video_url} alt=""/>
       <p>{obj.description}</p>
       <span>{obj.created}</span>
+      <div>
+        <span><i class="bi bi-heart"></i></span>
+        <span><i class="far fa-comment"></i></span>
+      </div>
       </div>
     )
   })

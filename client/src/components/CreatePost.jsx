@@ -22,7 +22,7 @@ export default function CreatePost() {
     }
   }
    useEffect(() => {  
-    axios.get("/api/create_post")
+    axios.get("/api/posts/create_post")
     .then ((res) => {
        setCreatePost(res.data)
     }).catch ((err) => {
@@ -41,21 +41,29 @@ export default function CreatePost() {
 
   const uploadFile = async (base64EncodedImage) => {
     console.log("🚀 ~ file: create_post.jsx ~ line 38 ~ uploadFile ~ base64EncodedImage", base64EncodedImage);
-    try {
-      await fetch('/api/create_post', {
-        method: 'POST',
-        body: JSON.stringify({data: base64EncodedImage, text: textInputState}),
-        headers: {'Content-type': 'application/json'}
-      }).then((res)=> {
-        return res.json();
-      }).then((res)=> {
-          window.location.href = '/api/';
+    const data= {data: base64EncodedImage, text: textInputState};
+
+    axios.post('/api/posts/create_post', data)
+      .then((res)=> {
+          window.location.href = '/api/posts';
         console.log("Response from fetch in Line 48: ", res);
       })
-    } catch (err) {
-      // console.log("🚀 ~ file: create_post.jsx ~ line 47 ~ UploadFile ERROR ~:", err);
-      console.log(err);
-    }
+
+    // try {
+    //   await fetch('/api/posts/create_post', {
+    //     method: 'POST',
+    //     body: JSON.stringify({data: base64EncodedImage, text: textInputState}),
+    //     headers: {'Content-type': 'application/json'}
+    //   }).then((res)=> {
+    //     return res.json();
+    //   }).then((res)=> {
+    //       window.location.href = '/api/posts';
+    //     console.log("Response from fetch in Line 48: ", res);
+    //   })
+    // } catch (err) {
+    //   // console.log("🚀 ~ file: create_post.jsx ~ line 47 ~ UploadFile ERROR ~:", err);
+    //   console.log(err);
+    // }
   }
 
     return(

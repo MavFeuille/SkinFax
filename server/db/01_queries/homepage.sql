@@ -12,3 +12,19 @@ JOIN followers on followers.follower_user_id = users.id
 WHERE followers.follower_user_id = 2
 GROUP BY users.username
 ORDER BY created DESC;
+
+
+SELECT users.username as username, image_video_url, description, created 
+FROM content_posts
+JOIN users ON content_posts.user_id = users.id
+JOIN followers ON content_posts.user_id = followers.user_id
+WHERE content_posts.user_id = 1
+ORDER BY created DESC;
+
+SELECT DISTINCT users.username as username, posts.id, posts.description
+FROM followers
+JOIN users ON followers.follower_user_id = users.id
+JOIN content_posts as posts ON posts.user_id = followers.follower_user_id;
+
+
+

@@ -10,22 +10,27 @@ const app = express();
 const dbParams = require('./dbConfig');
 const { Pool } = require('pg');
 const pool = new Pool(dbParams);
+const bodyParser = require('body-parser');
 const cloudinaryWithConfig = require('./cloudinary_config')
-const mainFeedRouter = require('./routes/main_feed');
+const postsRouter = require('./routes/posts');
 const profileRouter = require('./routes/profile');
 const favouritesRouter = require('./routes/favourites');
-const dmRouter = require('./routes/direct_messages');
-const quizRouter = require('./routes/quiz');
-const createPostRouter = require('./routes/create_post');
+const messageRouter = require('./routes/messages');
+const loginRouter = require('./routes/login');
+// const quizRouter = require('./routes/quiz');
+// const postRouter = require('./routes/create_post');
 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json({ limit: '100mb' }));
-app.use('/api', mainFeedRouter(pool));
-app.use('/api', profileRouter(pool));
-app.use('/api', favouritesRouter(pool));
-app.use('/api', dmRouter(pool));
-app.use('/api', quizRouter(pool));
-app.use('/api', createPostRouter(pool));
+app.use('/api/posts', postsRouter(pool));
+app.use('/api/profiles', profileRouter(pool));
+app.use('/api/favourites', favouritesRouter(pool));
+app.use('/api/messages', messageRouter(pool));
+app.use('/api/login', loginRouter(pool));
+
+// app.use('/api/quizes', quizRouter(pool));
+// app.use('/api/', postRouter(pool));
 
 
 

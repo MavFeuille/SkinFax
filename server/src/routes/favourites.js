@@ -4,7 +4,7 @@ const router = express.Router();
 // function that will contain all the get routes
 const routers = function (pool) {
 
-  router.get('/favourites', function (req, res) {
+  router.get('/', function (req, res) {
 
     const queryString = `  
     SELECT image_video_url, description, created, users.username
