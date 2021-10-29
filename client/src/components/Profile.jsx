@@ -7,7 +7,7 @@ export default function Profile() {
     userProfile: {},
     userPosts: []
   })
-  const [previewSource, setPreviewSource] = useState('')
+
 
   // axios.get(`/api/profiles/${userID}`)
 
@@ -45,25 +45,11 @@ export default function Profile() {
   })
 
 
-  const handleFileInputChange= (event) => {
-    const file = event.target.files[0];
-    console.log(event.target.files[0]);
-    previewFile(file)
-  }
-
-  const previewFile = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setPreviewSource(reader.result);
-    }
-  }
-
   return(
     <div>
        <section className="user--profile-section">
         <div className="user--flex-wrapper">
-        <img className="user--profile-picture" src={state.userProfile.profile_picture_url} alt=""/>
+        <img className="user--profile-picture" src={state.userProfile.profile_picture_url} alt="" />
         <span className="username">{state.userProfile.username}</span>
         <span className="user--profile-items">
           {state.userProfile.posts} Posts

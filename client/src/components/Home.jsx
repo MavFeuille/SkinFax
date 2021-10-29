@@ -1,24 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { IoChatbubbleOutline, IoHeartOutline, IoHeartSharp, IoBookmarkOutline, IoRocketSharp } from "react-icons/io5";
+import { Form, FloatingLabel } from 'react-bootstrap';
 
 
 
 export default function Home() {
   const [home, setHome] = useState([]);
-
-  // const [imageIds, setImageIds] = useState();
-
-  // const loadImages = async () => {
-  //   try {
-  //     const res = await fetch('/api/');
-  //     const data = await res.json(); 
-  //     console.log("🚀 ~ file: Home.jsx ~ line 13 ~ loadImages ~ data", data)
-  //     setImageIds(data);
-  //     console.log("🚀 ~ file: Home.jsx ~ line 17 ~ loadImages ~ setImageIds(data)", setImageIds(data))
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+  const [heart, setHeart] = useState([])
   
   useEffect(() => { 
     Promise.all([
@@ -37,39 +26,18 @@ export default function Home() {
       combinedPosts.sort((a, b) => {
         const date1 = new Date(a.created.replace(' ', "T"));
         const unixDate1 = Math.floor(date1.getTime()/1000);
-        console.log("🚀 ~ file: Home.jsx ~ line 43 ~ combinedPost.sort ~ unixDate1", unixDate1)
-        
+
         const date2 = new Date(b.created.replace(' ', "T"));
         const unixDate2 = Math.floor(date2.getTime()/1000);
         
-        // console.log ('a', a);
-        // console.log("new date: ", new Date(a.created.replace(' ', "T")))
         return unixDate2 - unixDate1;
       });
-      
-      
-      // console.log("🚀 ~ file: Home.jsx ~ line 44 ~ .then ~ combinedPost", combinedPost)
-
       setHome(combinedPosts);
-      
     }).catch ((err) => {
        console.log (err)
    })
   }, [])
 
-  // const userPosts = home.userPosts.map((obj) => {
-  //   return (
-
-  //     <div>
-  //       <p>{obj.username}</p>
-  //       <img src={obj.image_video_url} />
-  //       <p>{obj.description}</p>
-  //       <p>{obj.created}</p>
-  //     </div>
-  //   )
-  // })
-
-  
   const combinedPosts = home.map((obj, index) => {
     
     console.log("obj", obj)
@@ -80,6 +48,15 @@ export default function Home() {
         <img src={obj.image_video_url} />
         <p>{obj.description}</p>
         <p>{obj.created}</p>
+        <span onClick={() => console.log ("Liked! ")}><IoHeartOutline /></span>
+        <span onClick={() => console.log ("Clicked for comment! ")}><IoChatbubbleOutline /></span>
+        <span onClick={() => console.log ("Saved! ")}><IoBookmarkOutline /></span>
+        <Form>
+          <FloatingLabel controlId="floatingTextarea" label="Comments" className="mb-3">
+            <Form.Control as="textarea" placeholder="Write a comment here" />
+            <span onClick={() => console.log("Firing comments....")}><IoRocketSharp /></span>
+          </FloatingLabel>
+        </Form>
       </div>
     )
   })

@@ -8,6 +8,8 @@ import CreatePost from './components/CreatePost';
 import Login from './components/Login';
 import 'bootstrap';
 
+
+import './App.scss';
 import './App.css';
 
 // setUser={setUser} user={user}

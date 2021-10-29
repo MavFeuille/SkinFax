@@ -48,22 +48,6 @@ export default function CreatePost() {
           window.location.href = '/api/posts';
         console.log("Response from fetch in Line 48: ", res);
       })
-
-    // try {
-    //   await fetch('/api/posts/create_post', {
-    //     method: 'POST',
-    //     body: JSON.stringify({data: base64EncodedImage, text: textInputState}),
-    //     headers: {'Content-type': 'application/json'}
-    //   }).then((res)=> {
-    //     return res.json();
-    //   }).then((res)=> {
-    //       window.location.href = '/api/posts';
-    //     console.log("Response from fetch in Line 48: ", res);
-    //   })
-    // } catch (err) {
-    //   // console.log("🚀 ~ file: create_post.jsx ~ line 47 ~ UploadFile ERROR ~:", err);
-    //   console.log(err);
-    // }
   }
 
     return(
