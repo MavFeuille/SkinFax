@@ -2,10 +2,12 @@ import React, {useState, useEffect, useRef} from 'react';
 import {useLocation} from  'react-router-dom';
 import queryString from 'query-string';
 import io from 'socket.io-client';
-
 import axios from 'axios';
 // import {Link} from 'react-router-dom';
 import './Direct_messages.css';
+import InfoBar from './InfoBar';
+import Input from './Input';
+
 
 // const socket = require('socket.io');
 
@@ -77,15 +79,11 @@ console.log('message____', message)
        <div className="container">
       <h1 className="header">Slidding Into the DMs</h1>
       {JSON.stringify(messages)}
-        <input 
-        value={message}
-        // placeholder={placeholder}
-        onChange={(event) => setMessage(event.target.value)}
-        //actually send msgs
-        onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-        // type="text" 
+      <InfoBar room={room}/>
+        <Input
+       message={message} setMessage={setMessage} sendMessage={setMessage} 
         />
-         <button className="sendButton" onClick={(event)=> sendMessage(event)}>Send</button>
+         {/* <button className="sendButton" onClick={(event)=> sendMessage(event)}>Send</button> */}
       </div>
     </div>
   );
