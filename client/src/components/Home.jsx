@@ -5,10 +5,13 @@ import { IoChatbubbleOutline, IoHeartOutline, IoHeartSharp, IoBookmarkOutline } 
 import { FaRegTrashAlt } from "react-icons/fa";
 
 
+
 export default function Home(props) {
   const [home, setHome] = useState([]);
   const [comments, setComments] = useState([]);
+  console.log("🚀 ~ file: Home.jsx ~ line 12 ~ Home ~ comments", comments)
 
+ 
   useEffect(() => {
     Promise.all([
       axios.get("/api/posts/user_posts"),
@@ -20,22 +23,41 @@ export default function Home(props) {
         const followingPosts = all[1].data;
         const comments = all[2].data;
         const combinedPosts = userPosts.concat(followingPosts);
+        
+        // console.log("🚀 ~ file: Home.jsx ~ line 24 ~ .then ~ comments", comments)
 
         combinedPosts.sort((a, b) => {
           const date1 = new Date(a.created.replace(" ", "T"));
           const unixDate1 = Math.floor(date1.getTime() / 1000);
-
+          
           const date2 = new Date(b.created.replace(' ', "T"));
           const unixDate2 = Math.floor(date2.getTime()/1000);
-        
-        return unixDate2 - unixDate1;
-      });
-      setHome(combinedPosts);
-      setComments(comments);
+          
+          return unixDate2 - unixDate1;
+        });
+        setHome(combinedPosts);
+        setComments(comments);
     }).catch ((err) => {
        console.log (err)
    })
   }, [])
+
+   // Delete comments
+  
+   const deleteComment = (event) => {
+     event.preventDefault();
+    //  console.log("🚀 ~ file: Home.jsx ~ line 51 ~ deleteComment ~ user_id", props.users)
+     console.log("🚀 ~ file: Home.jsx ~ line 58 ~ deleteComment ~ comment_id", comments)
+    
+    axios.delete(`/api/comments/deleteComment/${comments.id}`, {comment_id:comments.id, user_id:props.users})
+    .then((res) => {
+      console.log("🚀 ~ file: Home.jsx ~ line 49 ~ deleting comment....");
+      // setComment({
+        //   ...comment,
+        // })
+        console.log("🚀 ~ file: Home.jsx ~ line 53 ~ .then ~ res", res);
+      })
+  }
 
   // To render all comments of a post
   const existingComments = comments.map((obj) => {
@@ -48,14 +70,16 @@ export default function Home(props) {
           <p>{obj.created}</p>
         </div>
         <div>
-          <form>
-            <FaRegTrashAlt onClick={() => {console.log("Deleting...")}}/>
+          <form onSubmit={deleteComment} >
+          {/* <form> */}
+            <button type="submit"><FaRegTrashAlt /></button>
           </form>
         </div>
       </div>
    
     )
   })
+
 
   // To render all posts of users him/herself and those they're following
   const combinedPosts = home.map((obj, index) => {

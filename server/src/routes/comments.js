@@ -9,7 +9,7 @@ const routers = function (pool) {
   router.get('/', function (req, res) {
 
     const queryString = `
-    SELECT users.username as username, comments.comment, comments.created FROM users
+    SELECT users.username as username, comments.comment, comments.created, comments.id FROM users
     JOIN comments ON comments.user_id = users.id
     JOIN content_posts ON comments.content_post_id = content_posts.id
     WHERE content_posts.id = $1
@@ -49,27 +49,31 @@ const routers = function (pool) {
         });
   });
 
-  router.post("/deleteComment/:id", (req, res) => {
-
+  // Delete comment
+  router.delete("/deleteComment/:comment_id", (request, response) => {
+    
     const queryString = `
     DELETE FROM comments
     WHERE user_id = $1 AND comments.id = $2;`;
 
-    const user_id = req.session.user_id;
-    const removeItem = req.params.id;
+    const comment_id = req.params.comment_id;
+    const user_id = req.body.user_id
+    const value = [user_id, comment_id];
 
-    const val = [user_id, removeItem]
+    // request.params.id
 
-    pool.query(queryString, val)
-      .then(() => {
-        res.json(data.rows);
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  })
+    pool.query(queryString, value)
+    .then((data) => {
+      console.log("🚀 ~ file: comments.js ~ line 87 ~ .then ~ data", data)
+      res.json(data.rows[0]);
+      // console.log("🚀 ~ file: comments.js ~ line 67 ~ then ~ data.rows[0]", data.rows[0])
+    })
+    .catch(err => {
+      console.log('error:', err.message);
+      res.status(500).json({errror: "Something's wrong in router.delete route ..."});
+    });
+      
+    });
 
   //only return router
   return router;
