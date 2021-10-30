@@ -122,18 +122,14 @@ export default function Home(props) {
         <CommentForm getAllComments={getAllComments}/>
       </div>
       <div>
-          <p>{comments && existingComments}</p>
+          <p>{comments && existingComments}</p> 
 
         (
         <button className="">
           <IoHeartOutline />
         </button>)
 
-        <span
-          onClick={() => {
-            console.log("Clicked for comment! ");
-          }}
-        >
+        <span onClick={() => {console.log("Clicked for comment! ")}}>
           <IoChatbubbleOutline />
         </span>
         <form
@@ -159,6 +155,7 @@ export default function Home(props) {
         </form>
         <div>
           <CommentForm getAllComments={getAllComments}/>
+          <p>{comments && existingComments}</p>
         </div>
       </div>
      </div>
