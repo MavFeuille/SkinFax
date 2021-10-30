@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 
-export default function CommentForm() {
+export default function CommentForm(props) {
   const [comment, setComment] = useState("");
   const [label, setLabel] = useState("Write a comment...")
   
@@ -32,8 +32,10 @@ export default function CommentForm() {
 
     axios.post('/api/comments/postComment', {comment: comment})
       .then((res) => {
+        props.getAllComments();
+        setComment(res.data);
         clearInput();
-        console.log("🚀 ~ file: CommentForm.jsx ~ line 33 ~ .then ~ res", res)
+        console.log("🚀 ~ file: CommentForm.jsx ~ line 33 ~ .then ~ res", res);
       })
   }
 
