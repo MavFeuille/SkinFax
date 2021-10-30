@@ -5,6 +5,7 @@ import './App.scss';
 import 'bootstrap/scss/bootstrap.scss';
 
 
+//a basic boilerplate code neeeded for ecvery react app
 ReactDOM.render(
   <App />, document.getElementById('root')
 );
