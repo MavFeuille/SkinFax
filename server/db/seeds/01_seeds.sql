@@ -43,7 +43,7 @@ VALUES
 INSERT INTO favourites (user_id, content_post_id)
 VALUES 
 (1,2), 
-(2,3), 
+-- (2,3), princess peach
 (3,1),
 (1,5),
 (2,1),
