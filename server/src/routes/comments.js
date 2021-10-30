@@ -49,6 +49,28 @@ const routers = function (pool) {
         });
   });
 
+  router.post("/deleteComment/:id", (req, res) => {
+
+    const queryString = `
+    DELETE FROM comments
+    WHERE user_id = $1 AND comments.id = $2;`;
+
+    const user_id = req.session.user_id;
+    const removeItem = req.params.id;
+
+    const val = [user_id, removeItem]
+
+    pool.query(queryString, val)
+      .then(() => {
+        res.json(data.rows);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
+
   //only return router
   return router;
 }
