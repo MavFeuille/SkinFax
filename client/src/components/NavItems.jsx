@@ -1,9 +1,10 @@
-export const HOME_PAGE = "Home";
-export const PROFILE_PAGE = "Shop";
-export const FAV_PAGE = "favourites";
-export const CREATE_POST = "create_post";
-export const LOGIN = "login";
-export const REGISTER = "register";
+export const HOME_PAGE = 'Home';
+export const PROFILE_PAGE = 'Shop';
+export const FAV_PAGE = 'favourites';
+export const CREATE_POST = 'create_post';
+export const LOGIN = 'login';
+export const REGISTER = 'register';
+export const ROUTER_MESSAGES = 'router_messages';
 
 export default function NavItems(props) {
   return (
@@ -13,21 +14,21 @@ export default function NavItems(props) {
           props.setPage(HOME_PAGE);
         }}
       >
-        <i class="fas fa-home"></i>
+        <i class="fas fa-home" />
       </li>
       <li
         onClick={() => {
           props.setPage(PROFILE_PAGE);
         }}
       >
-        <i class="far fa-user-circle"></i>
+        <i class="far fa-user-circle" />
       </li>
       <li
         onClick={() => {
           props.setPage(FAV_PAGE);
         }}
       >
-        <i class="far fa-bookmark"></i>
+        <i class="far fa-bookmark" />
       </li>
       <li
         onClick={() => {
@@ -37,6 +38,9 @@ export default function NavItems(props) {
         create post
       </li>
       <li>{props.user.email}</li>
+
+      <li onClick={() => {props.setPage(ROUTER_MESSAGES)}}>Join Messages</li>
+
       <li
         onClick={() => {
           props.logout();

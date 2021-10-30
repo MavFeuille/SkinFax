@@ -1,4 +1,12 @@
 ### To-do List:
+TO INSTALL SOCKET.IO
+1-client side
+2-npm install socket.io-client
+3-npm install socket.io (in server)
+3-npm install --save 
+react-scroll-to-bottom react-emoji query-string
+4-npm install --save 
+react-router-dom
 
 INSTALLING A NEW PACKAGE 
 cloudinary
