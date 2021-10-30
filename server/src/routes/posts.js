@@ -12,10 +12,10 @@ const routers = function (pool) {
     SELECT users.id, users.username as username, image_video_url, description, created 
     FROM content_posts
     JOIN users ON content_posts.user_id = users.id
-    WHERE content_posts.user_id = 2
+    WHERE content_posts.user_id = $1
     ORDER BY created DESC;`
 
-    pool.query(queryString)
+    pool.query(queryString, [1])
       .then((data) => {
         res.json(data.rows)
       })
@@ -72,7 +72,7 @@ const routers = function (pool) {
       })
 
 
-      pool.query(queryString, [3, uploadResponse.secure_url, req.body.text])
+      pool.query(queryString, [1, uploadResponse.secure_url, req.body.text])
         .then((data) => {
           res.json(data.rows);
         })
