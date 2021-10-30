@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CommentForm from "./CommentForm";
 import { IoChatbubbleOutline, IoHeartOutline, IoHeartSharp, IoBookmarkOutline, IoRocketSharp } from "react-icons/io5";
-
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function Profile() {
   const [state, setState] = useState({
@@ -36,11 +36,19 @@ export default function Profile() {
   const existingComments = comments.map((obj) => {
     
     return (
-      <div>
-        <p>{obj.username}</p>
-        <p>{obj.comment}</p>
-        <p>{obj.created}</p>
+      <div className="all-comments">
+        <div>
+          <p>{obj.username}</p>
+          <p>{obj.comment}</p>
+          <p>{obj.created}</p>
+        </div>
+        <div>
+          <form>
+            <FaRegTrashAlt onClick={() => {console.log("Deleting...")}}/>
+          </form>
+        </div>
       </div>
+      
     )
   })
   
@@ -54,15 +62,17 @@ export default function Profile() {
         <p>{obj.description}</p>
         <span>{obj.created}</span>
         <div>
-          <span onClick={() => console.log ("Liked! ")}>
-            <IoHeartOutline />
-          </span>
-          <span onClick={() => {console.log ("Clicked for comment! ")}}>
-            <IoChatbubbleOutline />
-          </span>
-          <span onClick={() => console.log ("Saved! ")}>
-            <IoBookmarkOutline />
-          </span>
+          <form>
+             <span>
+               <IoHeartOutline onClick={() => console.log ("Liked! ")}/>
+             </span>
+             <span>
+               <IoChatbubbleOutline onClick={() => {console.log ("Clicked for comment! ")}}/>
+             </span>
+             <span>
+               <IoBookmarkOutline onClick={() => console.log ("Saved! ")}/>
+             </span>
+           </form>
         </div>
         <div>
           <CommentForm />

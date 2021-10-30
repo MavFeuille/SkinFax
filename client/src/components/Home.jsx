@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CommentForm from "./CommentForm";
 import { IoChatbubbleOutline, IoHeartOutline, IoHeartSharp, IoBookmarkOutline } from "react-icons/io5";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 
 export default function Home() {
@@ -40,11 +41,19 @@ export default function Home() {
   const existingComments = comments.map((obj) => {
     
     return (
-      <div>
-        <p>{obj.username}</p>
-        <p>{obj.comment}</p>
-        <p>{obj.created}</p>
+      <div className="all-comments">
+        <div>
+          <p>{obj.username}</p>
+          <p>{obj.comment}</p>
+          <p>{obj.created}</p>
+        </div>
+        <div>
+          <form>
+            <FaRegTrashAlt onClick={() => {console.log("Deleting...")}}/>
+          </form>
+        </div>
       </div>
+   
     )
   })
 
@@ -57,9 +66,17 @@ export default function Home() {
         <img src={obj.image_video_url} alt="" />
         <p>{obj.description}</p>
         <p>{obj.created}</p>
-        <span onClick={() => console.log ("Liked! ")}><IoHeartOutline /></span>
-        <span onClick={() => {console.log ("Clicked for comment! ")}}><IoChatbubbleOutline /></span>
-        <span onClick={() => console.log ("Saved! ")}><IoBookmarkOutline /></span>
+        <form>
+             <span>
+               <IoHeartOutline onClick={() => console.log ("Liked! ")}/>
+             </span>
+             <span>
+               <IoChatbubbleOutline onClick={() => {console.log ("Clicked for comment! ")}}/>
+             </span>
+             <span>
+               <IoBookmarkOutline onClick={() => console.log ("Saved! ")}/>
+             </span>
+           </form>
       <div>
         <CommentForm />
       </div>
