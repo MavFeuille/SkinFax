@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Home from "./Home";
 
 export default function CreatePost() {
   const [createPost, setCreatePost] = useState([])
   const [fileInputState, setFileInputState] = useState('');
   const [previewSource, setPreviewSource] = useState('')
-  const [selectedFile, setSelectedFile] = useState('');
   const [textInputState, setTextInputState] = useState('');
+
   
   const handleFileInputChange= (event) => {
     const file = event.target.files[0];
@@ -47,6 +48,9 @@ export default function CreatePost() {
       .then((res)=> {
           window.location.href = '/api/posts';
         console.log("Response from fetch in Line 48: ", res);
+        return (
+          <Home />
+        )
       })
   }
 
