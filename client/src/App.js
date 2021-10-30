@@ -25,7 +25,7 @@ function App() {
       {(user) &&
         <div>
           <Header setPage={setPage} user={user} logout={logout} />
-          {page === HOME_PAGE && <Home />}
+          {page === HOME_PAGE && <Home user={user} />}
           {page === PROFILE_PAGE && <Profile />}
           {page === FAV_PAGE && <Favourites />}
           {page === CREATE_POST && <CreatePost />}

@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CommentForm from "./CommentForm";
-import { IoChatbubbleOutline, IoHeartOutline, IoHeartSharp, IoBookmarkOutline, IoRocketSharp } from "react-icons/io5";
-import { Form, FloatingLabel } from 'react-bootstrap';
+import {
+  IoChatbubbleOutline,
+  IoHeartOutline,
+  IoHeartSharp,
+  IoBookmarkOutline,
+  IoRocketSharp,
+} from "react-icons/io5";
+import { Form, FloatingLabel } from "react-bootstrap";
 
-export default function Home() {
+export default function Home(props) {
   const [home, setHome] = useState([]);
 
   useEffect(() => {
@@ -21,32 +27,59 @@ export default function Home() {
           const date1 = new Date(a.created.replace(" ", "T"));
           const unixDate1 = Math.floor(date1.getTime() / 1000);
 
-        const date2 = new Date(b.created.replace(' ', "T"));
-        const unixDate2 = Math.floor(date2.getTime()/1000);
-        
-        return unixDate2 - unixDate1;
-      });
-      setHome(combinedPosts);
-    }).catch ((err) => {
-       console.log (err)
-   })
-  }, [])
+          const date2 = new Date(b.created.replace(" ", "T"));
+          const unixDate2 = Math.floor(date2.getTime() / 1000);
 
-  const combinedPosts = home.map((obj, index) => {
-    
+          return unixDate2 - unixDate1;
+        });
+        setHome(combinedPosts);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const combinedPosts = home.map((obj) => {
     return (
-      <div key={index}>
-        <p> {obj.username}</p>
+      <div key={obj.id}>
+        <p>{obj.username}</p>
         <img src={obj.image_video_url} />
         <p>{obj.description}</p>
         <p>{obj.created}</p>
-        <span onClick={() => console.log ("Liked! ")}><IoHeartOutline /></span>
-        <span onClick={() => {console.log ("Clicked for comment! ")}}><IoChatbubbleOutline /></span>
-        <span onClick={() => console.log ("Saved! ")}><IoBookmarkOutline /></span>
-      <div>
-        <CommentForm />
-      </div>
-
+        <span onClick={() => console.log("Liked! ")}>
+          <IoHeartOutline />
+        </span>
+        <span
+          onClick={() => {
+            console.log("Clicked for comment! ");
+          }}
+        >
+          <IoChatbubbleOutline />
+        </span>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            console.log("clicked fav");
+            axios
+              .post("/api/favourites/", {
+                id: props.user.id,
+                post_id: obj.id,
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err.message);
+              });
+          }}
+        >
+          <button type="submit">
+            <IoBookmarkOutline />
+          </button>
+        </form>
+        <div>
+          <CommentForm />
+        </div>
       </div>
     );
   });
