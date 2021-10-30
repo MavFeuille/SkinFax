@@ -12,7 +12,7 @@ import { Form, FloatingLabel } from "react-bootstrap";
 
 export default function Home(props) {
   const [home, setHome] = useState([]);
-
+  // const [heart, set]
   useEffect(() => {
     Promise.all([
       axios.get("/api/posts/user_posts"),
@@ -58,7 +58,15 @@ export default function Home(props) {
   //   } 
   //  });
   //  ReactDOM.render(<HeartComponent />,document.getElementById('content'));
-  let heart_button = this.state.black ? "blackButton" : "whiteButton";
+  // let heart_button = this.state.black ? "blackButton" : "whiteButton";
+
+
+  let heartClass = "";
+  if ()
+
+
+
+
 
   const combinedPosts = home.map((obj) => {
     return (
@@ -67,30 +75,11 @@ export default function Home(props) {
         <img src={obj.image_video_url} />
         <p>{obj.description}</p>
         <p>{obj.created}</p>
-        
 
-
-        
-
-    {class Test extends React.Component {
-    constructor(){
-        super();
-        this.state = {black: true}
-        }
-    changeColor(){
-       this.setState({black: !this.state.black})
-    }
-  }} 
-  render (){
-    //  {heart_button} = this.state.black ? "blackButton" : "whiteButton"
         (
-        <button className={heart_button} onClick={() => {this.changeColor.bind(this)},console.log("Liked! ")}>
+        <button className="">
           <IoHeartOutline />
-        </button>)}
-
-
-
-
+        </button>)
 
         <span
           onClick={() => {
