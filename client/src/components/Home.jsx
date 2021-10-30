@@ -39,6 +39,27 @@ export default function Home(props) {
       });
   }, []);
 
+
+  // Let  HeartComponent = React.createClass({
+  //   getInitialState : function(){
+  //     return ({isClicked : false})    
+  //   },
+  //   handleClick : function(){
+  //     this.setState({isClicked : !this.state.isClicked});
+  //   },
+  //   render: function() {
+  //   let someElementClass = this.state.isClicked ? 'clicked' : '';
+  //   return(<div className="container">
+  //   <div id="someElement" className={someElementClass}>
+  //    I'm an element
+  //   </div>
+  //  <button id="someButton" onClick={this.handleClick}>Click me!</button>  
+  //   </div> );
+  //   } 
+  //  });
+  //  ReactDOM.render(<HeartComponent />,document.getElementById('content'));
+  let heart_button = this.state.black ? "blackButton" : "whiteButton";
+
   const combinedPosts = home.map((obj) => {
     return (
       <div key={obj.id}>
@@ -46,9 +67,31 @@ export default function Home(props) {
         <img src={obj.image_video_url} />
         <p>{obj.description}</p>
         <p>{obj.created}</p>
-        <span onClick={() => console.log("Liked! ")}>
+        
+
+
+        
+
+    {class Test extends React.Component {
+    constructor(){
+        super();
+        this.state = {black: true}
+        }
+    changeColor(){
+       this.setState({black: !this.state.black})
+    }
+  }} 
+  render (){
+    //  {heart_button} = this.state.black ? "blackButton" : "whiteButton"
+        (
+        <button className={heart_button} onClick={() => {this.changeColor.bind(this)},console.log("Liked! ")}>
           <IoHeartOutline />
-        </span>
+        </button>)}
+
+
+
+
+
         <span
           onClick={() => {
             console.log("Clicked for comment! ");

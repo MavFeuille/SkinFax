@@ -41,11 +41,7 @@ export default function NavItems(props) {
 
       <li onClick={() => {props.setPage(ROUTER_MESSAGES)}}>Join Messages</li>
 
-      <li
-        onClick={() => {
-          props.logout();
-        }}
-      >
+      <li onClick={() => {props.logout()}}>
         Logout
       </li>
     </ul>
