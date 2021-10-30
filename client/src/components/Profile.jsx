@@ -9,19 +9,43 @@ export default function Profile() {
     userProfile: {},
     userPosts: [],
   });
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    Promise.all([axios.get(`/api/profile`), axios.get("/api/posts/user_posts")])
+    Promise.all([
+      axios.get(`/api/profile`), 
+      axios.get("/api/posts/user_posts"),
+      axios.get("/api/comments")
+    ])
       .then((all) => {
         const userProfile = all[0].data;
         const userPosts = all[1].data;
-        console.log(userProfile);
+        const comments = all[2].data;
+       
         setState((prev) => ({ ...prev, userProfile, userPosts }));
+        setComments(comments);
       })
       .catch((err) => {
         console.log(err.message);
       });
   }, []);
+
+  console.log("All Comments! LINE 36 : ", comments)
+
+  // To render all comments in a post
+  const existingComments = comments.map((obj) => {
+    
+    return (
+      <div>
+        <p>{obj.username}</p>
+        <p>{obj.comment}</p>
+        <p>{obj.created}</p>
+      </div>
+    )
+  })
+  
+
+  
 
   //To render the list of user's posts
   const userPosts = state.userPosts.map((obj) => {
@@ -45,7 +69,10 @@ export default function Profile() {
         </div>
         <div>
           <CommentForm />
-          
+        </div>
+          <p>{existingComments}</p>
+        <div>
+
         </div>
       </div>
     );

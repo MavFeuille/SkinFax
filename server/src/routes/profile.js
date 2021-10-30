@@ -11,7 +11,7 @@ const routers = function (pool) {
     JOIN followers f ON f.follower_user_id = users.id
     JOIN followers f2 ON f2.user_id = users.id
     JOIN content_posts on content_posts.user_id = users.id
-    WHERE users.id = 2
+    WHERE users.id = 1
     GROUP BY users.username, users.profile_picture_url;`
 
     return pool.query(queryString)
