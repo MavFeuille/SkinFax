@@ -32,7 +32,7 @@ export default function Profile() {
 
   console.log("All Comments! LINE 36 : ", comments)
 
-  // To render all comments in a post
+  // To render all comments of a post
   const existingComments = comments.map((obj) => {
     
     return (
@@ -44,9 +44,6 @@ export default function Profile() {
     )
   })
   
-
-  
-
   //To render the list of user's posts
   const userPosts = state.userPosts.map((obj) => {
     console.log(obj);
@@ -70,9 +67,8 @@ export default function Profile() {
         <div>
           <CommentForm />
         </div>
-          <p>{existingComments}</p>
         <div>
-
+          <p>{existingComments}</p>
         </div>
       </div>
     );
