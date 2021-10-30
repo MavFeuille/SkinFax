@@ -42,10 +42,15 @@ export default function Home(props) {
    })
   }, [])
 
+
+
    // Delete comments
   
-   const deleteComment = (event) => {
+   const deleteComment = (event, ) => {
      event.preventDefault();
+
+     const comments = comments.map((obj) => obj.id);
+     
     //  console.log("🚀 ~ file: Home.jsx ~ line 51 ~ deleteComment ~ user_id", props.users)
      console.log("🚀 ~ file: Home.jsx ~ line 58 ~ deleteComment ~ comment_id", comments)
     
@@ -70,7 +75,7 @@ export default function Home(props) {
           <p>{obj.created}</p>
         </div>
         <div>
-          <form onSubmit={deleteComment} >
+          <form onSubmit={deleteComment(obj.id)} >
           {/* <form> */}
             <button type="submit"><FaRegTrashAlt /></button>
           </form>
