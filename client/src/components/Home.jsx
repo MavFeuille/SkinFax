@@ -12,6 +12,7 @@ export default function Home(props) {
 
 
  
+  // const [heart, set]
   useEffect(() => {
     Promise.all([
       axios.get("/api/posts/user_posts"),
@@ -62,6 +63,35 @@ export default function Home(props) {
   // To render all comments of a post
   const existingComments = comments.map((obj) => {
     
+  // Let  HeartComponent = React.createClass({
+  //   getInitialState : function(){
+  //     return ({isClicked : false})    
+  //   },
+  //   handleClick : function(){
+  //     this.setState({isClicked : !this.state.isClicked});
+  //   },
+  //   render: function() {
+  //   let someElementClass = this.state.isClicked ? 'clicked' : '';
+  //   return(<div className="container">
+  //   <div id="someElement" className={someElementClass}>
+  //    I'm an element
+  //   </div>
+  //  <button id="someButton" onClick={this.handleClick}>Click me!</button>  
+  //   </div> );
+  //   } 
+  //  });
+  //  ReactDOM.render(<HeartComponent />,document.getElementById('content'));
+  // let heart_button = this.state.black ? "blackButton" : "whiteButton";
+
+
+  let heartClass = "";
+  if ()
+
+
+
+
+
+  const combinedPosts = home.map((obj) => {
     return (
       <div className="all-comments">
         <div>
@@ -106,6 +136,42 @@ export default function Home(props) {
       </div>
       <div>
           <p>{existingComments}</p>
+
+        (
+        <button className="">
+          <IoHeartOutline />
+        </button>)
+
+        <span
+          onClick={() => {
+            console.log("Clicked for comment! ");
+          }}
+        >
+          <IoChatbubbleOutline />
+        </span>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            console.log("clicked fav");
+            axios
+              .post("/api/favourites/", {
+                id: props.user.id,
+                post_id: obj.id,
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err.message);
+              });
+          }}
+        >
+          <button type="submit">
+            <IoBookmarkOutline />
+          </button>
+        </form>
+        <div>
+          <CommentForm />
         </div>
       </div>
     );

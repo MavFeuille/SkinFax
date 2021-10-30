@@ -26,9 +26,11 @@ export default function NavItems(props) {
         <i class="far fa-comment-dots"></i>
       </li>
       <li>{props.user.email}</li>
+
+      <li onClick={() => {props.setPage(ROUTER_MESSAGES)}}>Join Messages</li>
       <li onClick={() => {props.logout()}}>
-        <Button variant="outline-secondary">Logout</Button>{' '}
-      </li>
+        <Button variant="outline-secondary">Logout</Button>{' '}</li>
+
     </ul>
   );
 }
