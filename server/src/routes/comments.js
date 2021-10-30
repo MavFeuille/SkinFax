@@ -60,7 +60,7 @@ const routers = function (pool) {
     // const user_id = req.body.user_id
     // const value = [user_id, comment_id];
     // request.params.id
-console.log('comment_id=====', req.params.comment_id)
+    console.log('comment_id=====', req.params.comment_id)
     pool.query(queryString, [comment_id])
     .then((data) => {
       console.log("🚀 ~ file: comments.js ~ line 87 ~ .then ~ data", data)
