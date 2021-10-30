@@ -16,31 +16,31 @@ import './App.css';
 // import axios from 'axios';
 // import {useState, useEffect} from 'react';
 // import CreatePost from './components/Create_post';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // import Join from './components/Join';
 
 //user first views pg= join component pass login info to query str, then passes data to chat
-export default function App(){
+export default function App() {
   const { user, login, logout, status } = useAuth();
 
   const [page, setPage] = useState("Home")
 
   return (
-   <Router>
-    <div className="App">
-      {!user && <Login login={login} status={status} />}
+    <Router>
+      <div className="App">
+        {!user && <Login login={login} status={status} />}
 
-      {(user) &&
-        <div>
-          <Header setPage={setPage} user={user} logout={logout} />
-          {page === HOME_PAGE && <Home user={user} />}
-          {page === PROFILE_PAGE && <Profile />}
-          {page === FAV_PAGE && <Favourites />}
-          {page === CREATE_POST && <CreatePost />}
-          {page === ROUTER_MESSAGES && <RouterMessages/>}
-        </div>
-      }
-    </div>
+        {(user) &&
+          <div>
+            <Header setPage={setPage} user={user} logout={logout} />
+            {page === HOME_PAGE && <Home user={user} />}
+            {page === PROFILE_PAGE && <Profile />}
+            {page === FAV_PAGE && <Favourites />}
+            {page === CREATE_POST && <CreatePost setPage={setPage} />}
+            {page === ROUTER_MESSAGES && <RouterMessages />}
+          </div>
+        }
+      </div>
     </Router>
 
   );
