@@ -2,7 +2,7 @@ import React from 'react';
 import './Messages.css';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import Message from './Message';
-import DirectMessages from './Direct_messages';
+// import DirectMessages from './Direct_messages';
 
 export default function Messages({messages, name}) {
 

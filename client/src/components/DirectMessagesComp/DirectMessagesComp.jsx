@@ -4,12 +4,12 @@ import queryString from 'query-string';
 import io from 'socket.io-client';
 import axios from 'axios';
 // import {Link} from 'react-router-dom';
-import './Direct_messages.css';
-import InfoBar from './InfoBar';
-import Input from './Input';
+import './DirectMessagesComp.css';
+import InfoBar from '../InfoBar/InfoBar';
+import Input from '../Input/Input';
+import Messages from '../Messages/Messages';
 
-
-// const socket = require('socket.io');
+// let socket;
 
 export default function DirectMessages(props) {
   //stores the immutable val of socket to be used elsewhere ex. state w/o re-render
@@ -71,26 +71,23 @@ export default function DirectMessages(props) {
 
     }
   }
-console.log('message____', message)
-  let placeholder = 'type here';
+console.log('message____', )
 
   return (
     <div className="outerContainer">
        <div className="container">
-      <h1 className="header">Slidding Into the DMs</h1>
-      {JSON.stringify(messages)}
+      <h1 className="header">Sliding Into the DMs</h1>
+     <Messages messages={messages} name={name}/>
       <InfoBar room={room}/>
+      
         <Input
-       message={message} setMessage={setMessage} sendMessage={setMessage} 
+       message={message} setMessage={setMessage} sendMessage={sendMessage} 
         />
          {/* <button className="sendButton" onClick={(event)=> sendMessage(event)}>Send</button> */}
       </div>
     </div>
   );
 }
-//placeholder message breaks onclick etc funct
-//loose-ends: invite only to chatrooms
-//
 
 // {userMessages}
 

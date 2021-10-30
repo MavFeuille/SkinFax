@@ -4,14 +4,13 @@ import Home from './components/Home';
 import Profile from './components/Profile';
 import Header from './components/Header';
 import { HOME_PAGE, PROFILE_PAGE, FAV_PAGE } from './components/NavItems'
-
 import './App.css';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import CreatePost from './components/Create_post';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Join from './components/Join';
-import DirectMessage from './components/DirectMessagesComp';
+import DirectMessages from './components/DirectMessagesComp/DirectMessagesComp';
 
 //user first views pg= join component pass login info to query str, then passes data to chat
 
@@ -33,7 +32,7 @@ const App = () => {
         testing
         <Switch>
           <Route path="/DirectMessages"> 
-        <DirectMessage />
+        <DirectMessages />
         </Route>
         <Route path="/Join">
         <Join/>
