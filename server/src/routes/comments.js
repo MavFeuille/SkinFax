@@ -9,7 +9,7 @@ const routers = function (pool) {
   router.get('/', function (req, res) {
 
     const queryString = `
-    SELECT users.username as username, comments.comment, comments.created, comments.id FROM users
+    SELECT users.username as username, comments.comment, comments.created, comments.id, comments.user_id FROM users
     JOIN comments ON comments.user_id = users.id
     JOIN content_posts ON comments.content_post_id = content_posts.id
     WHERE content_posts.id = $1
@@ -50,21 +50,21 @@ const routers = function (pool) {
   });
 
   // Delete comment
-  router.delete("/deleteComment/:comment_id", (request, response) => {
+  router.delete("/deleteComment/:comment_id", (req, res) => {
     
     const queryString = `
     DELETE FROM comments
-    WHERE user_id = $1 AND comments.id = $2;`;
+    WHERE id = $1;`;
 
     const comment_id = req.params.comment_id;
-    const user_id = req.body.user_id
-    const value = [user_id, comment_id];
-
+    // const user_id = req.body.user_id
+    // const value = [user_id, comment_id];
     // request.params.id
-
-    pool.query(queryString, value)
+console.log('comment_id=====', req.params.comment_id)
+    pool.query(queryString, [comment_id])
     .then((data) => {
       console.log("🚀 ~ file: comments.js ~ line 87 ~ .then ~ data", data)
+
       res.json(data.rows[0]);
       // console.log("🚀 ~ file: comments.js ~ line 67 ~ then ~ data.rows[0]", data.rows[0])
     })

@@ -9,7 +9,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 export default function Home(props) {
   const [home, setHome] = useState([]);
   const [comments, setComments] = useState([]);
-  console.log("🚀 ~ file: Home.jsx ~ line 12 ~ Home ~ comments", comments)
+
 
  
   useEffect(() => {
@@ -24,8 +24,6 @@ export default function Home(props) {
         const comments = all[2].data;
         const combinedPosts = userPosts.concat(followingPosts);
         
-        // console.log("🚀 ~ file: Home.jsx ~ line 24 ~ .then ~ comments", comments)
-
         combinedPosts.sort((a, b) => {
           const date1 = new Date(a.created.replace(" ", "T"));
           const unixDate1 = Math.floor(date1.getTime() / 1000);
@@ -44,25 +42,22 @@ export default function Home(props) {
 
 
 
-   // Delete comments
-  
-   const deleteComment = (event, ) => {
-     event.preventDefault();
+   /* Delete comments
+  passing in the comment ids as params
+  use a useEffect onclick = refresh or re-render*/
+   const deleteComment = (comment) => {
 
-     const comments = comments.map((obj) => obj.id);
-     
-    //  console.log("🚀 ~ file: Home.jsx ~ line 51 ~ deleteComment ~ user_id", props.users)
-     console.log("🚀 ~ file: Home.jsx ~ line 58 ~ deleteComment ~ comment_id", comments)
-    
-    axios.delete(`/api/comments/deleteComment/${comments.id}`, {comment_id:comments.id, user_id:props.users})
+    if (comment.user_id === props.user.id) { 
+   console.log("🚀 DELETE_____")
+    axios.delete(`/api/comments/deleteComment/${comment.id}`)
     .then((res) => {
-      console.log("🚀 ~ file: Home.jsx ~ line 49 ~ deleting comment....");
-      // setComment({
-        //   ...comment,
-        // })
-        console.log("🚀 ~ file: Home.jsx ~ line 53 ~ .then ~ res", res);
       })
   }
+  else {
+
+  }
+}
+
 
   // To render all comments of a post
   const existingComments = comments.map((obj) => {
@@ -75,10 +70,10 @@ export default function Home(props) {
           <p>{obj.created}</p>
         </div>
         <div>
-          <form onSubmit={deleteComment(obj.id)} >
+          {/* <form onSubmit={deleteComment(obj.id)} > */}
           {/* <form> */}
-            <button type="submit"><FaRegTrashAlt /></button>
-          </form>
+            <button onClick={()=>deleteComment(obj)}><FaRegTrashAlt /></button>
+          
         </div>
       </div>
    
