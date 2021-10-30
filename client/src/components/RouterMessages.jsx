@@ -13,7 +13,7 @@ console.log('went into')
           <Route path="/DirectMessages"> 
         <DirectMessages />
         </Route>
-        <Route path="/Join">
+        <Route path="/">
         <Join/>
         </Route> 
         </Switch>
