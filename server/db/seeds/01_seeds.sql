@@ -31,8 +31,8 @@ VALUES
 (8, 'url', 'I feel like I’m too busy writing history to read it.'),
 (9, 'url', 'Know your worth! People always act like they’re doing more for you than you’re doing for them.'),
 (10, 'url', 'My message isn’t perfectly defined. I have, as a human being, fallen to peer pressure.'),
-(11, 'url', 'If I was just a fan of music, I would think that I was the number one artist in the world.'),
-(12, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(1, 'url', 'If I was just a fan of music, I would think that I was the number one artist in the world.'),
+(1, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
 (13, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
 (14, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
 (15, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
@@ -142,6 +142,7 @@ VALUES
 (1,3,2),
 (2,1,3),
 (3,2,1),
-(1,3,3);
+(1,3,3),
+(3,1,3);
 
 --inserting content image via 3rd party ting

@@ -9,10 +9,12 @@ const routers = function (pool) {
   router.get('/user_posts', function (req, res) {
 
     const queryString = `
-    SELECT users.id, users.username as username, image_video_url, description, created 
+    SELECT count(likes.id) as likes, users.id, users.username as username, image_video_url, description, created 
     FROM content_posts
     JOIN users ON content_posts.user_id = users.id
+    LEFT JOIN likes ON likes.content_post_id = content_posts.id 
     WHERE content_posts.user_id = $1
+    GROUP BY users.id, users.username, image_video_url, description, created
     ORDER BY created DESC;`
 
     pool.query(queryString, [1])

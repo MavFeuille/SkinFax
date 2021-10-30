@@ -7,12 +7,12 @@ const routers = function (pool) {
   router.get('/', function (req, res) {
 
     const queryString = `  
-    SELECT content_posts.id, image_video_url, description, created, users.username
+    SELECT content_posts.id, favourites.id, image_video_url, description, created, users.username
     FROM content_posts
     JOIN favourites ON favourites.content_post_id = content_posts.id
     JOIN users ON content_posts.user_id = users.id
     WHERE favourites.user_id = 1
-    ORDER BY created`;
+    ORDER BY favourites.id DESC`;
 
     pool.query(queryString)
       .then((data) => {
