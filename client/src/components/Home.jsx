@@ -107,27 +107,10 @@ export default function Home(props) {
         <img src={obj.image_video_url} alt="" />
         <p>{obj.description}</p>
         <p>{obj.created}</p>
-        <form>
-             <span>
-               <IoHeartOutline onClick={() => console.log ("Liked! ")}/>
-             </span>
-             <span>
-               <IoChatbubbleOutline onClick={() => {console.log ("Clicked for comment! ")}}/>
-             </span>
-             <span>
-               <IoBookmarkOutline onClick={() => console.log ("Saved! ")}/>
-             </span>
-           </form>
-      <div>
-        <CommentForm getAllComments={getAllComments}/>
-      </div>
-      <div>
-          <p>{comments && existingComments}</p> 
-
-        (
+        
         <button className="">
           <IoHeartOutline />
-        </button>)
+        </button>
 
         <span onClick={() => {console.log("Clicked for comment! ")}}>
           <IoChatbubbleOutline />
@@ -158,7 +141,7 @@ export default function Home(props) {
           <p>{comments && existingComments}</p>
         </div>
       </div>
-     </div>
+     
      
     );
   });
