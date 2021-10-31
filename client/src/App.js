@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Favourites from './components/Favourites';
+import FavouriteList from './components/FavouriteList';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import Header from './components/Header';
@@ -35,7 +35,7 @@ export default function App() {
             <Header setPage={setPage} user={user} logout={logout} />
             {page === HOME_PAGE && <Home user={user} />}
             {page === PROFILE_PAGE && <Profile />}
-            {page === FAV_PAGE && <Favourites />}
+            {page === FAV_PAGE && <FavouriteList user={user} />}
             {page === CREATE_POST && <CreatePost setPage={setPage} />}
             {page === ROUTER_MESSAGES && <RouterMessages />}
           </div>
