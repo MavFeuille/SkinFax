@@ -99,10 +99,10 @@ export default function Home(props) {
 
 
   // To render all posts of users him/herself and those they're following
-  const combinedPosts = home.map((obj, index) => {
+  const combinedPosts = home.map((obj) => {
     
     return (
-      <div key={index}>
+      <div key={obj.id}>
         <p> {obj.username}</p>
         <img src={obj.image_video_url} alt="" />
         <p>{obj.description}</p>
