@@ -15,6 +15,7 @@ const routers = function (pool) {
     WHERE content_posts.id = $1
     ORDER BY created DESC;`
 
+    // hard coded
     pool.query(queryString, [2])
       .then((data) => {
         const comments = data.rows;
@@ -27,7 +28,7 @@ const routers = function (pool) {
 
   //Post comments
   router.post('/postComment', async (req, res) => {
-    
+
     console.log("🚀 ~ file: comments.js ~ line 31 ~ router.post ~ req.body", req.body.comment);
 
     const queryString = `
@@ -37,21 +38,21 @@ const routers = function (pool) {
     RETURNING *;`
 
     const value = [1, req.body.comment, 2];
-    
-      pool.query(queryString, value)
-        .then((data) => {
-          console.log("🚀 ~ file: comments.js ~ line 43 ~ .then ~ data", data)
-          res.json(data.rows[0]);
-        })
-        .catch(err => {
-          console.log('error:', err.message);
-          res.status(500).json({errror: "Something's wrong..."});
-        });
+
+    pool.query(queryString, value)
+      .then((data) => {
+        console.log("🚀 ~ file: comments.js ~ line 43 ~ .then ~ data", data)
+        res.json(data.rows[0]);
+      })
+      .catch(err => {
+        console.log('error:', err.message);
+        res.status(500).json({ errror: "Something's wrong..." });
+      });
   });
 
   // Delete comment
   router.delete("/deleteComment/:comment_id", (req, res) => {
-    
+
     const queryString = `
     DELETE FROM comments
     WHERE id = $1;`;
@@ -62,18 +63,18 @@ const routers = function (pool) {
     // request.params.id
     console.log('comment_id=====', req.params.comment_id)
     pool.query(queryString, [comment_id])
-    .then((data) => {
-      console.log("🚀 ~ file: comments.js ~ line 87 ~ .then ~ data", data)
+      .then((data) => {
+        console.log("🚀 ~ file: comments.js ~ line 87 ~ .then ~ data", data)
 
-      res.json(data.rows[0]);
-      // console.log("🚀 ~ file: comments.js ~ line 67 ~ then ~ data.rows[0]", data.rows[0])
-    })
-    .catch(err => {
-      console.log('error:', err.message);
-      res.status(500).json({errror: "Something's wrong in router.delete route ..."});
-    });
-      
-    });
+        res.json(data.rows[0]);
+        // console.log("🚀 ~ file: comments.js ~ line 67 ~ then ~ data.rows[0]", data.rows[0])
+      })
+      .catch(err => {
+        console.log('error:', err.message);
+        res.status(500).json({ errror: "Something's wrong in router.delete route ..." });
+      });
+
+  });
 
   //only return router
   return router;

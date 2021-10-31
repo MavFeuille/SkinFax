@@ -1,3 +1,5 @@
+import { FaRegTrashAlt } from "react-icons/fa";
+
 export default function CommentList(props) {
   const existingComments = props.comments.map((obj) => {
     return (
@@ -10,13 +12,15 @@ export default function CommentList(props) {
         <div>
           {/* <form onSubmit={deleteComment(obj.id)} > */}
           {/* <form> */}
-          <button onClick={() => deleteComment(obj)}>
-            <FaRegTrashAlt />
-          </button>
+          {props.deleteComment && (
+            <button onClick={() => props.deleteComment(obj)}>
+              <FaRegTrashAlt />
+            </button>
+          )}
         </div>
       </div>
     );
   });
 
-  return existingComments;
+  return <>{existingComments}</>;
 }
