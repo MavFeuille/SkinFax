@@ -1,6 +1,7 @@
 header {
   @include underline;
   margin-bottom: 20px;
+  
 
   nav {
     @include flex;
@@ -9,6 +10,9 @@ header {
     max-width: 1500px;
     width: 90%;
     margin: 0 auto;
+    background-color: white;
+    border-bottom: 1px solid lightsteelblue;
+    position: fixed;
     .logo {
       font-family: "Noto Serif Display", serif;
     }
