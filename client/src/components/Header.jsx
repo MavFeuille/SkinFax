@@ -14,8 +14,7 @@ export default function Header(props) {
           user={props.user}
           logout={props.logout}
         />
-        <Link to="/DirectMessages"> direct msg </Link>
-        <Link to="/Join"> Join  </Link>
+      
       </nav>
     </header>
   );

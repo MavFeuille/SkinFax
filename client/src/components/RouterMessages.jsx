@@ -8,7 +8,6 @@ export default function RouterMessages(){
 console.log('went into')
   return (
     <Router>
-      where switch and join page shud be
         <Switch>
           <Route path="/DirectMessages"> 
         <DirectMessages />

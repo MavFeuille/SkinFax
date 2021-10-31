@@ -75,11 +75,21 @@ console.log('message____', )
 
   return (
     <div className="outerContainer">
+   
+   {/* <div class="container"> */}
+  <div class="sky">
+    {/* <div class="text"></div> */}
+    <div class="stars"></div>
+    <div class="stars1"></div>
+    <div class="stars2"></div>
+    <div class="shooting-stars"></div>
+  </div>
+{/* </div> */}
+
        <div className="container">
-      <h1 className="header">Sliding Into the DMs</h1>
+      <InfoBar className="header" room={room}/>
+      {/* <h1 className="header">Sliding Into the DMs</h1> */}
      <Messages messages={messages} name={name}/>
-      <InfoBar room={room}/>
-      
         <Input
        message={message} setMessage={setMessage} sendMessage={sendMessage} 
         />
