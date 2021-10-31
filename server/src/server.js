@@ -13,6 +13,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 const { addUser, removeUser, getUser, getUsersInRoom} = require('./helpers/Users')
+// const router = require('./router');
+const cors = require('cors');
 //_____________________________
 const dbParams = require('./dbConfig');
 const {Pool} = require('pg');
@@ -23,6 +25,8 @@ const cloudinaryWithConfig = require('./cloudinary_config')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ limit: '100mb' }));
+app.use(cors());
+// app.use(router);
 
 // APP ROUTES -----------------------------------------------
 const postsRouter = require('./routes/posts');
@@ -61,6 +65,7 @@ io.on('connection', (socket) => {
 
     //kicks out
     if(error) return callback(error);
+     socket.join(user.room);
 
     //emitted from backend -> frontend
     socket.emit('message', {user: 'admin', text: `${user.name}, welcome to the new room ${user.room}`})
@@ -69,6 +74,7 @@ io.on('connection', (socket) => {
     socket.broadcast.to(user.room).emit('message', {user: 'admin', text:`${user.name}, just joined!`})
 
     socket.join(user.room);
+    io.to(user.room).emit('roomData', {room:user.room, users: getUsersInRoom(user.room)})
     callback();
   })
 
@@ -76,43 +82,33 @@ io.on('connection', (socket) => {
   //expects event on backend than transfers -> frontend
   socket.on('sendMessage',(message, callback)=> {
     const user = getUser(socket.id)
+    
     console.log('message____test', message)
-    console.log('soc id____test', socket.id, user)
+    // console.log('room', user.room)
+
+    // **********
+    //room is undefined when line below shows. and when 
+    // commented out messages are sent to room but arent showing client side 
     io.to(user.room).emit('message', {user: user.name, text: message})
-
     callback();
-  } )
-
-
-
+  })
+  
   //no param b/c user just left
   socket.on('disconnect', () => {
+    const user  = removeUser(socket.id);
     console.log('user just left');
+    
+    if(user){
+      io.to(user.room).emit('message', {user: 'admin', text: `${user.name} has left.`})
+      io.to(user.room).emit('roomData', {room: user.room, users: getUsersInRoom(user.room)})
+    }
   });
 });
 
-server.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 
-// const sass = require ('node-sass-middleware');
-// const morgan = require ('morgan');
-// const bcryptjs = require ('bcryptjs');
-// const cookieSession = require ('cookie-session');
-// app.use (
-//   cookieSession ({
-//     name: 'session',
-//     keys: [
-//       'eSgVkYp3s6v9y$B&E)H@McQfTjWmZq4t',
-//       'z$C&F)J@NcRfUjWnZr4u7x!A%D*G-KaP',
-//     ],
-//   })
-// );
+
 
 // ________________PG database client/connection setup_________________
-// const {Pool} = require ('pg');
-// const dbParams = require ('./lib/db.js.js.js');
-// const db = new Pool (dbParams);
-// db.connect ();
-//requires helper function and directly calls db
-// const databaseHelpers = require ('./db/database-helper') (db);
+server.listen(PORT, console.log(`Server is listening on port ${PORT}`));
 
 // Warning: avoid creating more routes in this file!

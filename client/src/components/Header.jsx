@@ -14,7 +14,6 @@ export default function Header(props) {
           user={props.user}
           logout={props.logout}
         />
-      
       </nav>
     </header>
   );

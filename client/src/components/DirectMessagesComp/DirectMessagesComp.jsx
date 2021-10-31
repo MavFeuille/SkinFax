@@ -1,13 +1,14 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {useLocation} from  'react-router-dom';
 import queryString from 'query-string';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import axios from 'axios';
 // import {Link} from 'react-router-dom';
 import './DirectMessagesComp.css';
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
+import {socket} from '../../socket';
 
 // let socket;
 
@@ -24,7 +25,7 @@ export default function DirectMessages(props) {
 
 
   useEffect(() => {
-    const socket = io()
+    // const socket = io()
     soc.current = socket;
     const {name, room} = location.state;
     socket.on('message',(message)=>{
@@ -77,12 +78,12 @@ console.log('message____', )
     <div className="outerContainer">
    
    {/* <div class="container"> */}
-  <div class="sky">
     {/* <div class="text"></div> */}
-    <div class="stars"></div>
-    <div class="stars1"></div>
-    <div class="stars2"></div>
-    <div class="shooting-stars"></div>
+  <div className="sky">
+    <div className="stars"></div>
+    <div className="stars1"></div>
+    <div className="stars2"></div>
+    <div className="shooting-stars"></div>
   </div>
 {/* </div> */}
 

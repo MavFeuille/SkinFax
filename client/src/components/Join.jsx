@@ -11,7 +11,7 @@ const [room, setRoom] = useState('');
 
   return (
     <div className="joinOuterContainer">
-          {/* <ul class="circles">
+          <ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -22,7 +22,7 @@ const [room, setRoom] = useState('');
                     <li></li>
                     <li></li>
                     <li></li>
-            </ul> */}
+            </ul>
     <div className="joinInnerContainer">
       <h1 className="heading"> Pick a Chatroom</h1>
         <div><input placeholder="Name" className="joinInput" type="text" 

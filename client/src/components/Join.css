@@ -175,6 +175,7 @@ body{
 
 .joinInnerContainer {
   width: 20%;
+  z-index: 9999;
 }
 
 .joinInput {
