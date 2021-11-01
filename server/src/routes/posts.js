@@ -5,6 +5,24 @@ const cloudinaryWithConfig = require('../cloudinary_config');
 // function that will contain all the get routes
 const routers = function (pool) {
 
+  // grabbing all users posts (mix user's own posts and user's following posts)
+    router.get('/', function (req, res) {
+
+    const queryString = `
+    SELECT content_posts.id as post_id, content_posts.user_id as user_id, users.username as username, content_posts.description, content_posts.image_video_url, content_posts.created, users.profile_picture_url as profile_picture
+    FROM content_posts
+    JOIN users ON content_posts.user_id = users.id
+    ORDER BY created DESC;`
+
+    pool.query(queryString)
+      .then((data) => {
+        res.json(data.rows)
+      })
+      .catch(err => {
+        console.log('error:', err.message);
+      });
+  });
+
   // only getting logged in user's post
   router.get('/user_posts', function (req, res) {
 
@@ -90,6 +108,25 @@ const routers = function (pool) {
     }
 
   });
+
+  router.delete("/:id", (req, res) => {
+    console.log("delete", req.params.id)
+    const queryString = `
+    DELETE FROM content_posts
+    WHERE content_posts.id = $1;`;
+
+    const params = [req.params.id]
+
+    pool.query(queryString, params)
+      .then(() => {
+        res.status(204).send('')
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
 
 
   //only return router
