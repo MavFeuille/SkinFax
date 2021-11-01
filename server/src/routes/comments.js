@@ -7,9 +7,10 @@ const routers = function (pool) {
 
   // render CommentForm 
   router.get('/', function (req, res) {
+    // console.log("get all comments", req.params.id)
 
     const queryString = `
-    SELECT users.profile_picture_url, users.username as username, comments.comment, comments.created, comments.id, comments.user_id FROM users
+    SELECT users.profile_picture_url, users.username as username, comments.comment, comments.created, comments.id, comments.user_id, comments.content_post_id FROM users
     JOIN comments ON comments.user_id = users.id
     JOIN content_posts ON comments.content_post_id = content_posts.id
     WHERE content_posts.id = $1

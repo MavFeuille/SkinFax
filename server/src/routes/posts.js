@@ -9,12 +9,12 @@ const routers = function (pool) {
   router.get('/user_posts', function (req, res) {
 
     const queryString = `
-    SELECT count(likes.id) as likes, users.id, users.username as username, users.profile_picture_url, image_video_url, description, created 
+    SELECT count(likes.id) as likes, users.id, users.username as username, users.profile_picture_url, image_video_url, description, created, content_posts.id as content_post_id 
     FROM content_posts
     JOIN users ON content_posts.user_id = users.id
     LEFT JOIN likes ON likes.content_post_id = content_posts.id 
     WHERE content_posts.user_id = $1
-    GROUP BY users.id, users.username, image_video_url, description, created
+    GROUP BY users.id, users.username, image_video_url, description, created, content_posts.id
     ORDER BY created DESC;`
 
     pool.query(queryString, [1])
@@ -29,7 +29,7 @@ const routers = function (pool) {
   // get all following's posts
   router.get('/follow_posts', function (req, res) {
     const queryString = `
-    SELECT users.id, users.username as username, users.profile_picture_url, image_video_url, description, created FROM content_posts
+    SELECT users.id, users.username as username, users.profile_picture_url, image_video_url, description, created, content_posts.id as content_post_id FROM content_posts
     JOIN users ON content_posts.user_id = users.id
     JOIN followers ON followers.user_id = users.id 
     WHERE followers.follower_user_id = 1

@@ -37,15 +37,18 @@ export default function Home(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, [setHome]);
-
-  useEffect(() => {
-    getAllComments();
-  }, []);
-
+    }, [setHome]);
+    
+    useEffect(() => {
+      getAllComments();
+    }, []);
+    
+  
+  
   const getAllComments = () => {
+  
     axios
-      .get("/api/comments")
+      .get(`/api/comments/`)
       .then((res) => {
         const comments = res.data;
         console.log(
@@ -58,6 +61,7 @@ export default function Home(props) {
         console.log(err);
       });
   };
+ 
 
   /* Delete comments
   passing in the comment ids as params
@@ -79,9 +83,12 @@ export default function Home(props) {
     // }
   };
 
- 
+  
 
   const existingComments = comments.map((obj) => {
+    console.log("🚀 ~ file: Home.jsx ~ line 85 ~ existingComments ~ obj", obj)
+  
+    
     return (
       <section>
         <div className="comment">
@@ -157,7 +164,7 @@ export default function Home(props) {
         </div>
           <div className="comment-form-container">
             <CommentForm className="comment-form" getAllComments={getAllComments} />
-            <p>{ existingComments}</p>
+            <p>{existingComments}</p>
           </div>
        </div>  
       
