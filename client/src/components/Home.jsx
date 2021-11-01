@@ -97,9 +97,6 @@ export default function Home(props) {
               <p>{obj.comment}</p>
             </div>
             <div className="button-delete-comment-container">
-              {/* <form onSubmit={deleteComment(obj.id)} > */}
-              {/* <form> */}
-
               <button
                 className="button-delete-comment"
                 onClick={() => deleteComment(obj)}

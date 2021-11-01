@@ -3,10 +3,7 @@ import { useState, useEffect } from "react";
 import PostListItem from "./PostListItem";
 
 export default function PostList(props) {
-  // const [posts, setPosts] = useState(props.posts);
-  const {posts, addFavourite, deletePost} = props
-
-  
+  const { posts, addFavourite, deletePost } = props;
 
   const allPosts = posts.map((post) => {
     return (
@@ -14,14 +11,14 @@ export default function PostList(props) {
         key={post.content_post_id}
         created={post.created}
         username={post.username}
-        url={post.image_video_url}
         description={post.description}
         deletePost={() => deletePost(post.id)}
         addFavourite={() => addFavourite(post.id)}
         isOwner={post.id === props.user.id}
-        profilePictureUrl={props.user.profile_picture_url}
+        profilePictureUrl={post.profile_picture_url}
         imageVideoUrl={post.image_video_url}
         postId={post.content_post_id}
+        user={props.user}
       />
     );
   });
