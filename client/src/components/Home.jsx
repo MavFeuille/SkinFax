@@ -91,18 +91,21 @@ export default function Home(props) {
               <div className="comment-follower-username">
                 <p>{obj.username}</p>
               </div>
-            </div>
+            
             <p>{obj.comment}</p>
           </div>
-            <p>{obj.created}</p>
-          <div className="button-delete-comment">
-            {/* <form onSubmit={deleteComment(obj.id)} > */}
-            {/* <form> */}
-          
-            <button onClick={() => deleteComment(obj)}>
-              <i class="far fa-trash-alt"></i>
-            </button>
+            <div className="button-delete-comment-container">
+              {/* <form onSubmit={deleteComment(obj.id)} > */}
+              {/* <form> */}
+
+              <button  className="button-delete-comment" onClick={() => deleteComment(obj)}>
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </div>
           </div>
+          <div className="comment-created">
+            <p>{obj.created}</p>
+           </div>
         </div>
       </section>
     );
