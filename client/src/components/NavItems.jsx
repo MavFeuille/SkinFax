@@ -21,17 +21,10 @@ export default function NavItems(props) {
         </li>
         <li
           onClick={() => {
-            props.setPage(PROFILE_PAGE);
+            props.setPage(ROUTER_MESSAGES);
           }}
         >
-          <i class="far fa-user-circle" />
-        </li>
-        <li
-          onClick={() => {
-            props.setPage(FAV_PAGE);
-          }}
-        >
-          <i class="far fa-bookmark" />
+          <i class="far fa-comment-dots"></i>
         </li>
         <li
           onClick={() => {
@@ -42,10 +35,24 @@ export default function NavItems(props) {
         </li>
         <li
           onClick={() => {
-            props.setPage(ROUTER_MESSAGES);
+            props.setPage(EXPLORE_PAGE);
           }}
         >
-          <i class="far fa-comment-dots"></i>
+          <i class="far fa-compass"></i>
+          </li>
+        <li
+          onClick={() => {
+            props.setPage(FAV_PAGE);
+          }}
+        >
+          <i class="far fa-bookmark" />
+        </li>
+        <li
+          onClick={() => {
+            props.setPage(PROFILE_PAGE);
+          }}
+        >
+          <i class="far fa-user-circle" />
         </li>
         <li>{props.user.email}</li>
         <li
@@ -53,15 +60,9 @@ export default function NavItems(props) {
             props.logout();
           }}
         >
-          <Button variant="outline-secondary">Logout</Button>{" "}
+          <i class="fas fa-sign-out-alt"></i>
+          {/* <Button variant="outline-secondary">Logout</Button>{" "} */}
         </li>
-        <li
-          onClick={() => {
-            props.setPage(EXPLORE_PAGE);
-          }}
-        >
-          Explore
-          </li>
       </ul>
     </div>
   );
