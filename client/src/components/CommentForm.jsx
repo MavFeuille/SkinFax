@@ -3,6 +3,7 @@ import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import './CommentForm.css';
 
 export default function CommentForm(props) {
   const [comment, setComment] = useState("");
@@ -43,25 +44,32 @@ export default function CommentForm(props) {
   };
 
   return (
-    <div>
-      <Form onSubmit={handleSubmitComment}>
-        <FloatingLabel
-          controlId="floatingTextarea"
-          label={label}
-          className="mb-3"
-          onFocus={(event) => {
-            setLabel("");
-          }}
-        >
-          <Form.Control
-            as="textarea"
-            placeholder="Leave a comment here"
-            value={comment}
-            type="string"
-            onChange={(event) => {
-              setComment(event.target.value);
-            }}
-          />
+    <section className="create-comment-form-section">
+      {/* <div className="create-comment-form-container"> */}
+        <div className="create-comment-form">
+          <Form onSubmit={handleSubmitComment}>
+            <FloatingLabel
+              controlId="floatingTextarea"
+              label={label}
+              className="mb-3"
+              onFocus={(event) => {
+                setLabel("");
+              }}
+            >
+              <Form.Control
+                as="textarea"
+                placeholder="Leave a comment here"
+                value={comment}
+                type="string"
+                onChange={(event) => {
+                  setComment(event.target.value);
+                }}
+              />
+              
+            </FloatingLabel>
+          </Form>
+        </div>
+        <div className="button-create-comment">
           <Button
             variant="outline-primary"
             type="submit"
@@ -69,8 +77,7 @@ export default function CommentForm(props) {
           >
             Post
           </Button>{" "}
-        </FloatingLabel>
-      </Form>
-    </div>
+        </div>
+    </section>
   );
 }

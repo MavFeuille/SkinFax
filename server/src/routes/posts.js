@@ -32,7 +32,7 @@ const routers = function (pool) {
     SELECT users.id, users.username as username, users.profile_picture_url, image_video_url, description, created FROM content_posts
     JOIN users ON content_posts.user_id = users.id
     JOIN followers ON followers.user_id = users.id 
-    WHERE followers.follower_user_id = 2
+    WHERE followers.follower_user_id = 1
     ORDER BY created DESC;`
 
     pool.query(queryString)
