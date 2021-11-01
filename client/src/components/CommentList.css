@@ -2,33 +2,36 @@
   display: flex;
 
 } */
-.list-comments {
+ul.list-comments {
   display: inline;
   float: left;
   background: #3ca2f5;
   border-radius: 10px;
-  width: 120px;
- height: 120px;
- align-items: flex-start;
+  width: 100px;
+  height: 100px;
+  justify-content: space-between;
+
 }
 
 p.username{
   display: flex;
+  flex-direction: column-reverse;
   color: brown;
-  width: 5px;
-  height: 5px;
+  width: 2px;
+  height: 2px;
 }
 
 p.comment{
   display: flex;
   color: blueviolet;
-  width: 5px;
-  height: 5px;
+  width: 2px;
+  height: 2px;
 }
 
 p.created{
   display: flex;
+  flex-direction: row;
   color: rgb(158, 187, 27);
-  width: 5px;
-  height: 5px;
+  width: 2px;
+  height: 2px;
 }
