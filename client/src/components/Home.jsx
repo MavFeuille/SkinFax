@@ -40,10 +40,6 @@ export default function Home(props) {
   }, [setHome]);
 
   useEffect(() => {
-    getAllComments();
-  }, []);
-
-  const getAllComments = () => {
     axios
       .get("/api/comments")
       .then((res) => {
@@ -57,7 +53,7 @@ export default function Home(props) {
       .catch((err) => {
         console.log(err);
       });
-  };
+  }, []);
 
   /* Delete comments
   passing in the comment ids as params
@@ -65,18 +61,15 @@ export default function Home(props) {
   const deleteComment = (comment) => {
     if (comment.user_id === props.user.id) {
       console.log("🚀 DELETE_____");
-      axios.delete(`/api/comments/deleteComment/${comment.id}`).then((res) => {
-        getAllComments();
-        console.log("======> Comment deleted!!");
-      });
-      // .catch((err) => {
-      //   console.log("🚀 ~ file: Home.jsx ~ line 71 ~ deleteComment ~ err", err)
-      //   // err.status(401).send("You are not authorized to delete this comment.")
-      // })
+      axios
+        .delete(`/api/comments/deleteComment/${comment.id}`)
+        .then(() => {
+          console.log("======> Comment deleted!!");
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
     }
-    // else {
-    //   res.status(401).send("You are not authorized to delete this comment.")
-    // }
   };
 
   const existingComments = comments.map((obj) => {
