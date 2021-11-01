@@ -7,8 +7,6 @@ const routers = function (pool) {
 
   // render CommentForm 
   router.get('/', function (req, res) {
-    // console.log("get all comments", req.params.id)
-
     const queryString = `
     SELECT users.profile_picture_url, users.username as username, comments.comment, comments.created, comments.id, comments.user_id, comments.content_post_id FROM users
     JOIN comments ON comments.user_id = users.id
@@ -28,9 +26,9 @@ const routers = function (pool) {
   });
 
   //Post comments
-  router.post('/postComment', async (req, res) => {
-
-    console.log("🚀 ~ file: comments.js ~ line 31 ~ router.post ~ req.body", req.body.comment);
+  router.post('/', (req, res) => {
+    console.log(req.body)
+    const comment = req.body;
 
     const queryString = `
     INSERT INTO comments (user_id, comment, content_post_id)
@@ -38,11 +36,11 @@ const routers = function (pool) {
     ($1, $2, $3)
     RETURNING *;`
 
-    const value = [1, req.body.comment, 2];
+    const value = [comment.userId, comment.text, comment.postId];
 
     pool.query(queryString, value)
       .then((data) => {
-        console.log("🚀 ~ file: comments.js ~ line 43 ~ .then ~ data", data)
+        console.log("comment POST", data.rows[0])
         res.json(data.rows[0]);
       })
       .catch(err => {
@@ -52,23 +50,17 @@ const routers = function (pool) {
   });
 
   // Delete comment
-  router.delete("/deleteComment/:comment_id", (req, res) => {
+  router.delete("/:comment_id", (req, res) => {
 
     const queryString = `
     DELETE FROM comments
     WHERE id = $1;`;
 
     const comment_id = req.params.comment_id;
-    // const user_id = req.body.user_id
-    // const value = [user_id, comment_id];
-    // request.params.id
-    console.log('comment_id=====', req.params.comment_id)
+
     pool.query(queryString, [comment_id])
       .then((data) => {
-        console.log("🚀 ~ file: comments.js ~ line 87 ~ .then ~ data", data)
-
         res.json(data.rows[0]);
-        // console.log("🚀 ~ file: comments.js ~ line 67 ~ then ~ data.rows[0]", data.rows[0])
       })
       .catch(err => {
         console.log('error:', err.message);

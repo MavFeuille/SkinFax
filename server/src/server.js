@@ -12,18 +12,16 @@ const http = require('http');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-const { addUser, removeUser, getUser, getUsersInRoom} = require('./helpers/Users')
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./helpers/Users')
 //_____________________________
 const dbParams = require('./dbConfig');
-const {Pool} = require('pg');
+const { Pool } = require('pg');
 const pool = new Pool(dbParams);
-const bodyParser = require('body-parser');
 const cloudinaryWithConfig = require('./cloudinary_config')
+const morgan = require('morgan')
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+app.use(express.json());
+app.use(morgan("tiny"));
 
 // APP ROUTES -----------------------------------------------
 const postsRouter = require('./routes/posts');
@@ -51,23 +49,23 @@ io.on('connection', (socket) => {
   //area manages a specific socket that just joined
 
   //view event from direct messages when its being emitted, grants access to name/room on backend
-  
-  socket.on('Join',({name, room}, callback) => {
+
+  socket.on('Join', ({ name, room }, callback) => {
     // console.log({name, room})
     //triggers a response after event emitted
     // console.log('join event triggered=====')
 
     //addUser funct expects err/user
-    const {error, user} = addUser({id: socket.id, name, room});
+    const { error, user } = addUser({ id: socket.id, name, room });
 
     //kicks out
-    if(error) return callback(error);
+    if (error) return callback(error);
 
     //emitted from backend -> frontend
-    socket.emit('message', {user: 'admin', text: `${user.name}, welcome to the new room ${user.room}`})
+    socket.emit('message', { user: 'admin', text: `${user.name}, welcome to the new room ${user.room}` })
     // console.log('user____', user)
     // sends msg to e/o
-    socket.broadcast.to(user.room).emit('message', {user: 'admin', text:`${user.name}, just joined!`})
+    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name}, just joined!` })
 
     socket.join(user.room);
     callback();
@@ -75,14 +73,14 @@ io.on('connection', (socket) => {
 
   //events for user generated msgs
   //expects event on backend than transfers -> frontend
-  socket.on('sendMessage',(message, callback)=> {
+  socket.on('sendMessage', (message, callback) => {
     const user = getUser(socket.id)
     console.log('message____test', message)
     console.log('soc id____test', socket.id, user)
-    io.to(user.room).emit('message', {user: user.name, text: message})
+    io.to(user.room).emit('message', { user: user.name, text: message })
 
     callback();
-  } )
+  })
 
 
 
