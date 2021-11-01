@@ -1,0 +1,34 @@
+/* .all-comments{
+  display: flex;
+
+} */
+.list-comments {
+  display: inline;
+  float: left;
+  background: #3ca2f5;
+  border-radius: 10px;
+  width: 120px;
+ height: 120px;
+ align-items: flex-start;
+}
+
+p.username{
+  display: flex;
+  color: brown;
+  width: 5px;
+  height: 5px;
+}
+
+p.comment{
+  display: flex;
+  color: blueviolet;
+  width: 5px;
+  height: 5px;
+}
+
+p.created{
+  display: flex;
+  color: rgb(158, 187, 27);
+  width: 5px;
+  height: 5px;
+}

@@ -3,6 +3,7 @@ import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
+import './CommentForm.css';
 
 export default function CommentForm(props) {
   const [comment, setComment] = useState("");

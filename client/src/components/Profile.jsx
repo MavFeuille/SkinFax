@@ -1,66 +1,47 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import CommentForm from "./CommentForm";
+import {useEffect, useState} from 'react';
+import axios from 'axios';
+import './Profile.css';
+import CommentForm from './CommentForm';
 import {
   IoChatbubbleOutline,
   IoHeartOutline,
   IoHeartSharp,
   IoBookmarkOutline,
   IoRocketSharp,
-} from "react-icons/io5";
-import CommentList from "./CommentList";
+} from 'react-icons/io5';
+import CommentList from './CommentList';
 
-export default function Profile() {
-  const [state, setState] = useState({
+export default function Profile () {
+  const [state, setState] = useState ({
     userProfile: {},
     userPosts: [],
   });
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState ([]);
 
-  useEffect(() => {
-    Promise.all([
-      axios.get(`/api/profile`),
-      axios.get("/api/posts/user_posts"),
-      axios.get("/api/comments"),
+  useEffect (() => {
+    Promise.all ([
+      axios.get (`/api/profile`),
+      axios.get ('/api/posts/user_posts'),
+      axios.get ('/api/comments'),
     ])
-      .then((all) => {
+      .then (all => {
         const userProfile = all[0].data;
         const userPosts = all[1].data;
         const comments = all[2].data;
 
-        setState((prev) => ({ ...prev, userProfile, userPosts }));
-        setComments(comments);
+        setState (prev => ({...prev, userProfile, userPosts}));
+        setComments (comments);
       })
-      .catch((err) => {
-        console.log(err.message);
+      .catch (err => {
+        console.log (err.message);
       });
   }, []);
 
-  console.log("All Comments! LINE 36 : ", comments);
-
-  // To render all comments of a post
-  // const existingComments = comments.map((obj) => {
-
-  //   return (
-  //     <div className="all-comments">
-  //       <div>
-  //         <p>{obj.username}</p>
-  //         <p>{obj.comment}</p>
-  //         <p>{obj.created}</p>
-  //       </div>
-  //       <div>
-  //         <form>
-  //           <FaRegTrashAlt onClick={() => {console.log("Deleting...")}}/>
-  //         </form>
-  //       </div>
-  //     </div>
-
-  //   )
-  // })
+  console.log ('All Comments! LINE 36 : ', comments);
 
   //To render the list of user's posts
-  const userPosts = state.userPosts.map((obj) => {
-    console.log(obj);
+  const userPosts = state.userPosts.map (obj => {
+    console.log (obj);
 
     return (
       <div className="user--post">
@@ -70,17 +51,17 @@ export default function Profile() {
         <div>
           <form>
             <span>
-              <IoHeartOutline onClick={() => console.log("Liked! ")} />
+              <IoHeartOutline onClick={() => console.log ('Liked! ')} />
             </span>
             <span>
               <IoChatbubbleOutline
                 onClick={() => {
-                  console.log("Clicked for comment! ");
+                  console.log ('Clicked for comment! ');
                 }}
               />
             </span>
             <span>
-              <IoBookmarkOutline onClick={() => console.log("Saved! ")} />
+              <IoBookmarkOutline onClick={() => console.log ('Saved! ')} />
             </span>
           </form>
         </div>
@@ -113,9 +94,54 @@ export default function Profile() {
           <span className="user--profile-items">
             {state.userProfile.following} Following
           </span>
+
         </div>
+
       </section>
       <section className="user--posts">{userPosts}</section>
+      {/* <div class="td-sub-footer-container">
+        <div class="td-container">
+          <div class="td-pb-row">
+            <div class="td-pb-span12 td-sub-footer-menu">
+              <div class="menu-top-container">
+                <ul id="menu-top" class="td-subfooter-menu">
+                  <li
+                    id="menu-item-439"
+                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-first td-menu-item td-normal-menu menu-item-439"
+                  >
+                    <a href="https://webdevtrick.com/about/">About Us</a>
+                  </li>
+                  <li
+                    id="menu-item-495"
+                    class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-495"
+                  >
+                    <a href="https://webdevtrick.com/contact-us/">Contact Us</a>
+                  </li>
+                  <li
+                    id="menu-item-440"
+                    class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-440"
+                  >
+                    <a href="https://webdevtrick.com/privacy-policy/">
+                      Privacy Policy
+                    </a>
+                  </li>
+                  <li
+                    id="menu-item-441"
+                    class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-441"
+                  >
+                    <a href="https://webdevtrick.com/terms-of-service/">
+                      Terms Of Service
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="td-pb-span12 td-sub-footer-copy">
+              {' '}© WebDevTrick 2019
+            </div>
+          </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 }

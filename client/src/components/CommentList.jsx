@@ -1,14 +1,15 @@
 import { FaRegTrashAlt } from "react-icons/fa";
+import './CommentList.css'
 
 export default function CommentList(props) {
   const existingComments = props.comments.map((obj) => {
     return (
       <div className="all-comments">
-        <div>
-          <p>{obj.username}</p>
-          <p>{obj.comment}</p>
-          <p>{obj.created}</p>
-        </div>
+        <ul className="list-comments">
+          <p className="username">{obj.username}</p>
+          <p className="comment">{obj.comment}</p>
+          <p className="created">{obj.created}</p>
+        </ul>
         <div>
           {/* <form onSubmit={deleteComment(obj.id)} > */}
           {/* <form> */}

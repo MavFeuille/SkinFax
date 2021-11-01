@@ -1,0 +1,12 @@
+.user--posts {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-style: inset;
+}
+
+.td-sub-footer-container {
+padding-top: 12px;
+justify-content: space-evenly;
+color: crimson;
+}
