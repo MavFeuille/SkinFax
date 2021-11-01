@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CommentForm from "./CommentForm";
-import './Home.css';
+import "./Home.css";
 
 export default function Home(props) {
   const [home, setHome] = useState([]);
@@ -79,33 +79,38 @@ export default function Home(props) {
     // }
   };
 
- 
-
   const existingComments = comments.map((obj) => {
     return (
       <section>
         <div className="comment">
           <div className="comment-content">
             <div className="comment-follower">
-              <img className="comment-follower-profile-pic" src={obj.profile_picture_url} alt=""/>
+              <img
+                className="comment-follower-profile-pic"
+                src={obj.profile_picture_url}
+                alt=""
+              />
               <div className="comment-follower-username">
                 <p>{obj.username}</p>
               </div>
-            
-            <p>{obj.comment}</p>
-          </div>
+
+              <p>{obj.comment}</p>
+            </div>
             <div className="button-delete-comment-container">
               {/* <form onSubmit={deleteComment(obj.id)} > */}
               {/* <form> */}
 
-              <button  className="button-delete-comment" onClick={() => deleteComment(obj)}>
+              <button
+                className="button-delete-comment"
+                onClick={() => deleteComment(obj)}
+              >
                 <i class="far fa-trash-alt"></i>
               </button>
             </div>
           </div>
           <div className="comment-created">
             <p>{obj.created}</p>
-           </div>
+          </div>
         </div>
       </section>
     );
@@ -118,9 +123,13 @@ export default function Home(props) {
         <div className="info">
           <div className="user">
             <div>
-              <img className="user-profile-pic"src={obj.profile_picture_url} alt="profile image"/>
+              <img
+                className="user-profile-pic"
+                src={obj.profile_picture_url}
+                alt="profile image"
+              />
             </div>
-              <p className="username"> {obj.username}</p>
+            <p className="username"> {obj.username}</p>
           </div>
         </div>
         <div className="post-content">
@@ -128,7 +137,10 @@ export default function Home(props) {
         </div>
         <div className="reaction-container">
           <i class="far fa-heart" onClick={() => console.log("Liked!")}></i>
-          <i class="far fa-comment" onClick={() => console.log("Click to leave comment!")}></i>
+          <i
+            class="far fa-comment"
+            onClick={() => console.log("Click to leave comment!")}
+          ></i>
           <form
             onSubmit={(event) => {
               event.preventDefault();
@@ -145,31 +157,30 @@ export default function Home(props) {
                   console.log(err.message);
                 });
             }}
-            >
+          >
             <button className="button-bookmark-icon" type="submit">
               <i class="far fa-bookmark"></i>
             </button>
           </form>
-          </div>
+        </div>
         <div>
           <p>{obj.description}</p>
           <p>{obj.created}</p>
         </div>
-          <div className="comment-form-container">
-            <CommentForm className="comment-form" getAllComments={getAllComments} />
-            <p>{ existingComments}</p>
-          </div>
-       </div>  
-      
-    );  
+        <div className="comment-form-container">
+          <CommentForm
+            className="comment-form"
+            getAllComments={getAllComments}
+          />
+          <p>{existingComments}</p>
+        </div>
+      </div>
+    );
   });
 
   return (
     <section className="mainContainer">
-      <div>
-        <h1 className="title">Home</h1>
-        {combinedPosts}
-      </div>
+      <div>{combinedPosts}</div>
     </section>
   );
 }

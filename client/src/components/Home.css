@@ -1,31 +1,28 @@
 .mainContainer {
   padding: 0 50px 5px 10px;
   justify-content: center;
-  
 }
 
-.post{
-  width: 100%;
-  height: auto;
-  margin-top: 50px;
+.post {
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px auto 0;
   padding-top: 30px;
   border: 1px solid #ded9d9;
 }
 
-.info{
+.info {
   width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .user {
   display: flex;
   align-items: centre;
- 
 }
 
 .user-profile-pic {
@@ -65,20 +62,16 @@
 .button-bookmark-icon {
   background-color: white;
   border: none;
-  
 }
 
 .button-bookmark-icon:focus {
   color: lightskyblue;
   border: none;
-
-  
 }
-
 
 .comment {
   width: 100%;
-  font-size: 13px;;
+  font-size: 13px;
   /* border: 5px solid black; */
   /* border-radius: 25px; */
   padding-top: 4px;
@@ -92,12 +85,11 @@
   padding-left: 0px;
   padding-right: 0px;
   padding-bottom: 0px;
-  height: 100%;;
+  height: 100%;
   width: 100%;
   display: flex;
   align-items: top;
   justify-content: space-between;
- 
 }
 
 .comment-follower {
@@ -106,7 +98,6 @@
   padding-bottom: 0;
   width: 100%;
   /* display: flex; */
-
 }
 
 .comment-follower-profile-pic {
@@ -121,9 +112,8 @@
   /* border: 4px solid greenyellow; */
   font-size: 13px;
   text-align: left;
-  padding-left: 0px ;
+  padding-left: 0px;
   margin-top: 0px;
-
 }
 
 .comment-created {
@@ -136,14 +126,12 @@
   /* border: 3px solid lightpink; */
   padding-left: 0px;
   padding-right: 0px;
- 
 }
 
 .button-delete-comment {
   background-color: white;
   border: none;
   font-size: 15px;
-  
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
