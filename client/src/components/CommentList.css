@@ -5,33 +5,63 @@
 ul.list-comments {
   display: inline;
   float: left;
-  background: #3ca2f5;
+  background: #afd7f8;
   border-radius: 10px;
-  width: 100px;
-  height: 100px;
-  justify-content: space-between;
+  width: 168px;
+  height: 168px;
+  justify-content: space-evenly;
+  flex-direction: row;
 
 }
 
 p.username{
   display: flex;
-  flex-direction: column-reverse;
+  /* flex-direction: column-reverse; */
   color: brown;
-  width: 2px;
-  height: 2px;
+  align-items: flex-start;
+  /* width: 2px;
+  height: 2px; */
 }
 
 p.comment{
   display: flex;
   color: blueviolet;
-  width: 2px;
-  height: 2px;
+  align-items: flex-start;
+  /* width: 2px;
+  height: 2px; */
 }
 
 p.created{
   display: flex;
-  flex-direction: row;
+  align-items: flex-start;
+  /* flex-direction: row; */
   color: rgb(158, 187, 27);
-  width: 2px;
-  height: 2px;
+  width: 20px;
+  height: 20px;
 }
+
+/* div.all-comments{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgb(249, 246, 252);
+}
+
+.comments {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgb(250, 249, 248);
+
+}
+
+ .username ul{
+  display: flex;
+  color: aqua;
+}
+
+ul.comment {
+  display: flex;
+}
+
+p .created {
+  display: flex;
+} */

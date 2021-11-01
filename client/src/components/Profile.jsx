@@ -44,10 +44,16 @@ export default function Profile () {
     console.log (obj);
 
     return (
+      
       <div className="user--post">
         <img src={obj.image_video_url} alt="" />
-        <p>{obj.description}</p>
-        <span>{obj.created}</span>
+        <div className="post-box">
+        <p className="descrip">{obj.description}</p>
+        </div>
+
+        <div className="post-box-below">
+
+        <span className="created">{obj.created}</span>
         <div>
           <form>
             <span>
@@ -58,18 +64,19 @@ export default function Profile () {
                 onClick={() => {
                   console.log ('Clicked for comment! ');
                 }}
-              />
+                />
             </span>
             <span>
               <IoBookmarkOutline onClick={() => console.log ('Saved! ')} />
             </span>
           </form>
-        </div>
+                </div>
         <div>
           <CommentForm />
         </div>
         <div>
           <CommentList comments={comments} />
+        </div>
         </div>
       </div>
     );
@@ -94,54 +101,10 @@ export default function Profile () {
           <span className="user--profile-items">
             {state.userProfile.following} Following
           </span>
-
         </div>
 
       </section>
       <section className="user--posts">{userPosts}</section>
-      {/* <div class="td-sub-footer-container">
-        <div class="td-container">
-          <div class="td-pb-row">
-            <div class="td-pb-span12 td-sub-footer-menu">
-              <div class="menu-top-container">
-                <ul id="menu-top" class="td-subfooter-menu">
-                  <li
-                    id="menu-item-439"
-                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-first td-menu-item td-normal-menu menu-item-439"
-                  >
-                    <a href="https://webdevtrick.com/about/">About Us</a>
-                  </li>
-                  <li
-                    id="menu-item-495"
-                    class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-495"
-                  >
-                    <a href="https://webdevtrick.com/contact-us/">Contact Us</a>
-                  </li>
-                  <li
-                    id="menu-item-440"
-                    class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-440"
-                  >
-                    <a href="https://webdevtrick.com/privacy-policy/">
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li
-                    id="menu-item-441"
-                    class="menu-item menu-item-type-post_type menu-item-object-page td-menu-item td-normal-menu menu-item-441"
-                  >
-                    <a href="https://webdevtrick.com/terms-of-service/">
-                      Terms Of Service
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="td-pb-span12 td-sub-footer-copy">
-              {' '}© WebDevTrick 2019
-            </div>
-          </div>
-        </div> */}
-      {/* </div> */}
     </div>
   );
 }
