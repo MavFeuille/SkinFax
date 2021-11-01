@@ -9,7 +9,7 @@ const routers = function (pool) {
   router.get('/', function (req, res) {
 
     const queryString = `
-    SELECT users.username as username, comments.comment, comments.created, comments.id, comments.user_id FROM users
+    SELECT users.profile_picture_url, users.username as username, comments.comment, comments.created, comments.id, comments.user_id FROM users
     JOIN comments ON comments.user_id = users.id
     JOIN content_posts ON comments.content_post_id = content_posts.id
     WHERE content_posts.id = $1

@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CommentForm from "./CommentForm";
-import {
-  IoBookmarkOutline,
-} from "react-icons/io5";
-import { FaRegTrashAlt } from "react-icons/fa";
 import './Home.css';
 
 export default function Home(props) {
@@ -20,9 +16,9 @@ export default function Home(props) {
     ])
       .then((all) => {
         const userPosts = all[0].data;
-        console.log("🚀 ~ file: Home.jsx ~ line 25 ~ .then ~ userPosts", userPosts)
+        // console.log("🚀 ~ file: Home.jsx ~ line 25 ~ .then ~ userPosts", userPosts)
         const followingPosts = all[1].data;
-        console.log("🚀 ~ file: Home.jsx ~ line 27 ~ .then ~ followingPosts", followingPosts)
+        // console.log("🚀 ~ file: Home.jsx ~ line 27 ~ .then ~ followingPosts", followingPosts)
         // const comments = all[2].data;
         const combinedPosts = userPosts.concat(followingPosts);
 
@@ -87,21 +83,28 @@ export default function Home(props) {
 
   const existingComments = comments.map((obj) => {
     return (
-      <div className="all-comments">
-        <div>
-          {/* <img src={obj.profile_picture_url} alt="profile image"/> */}
-          <p>{obj.username}</p>
-          <p>{obj.comment}</p>
-          <p>{obj.created}</p>
+      <section>
+        <div className="comment">
+          <div className="comment-content">
+            <div className="comment-follower">
+              <img className="comment-follower-profile-pic" src={obj.profile_picture_url} alt=""/>
+              <div className="comment-follower-username">
+                <p>{obj.username}</p>
+              </div>
+            </div>
+            <p>{obj.comment}</p>
+          </div>
+            <p>{obj.created}</p>
+          <div className="button-delete-comment">
+            {/* <form onSubmit={deleteComment(obj.id)} > */}
+            {/* <form> */}
+          
+            <button onClick={() => deleteComment(obj)}>
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
         </div>
-        <div>
-          {/* <form onSubmit={deleteComment(obj.id)} > */}
-          {/* <form> */}
-          <button onClick={() => deleteComment(obj)}>
-            <FaRegTrashAlt />
-          </button>
-        </div>
-      </div>
+      </section>
     );
   });
 
@@ -151,7 +154,7 @@ export default function Home(props) {
         </div>
           <div className="comment-form-container">
             <CommentForm className="comment-form" getAllComments={getAllComments} />
-            <p>{comments && existingComments}</p>
+            <p>{ existingComments}</p>
           </div>
        </div>  
       

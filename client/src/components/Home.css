@@ -75,6 +75,36 @@
   
 }
 
+
+.comment {
+  width: 100%;
+  border: 5px solid black;
+}
+
+.comment-content {
+  border: 4px solid green;
+}
+
+.comment-follower {
+  border: 4px solid salmon;
+  display: flex;
+  
+}
+
+.comment-follower-profile-pic {
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  object-fit: cover;
+  border-radius: 50%;
+ 
+}
+
+.comment-follower-username {
+  border: 4px solid greenyellow
+
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
   .outerContainer {
     height: 100%;
