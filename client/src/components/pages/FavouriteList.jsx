@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import FavouriteListItem from "./FavouriteListItem";
+import FavouriteListItem from "../FavouriteListItem";
 
 export default function Favourites(props) {
   const [favourites, setFavourites] = useState([]);
