@@ -5,7 +5,10 @@ import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import './CommentForm.css';
 
+
 export default function CommentForm(props) {
+  const {setComments} = props;
+
   const [comment, setComment] = useState("");
   const [label, setLabel] = useState("Write a comment...");
 
@@ -38,8 +41,10 @@ export default function CommentForm(props) {
       .then((res) => {
         // update comment data instead, dont reload all comments
         setComment(res.data);
+        console.log("🚀 ~ file: CommentForm.jsx ~ line 44 ~ .then ~ res.data", res.data)
         clearInput();
         console.log("🚀 ~ file: CommentForm.jsx ~ line 33 ~ .then ~ res", res);
+        setComments((prev)=> [{comment, username: "bob"}, ...prev])
       });
   };
 
@@ -67,8 +72,6 @@ export default function CommentForm(props) {
               />
               
             </FloatingLabel>
-          </Form>
-        </div>
         <div className="button-create-comment">
           <Button
             variant="outline-primary"
@@ -77,6 +80,8 @@ export default function CommentForm(props) {
           >
             Post
           </Button>{" "}
+        </div>
+          </Form>
         </div>
     </section>
   );

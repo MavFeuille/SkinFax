@@ -23,6 +23,30 @@ const routers = function (pool) {
       });
   });
 
+  // grabbing all users posts (mix user's own posts and user's following posts)
+  router.get('/:post_id/comments', function (req, res) {
+
+    const queryString = `
+    SELECT users.profile_picture_url, users.username as username, comments.comment, comments.created, comments.id, comments.user_id, comments.content_post_id FROM users
+    JOIN comments ON comments.user_id = users.id
+    JOIN content_posts ON comments.content_post_id = content_posts.id
+    WHERE comments.content_post_id = $1
+    ORDER BY created DESC;`
+
+    pool.query(queryString, [req.params.post_id])
+      .then((data) => {
+        res.json(data.rows)
+      })
+      .catch(err => {
+        console.log('error:', err.message);
+      });
+  });
+
+
+
+
+
+
   // only getting logged in user's post
   router.get('/user_posts', function (req, res) {
 

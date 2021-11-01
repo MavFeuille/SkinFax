@@ -2,41 +2,26 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import PostListItem from "./PostListItem";
 
-export default function Favourites(props) {
-  const [posts, setPosts] = useState([]);
+export default function PostList(props) {
+  // const [posts, setPosts] = useState(props.posts);
+  const {posts, addFavourite, deletePost} = props
 
-  useEffect(() => {
-    axios
-      .get(`/api/posts`)
-      .then((res) => {
-        setPosts(res.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
+  
 
-  const deletePost = function (id) {
-    console.log("deleting post, post ID: ", id);
-    axios
-      .delete(`/api/posts/${id}`)
-      .then(() => {
-        setPosts(posts.filter((post) => post.id !== id));
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  };
-
-  const allPosts = posts.map((posts) => {
+  const allPosts = posts.map((post) => {
     return (
       <PostListItem
-        key={post.id}
+        key={post.content_post_id}
         created={post.created}
         username={post.username}
         url={post.image_video_url}
         description={post.description}
         deletePost={() => deletePost(post.id)}
+        addFavourite={() => addFavourite(post.id)}
+        isOwner={post.id === props.user.id}
+        profilePictureUrl={props.user.profile_picture_url}
+        imageVideoUrl={post.image_video_url}
+        postId={post.content_post_id}
       />
     );
   });

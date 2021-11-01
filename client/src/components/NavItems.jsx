@@ -6,6 +6,7 @@ export const CREATE_POST = "create_post";
 export const LOGIN = "login";
 export const REGISTER = "register";
 export const ROUTER_MESSAGES = "router_messages";
+export const EXPLORE_PAGE = "explore";
 
 export default function NavItems(props) {
   return (
@@ -54,6 +55,13 @@ export default function NavItems(props) {
         >
           <Button variant="outline-secondary">Logout</Button>{" "}
         </li>
+        <li
+          onClick={() => {
+            props.setPage(EXPLORE_PAGE);
+          }}
+        >
+          Explore
+          </li>
       </ul>
     </div>
   );
