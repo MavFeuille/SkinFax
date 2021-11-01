@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CommentForm from "./CommentForm";
 import {
-  IoChatbubbleOutline,
-  IoHeartOutline,
-  IoHeartSharp,
   IoBookmarkOutline,
 } from "react-icons/io5";
 import { FaRegTrashAlt } from "react-icons/fa";
+import './Home.css';
 
 export default function Home(props) {
   const [home, setHome] = useState([]);
@@ -22,7 +20,9 @@ export default function Home(props) {
     ])
       .then((all) => {
         const userPosts = all[0].data;
+        console.log("🚀 ~ file: Home.jsx ~ line 25 ~ .then ~ userPosts", userPosts)
         const followingPosts = all[1].data;
+        console.log("🚀 ~ file: Home.jsx ~ line 27 ~ .then ~ followingPosts", followingPosts)
         // const comments = all[2].data;
         const combinedPosts = userPosts.concat(followingPosts);
 
@@ -83,10 +83,13 @@ export default function Home(props) {
     // }
   };
 
+ 
+
   const existingComments = comments.map((obj) => {
     return (
       <div className="all-comments">
         <div>
+          {/* <img src={obj.profile_picture_url} alt="profile image"/> */}
           <p>{obj.username}</p>
           <p>{obj.comment}</p>
           <p>{obj.created}</p>
@@ -105,56 +108,62 @@ export default function Home(props) {
   // To render all posts of users him/herself and those they're following
   const combinedPosts = home.map((obj) => {
     return (
-      <div key={obj.id}>
-        <p> {obj.username}</p>
-        <img src={obj.image_video_url} alt="" />
-        <p>{obj.description}</p>
-        <p>{obj.created}</p>
-
-        <button className="">
-          <IoHeartOutline />
-        </button>
-
-        <span
-          onClick={() => {
-            console.log("Clicked for comment! ");
-          }}
-        >
-          <IoChatbubbleOutline />
-        </span>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            console.log("clicked fav");
-            axios
-              .post("/api/favourites/", {
-                id: props.user.id,
-                post_id: obj.id,
-              })
-              .then((res) => {
-                console.log(res);
-              })
-              .catch((err) => {
-                console.log(err.message);
-              });
-          }}
-        >
-          <button type="submit">
-            <IoBookmarkOutline />
-          </button>
-        </form>
-        <div>
-          <CommentForm getAllComments={getAllComments} />
-          <p>{comments && existingComments}</p>
+      <div className="post" key={obj.id}>
+        <div className="info">
+          <div className="user">
+            <div>
+              <img className="user-profile-pic"src={obj.profile_picture_url} alt="profile image"/>
+            </div>
+              <p className="username"> {obj.username}</p>
+          </div>
         </div>
-      </div>
-    );
+        <div className="post-content">
+          <img className="post-image" src={obj.image_video_url} alt="" />
+        </div>
+        <div className="reaction-container">
+          <i class="far fa-heart" onClick={() => console.log("Liked!")}></i>
+          <i class="far fa-comment" onClick={() => console.log("Click to leave comment!")}></i>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              console.log("clicked fav");
+              axios
+                .post("/api/favourites/", {
+                  id: props.user.id,
+                  post_id: obj.id,
+                })
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((err) => {
+                  console.log(err.message);
+                });
+            }}
+            >
+            <button className="button-bookmark-icon" type="submit">
+              <i class="far fa-bookmark"></i>
+            </button>
+          </form>
+          </div>
+        <div>
+          <p>{obj.description}</p>
+          <p>{obj.created}</p>
+        </div>
+          <div className="comment-form-container">
+            <CommentForm className="comment-form" getAllComments={getAllComments} />
+            <p>{comments && existingComments}</p>
+          </div>
+       </div>  
+      
+    );  
   });
 
   return (
-    <div>
-      <h1 className="title">Home</h1>
-      {combinedPosts}
-    </div>
+    <section className="mainContainer">
+      <div>
+        <h1 className="title">Home</h1>
+        {combinedPosts}
+      </div>
+    </section>
   );
 }
