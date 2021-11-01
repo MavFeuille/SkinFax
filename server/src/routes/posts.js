@@ -43,10 +43,6 @@ const routers = function (pool) {
   });
 
 
-
-
-
-
   // only getting logged in user's post
   router.get('/user_posts', function (req, res) {
 

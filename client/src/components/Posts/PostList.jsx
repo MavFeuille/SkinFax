@@ -19,7 +19,7 @@ export default function PostList(props) {
         deletePost={() => deletePost(post.id)}
         addFavourite={() => addFavourite(post.id)}
         isOwner={post.id === props.user.id}
-        profilePictureUrl={props.user.profile_picture_url}
+        profilePictureUrl={post.profile_picture_url}
         imageVideoUrl={post.image_video_url}
         postId={post.content_post_id}
       />
