@@ -18,8 +18,17 @@ export default function PostListItem(props) {
           <img className="post-image" src={imageVideoUrl} alt="" />
         </div>
         <div className="reaction-container">
-          <i class="far fa-heart" onClick={() => console.log("Liked!")}></i>
-          <i class="far fa-comment" onClick={() => console.log("Click to leave comment!")}></i>
+
+          <div className="heart-btn" onClick={() => console.log("Liked!")}>
+            <div className="content">
+              <span className="heart"></span>
+              <span className="like">Like</span>
+              {/* <span className="num"></span> */}
+              {/* <span className="heart"></span> */}
+            </div>
+          </div>
+
+          <i className="far fa-comment" onClick={() => console.log("Click to leave comment!")}></i>
             <button className="button-bookmark-icon" onClick={addFavourite}>
               <i class="far fa-bookmark"></i>
             </button>
