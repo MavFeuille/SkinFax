@@ -2,14 +2,14 @@ import CommentList from "../CommentList";
 
 
 export default function PostListItem(props) {
-  const { postId, profilePictureUrl, imageVideoUrl, isOwner, created, username, url, description, deletePost, addFavourite } = props
+  const { postId, profilePictureUrl, imageVideoUrl, isOwner, created, username, description, deletePost, addFavourite } = props
 
   return (
     <section className="post"> 
         <div className="info">
           <div className="user">
             <div>
-              <img className="user-profile-pic"src={profilePictureUrl} alt="profile image"/>
+              <img className="user-profile-pic" src={profilePictureUrl} alt="profile image"/>
             </div>
               <p className="username"> {username}</p>
           </div>

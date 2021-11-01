@@ -5,8 +5,9 @@ import PostList from "../Posts/PostList";
 import './Home.css';
 
 export default function Home(props) {
+  
   const [posts, setPosts] = useState([]);
- 
+  
   // const [heart, set]
   useEffect(() => {
     Promise.all([
@@ -14,31 +15,32 @@ export default function Home(props) {
       axios.get("/api/posts/follow_posts"),
       // axios.get("/api/comments")
     ])
-      .then((all) => {
-        const userPosts = all[0].data;
-        // console.log("🚀 ~ file: Home.jsx ~ line 25 ~ .then ~ userPosts", userPosts)
-        const followingPosts = all[1].data;
-        // console.log("🚀 ~ file: Home.jsx ~ line 27 ~ .then ~ followingPosts", followingPosts)
-        // const comments = all[2].data;
-        const combinedPosts = userPosts.concat(followingPosts);
-
-        combinedPosts.sort((a, b) => {
-          const date1 = new Date(a.created.replace(" ", "T"));
-          const unixDate1 = Math.floor(date1.getTime() / 1000);
-
-          const date2 = new Date(b.created.replace(" ", "T"));
-          const unixDate2 = Math.floor(date2.getTime() / 1000);
-
-          return unixDate2 - unixDate1;
-        });
-        setPosts(combinedPosts);
-        // setComments(comments);
-      })
-      .catch((err) => {
-        console.log(err);
+    .then((all) => {
+      const userPosts = all[0].data;
+      // console.log("🚀 ~ file: Home.jsx ~ line 25 ~ .then ~ userPosts", userPosts)
+      const followingPosts = all[1].data;
+      // console.log("🚀 ~ file: Home.jsx ~ line 27 ~ .then ~ followingPosts", followingPosts)
+      // const comments = all[2].data;
+      const combinedPosts = userPosts.concat(followingPosts);
+      
+      combinedPosts.sort((a, b) => {
+        const date1 = new Date(a.created.replace(" ", "T"));
+        const unixDate1 = Math.floor(date1.getTime() / 1000);
+        
+        const date2 = new Date(b.created.replace(" ", "T"));
+        const unixDate2 = Math.floor(date2.getTime() / 1000);
+        
+        return unixDate2 - unixDate1;
       });
-    }, []);
-    
+      setPosts(combinedPosts);
+      // setComments(comments);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }, []);
+  
+  
   
     const addFavourite = (id) => {
       // event.preventDefault();
