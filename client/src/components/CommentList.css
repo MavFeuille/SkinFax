@@ -3,14 +3,14 @@
 
 } */
 ul.list-comments {
-  display: inline;
-  float: left;
+  display: flex;
+  /* float: left; */
   background: #afd7f8;
-  border-radius: 10px;
-  width: 168px;
-  height: 168px;
-  justify-content: space-evenly;
-  flex-direction: row;
+  /* border-radius: 10px; */
+  /* width: 168px;
+  height: 168px; */
+  /* justify-content: space-evenly; */
+  /* flex-direction: row; */
 
 }
 
@@ -18,7 +18,9 @@ p.username{
   display: flex;
   /* flex-direction: column-reverse; */
   color: brown;
-  align-items: flex-start;
+  align-items: flex-end;
+  margin-right: 5%;
+
   /* width: 2px;
   height: 2px; */
 }
@@ -26,18 +28,19 @@ p.username{
 p.comment{
   display: flex;
   color: blueviolet;
-  align-items: flex-start;
+  align-items: flex-end;
+  margin-right: 5%;
   /* width: 2px;
   height: 2px; */
 }
 
 p.created{
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   /* flex-direction: row; */
   color: rgb(158, 187, 27);
-  width: 20px;
-  height: 20px;
+  /* width: 20px;
+  height: 20px; */
 }
 
 /* div.all-comments{
