@@ -19,7 +19,7 @@ export default function FavouriteListItem(props) {
           type="button"
           onClick={props.deleteFavourite}
         >
-          <i class="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt"></i>
         </button>
       </section>
     </article>

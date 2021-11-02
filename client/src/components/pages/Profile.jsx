@@ -29,10 +29,7 @@ export default function Profile(props) {
       });
   }, []);
 
-  console.log("All Comments! LINE 36 : ", comments);
-
   const deletePost = function (id) {
-    console.log("deleting post, post ID: ", id);
     axios
       .delete(`/api/posts/${id}`)
       .then(() => {

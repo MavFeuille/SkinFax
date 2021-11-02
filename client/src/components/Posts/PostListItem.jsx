@@ -1,30 +1,43 @@
-import { useState } from 'react';
+import { useState } from "react";
 import axios from "axios";
 import CommentList from "../CommentList";
 
 export default function PostListItem(props) {
+  const {
+    handleFollow,
+    followList,
+    creatorUserID,
+    user,
+    postId,
+    profilePictureUrl,
+    imageVideoUrl,
+    isOwner,
+    created,
+    username,
+    description,
+    deletePost,
+    addFavourite,
+  } = props;
 
-  const { handleFollow, followList, creatorUserID, user, postId, profilePictureUrl, imageVideoUrl, isOwner, created, username, description, deletePost, addFavourite } = props
-   
-    return (
-      <section className="post">
-        <div className="info">
-          <div className="user">
-            <div>
-              <img
-                className="user-profile-pic"
-                src={profilePictureUrl}
-                alt="profile image"
-              />
-            </div>
-            <p className="username"> {username}</p>
-            {followList && !followList.includes(creatorUserID) && !isOwner && 
-              <form onSubmit={event=> event.preventDefault()}>
-                <button  onClick={handleFollow }>Follow</button>
-              </form>
-            }
+  return (
+    <section className="post">
+      <div className="info">
+        <div className="user">
+          <div>
+            <img
+              className="user-profile-pic"
+              src={profilePictureUrl}
+              alt="profile image"
+            />
           </div>
+          <p className="username"> {username}</p>
+          {followList && !followList.includes(creatorUserID) && !isOwner && (
+            <form onSubmit={(event) => event.preventDefault()}>
+              <button onClick={handleFollow}>Follow</button>
+            </form>
+          )}
         </div>
+      </div>
 
       <div className="post-content">
         <img className="post-image" src={imageVideoUrl} alt="" />
@@ -53,6 +66,3 @@ export default function PostListItem(props) {
     </section>
   );
 }
-
-
-
