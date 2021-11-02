@@ -1,8 +1,13 @@
 import CommentList from "../CommentList";
-
+import {useState} from 'react';
 
 export default function PostListItem(props) {
   const { postId, profilePictureUrl, imageVideoUrl, isOwner, created, username, description, deletePost, addFavourite } = props
+
+  const [isActive, setActive] = useState(false);
+  const toggleClass = () => {
+    setActive(!isActive);
+  };
 
   return (
     <section className="post"> 
@@ -19,7 +24,8 @@ export default function PostListItem(props) {
         </div>
         <div className="reaction-container">
 
-          <div className="heart-btn" onClick={() => console.log("Liked!")}>
+
+          <div className={isActive ? "heart-btn": null} onClick={toggleClass}>
             <div className="content">
               <span className="heart"></span>
               <span className="like">Like</span>
