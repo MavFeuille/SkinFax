@@ -2,12 +2,11 @@ form.form-dms {
   display: flex;
   border-top: 2px solid #D3D3D3;
   margin-bottom: 2%;
-  margin-top: 2%;
+  margin-top: 5px;
   position: absolute;
-  bottom: -30px;
-  background-color: rgb(240, 140, 165);
   width: 95%;
   bottom: 0px;
+  right: 2.5%;
 }
 
 .input {
@@ -17,8 +16,7 @@ form.form-dms {
   width: 100%;
   font-size: 1.2em;
   height: 60px;
-  /* margin-left: 0.1em; */
-
+  
 }
 
 input:focus, textarea:focus, select:focus{
