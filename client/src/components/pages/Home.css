@@ -1,7 +1,10 @@
 .mainContainer {
   padding: 0 50px 5px 10px;
   justify-content: center;
-  /* text-align: center; */
+}
+
+.title {
+  text-align: center;
 }
 
 .post {
