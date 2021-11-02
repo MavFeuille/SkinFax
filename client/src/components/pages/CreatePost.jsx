@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { HOME_PAGE } from "../NavItems";
+import './CreatePost.css';
+import Button from 'react-bootstrap/Button'
 
 export default function CreatePost(props) {
   const [createPost, setCreatePost] = useState([]);
@@ -54,31 +56,51 @@ export default function CreatePost(props) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmitFile} className="form">
-        <input
-          type="file"
-          name="image"
-          onChange={handleFileInputChange}
-          value={fileInputState}
-          className="form-input"
-        />
-        <input
+    <div className="create-post-backrgound">
+    <section>
+    <div className="create-post-box">
+     <div>
+      <div>
+        <h1 className="share-tea-heading">Share some of that positivi-Tea...</h1>
+      </div>
+      <form  onSubmit={handleSubmitFile} className="form">
+        <div className="create-post-select-image">
+          <input
+            type="file"
+            name="image"
+            onChange={handleFileInputChange}
+            // value={fileInputState}
+            className="form-input"
+          />
+        {previewSource && (
+          <img src={previewSource} alt="chosen" style={{ height: "250px" }} />
+        )}
+        </div>
+      <div className="create-post-textbox-container">
+        <textarea
+          className="input"
           type="text"
           name="Description"
           placeholder="Write a caption... "
           value={textInputState}
           onChange={(event) => setTextInputState(event.target.value)}
           className="form-input"
-        />
-
-        <button className="btn" type="submit">
-          Submit
-        </button>
+        >
+        </textarea>
+        
+        <div>
+          <Button  className="btn-create-post"  variant="outline-secondary" type="submit">Post</Button>{' '}
+        <div className="blue-tea">
+          <img src="https://img.icons8.com/dusk/256/000000/tea--v2.png"/>
+        </div>
+          <p></p>
+        </div>
+      </div>
       </form>
-      {previewSource && (
-        <img src={previewSource} alt="chosen" style={{ height: "250px" }} />
-      )}
+      </div>
     </div>
+    </section>
+    </div>
+    
   );
 }
