@@ -6,7 +6,6 @@ export default function Input({message, setMessage, sendMessage}){
 
   return (
     <form className="form-dms">
-      
       <input 
       className="input"
       type="text"
