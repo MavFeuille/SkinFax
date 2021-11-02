@@ -7,6 +7,7 @@ export default function PostListItem(props) {
   const { followList, creatorUserID, user, postId, profilePictureUrl, imageVideoUrl, isOwner, created, username, description, deletePost, addFavourite } = props
   console.log("🚀 ~ file: PostListItem.jsx ~ line 8 ~ PostListItem ~ creatorUserID", creatorUserID)
    
+  const [followButton, setFollowButton] = useState(true)
 
    // Follow new friend
    const handleFollow = () => {
@@ -38,6 +39,9 @@ export default function PostListItem(props) {
               <form onSubmit={event=> event.preventDefault()}>
                 <button  onClick={handleFollow }>Follow</button>
               </form>
+            }
+            {followList && followList.includes(creatorUserID) && !isOwner && 
+              <p>Following</p>
             }
           </div>
         </div>
