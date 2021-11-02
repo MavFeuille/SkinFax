@@ -4,7 +4,6 @@ import CommentList from "../CommentList";
 
 export default function PostListItem(props) {
   const {
-    handleFollow,
     followList,
     creatorUserID,
     user,
@@ -23,9 +22,6 @@ export default function PostListItem(props) {
     creatorUserID
   );
 
-  const { followList, creatorUserID, user, postId, profilePictureUrl, imageVideoUrl, isOwner, created, username, description, deletePost, addFavourite } = props
-  console.log("🚀 ~ file: PostListItem.jsx ~ line 8 ~ PostListItem ~ creatorUserID", creatorUserID)
-   
    // Follow new friend
    const handleFollow = () => {
     console.log("🚀 ~ file: Explore.jsx ~ line 70 ~ Explore ~ user.id", props.user.id)
@@ -57,13 +53,10 @@ export default function PostListItem(props) {
                 <button  onClick={handleFollow }>Follow</button>
               </form>
             }
+            {followList && followList.includes(creatorUserID) && !isOwner && 
+              <p>Following</p>
+            }
           </div>
-          <p className="username"> {username}</p>
-          {followList && !followList.includes(creatorUserID) && !isOwner && (
-            <form onSubmit={(event) => event.preventDefault()}>
-              <button onClick={handleFollow}>Follow</button>
-            </form>
-          )}
         </div>
       
 
