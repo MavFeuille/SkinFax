@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Home from "./Home";
 import { HOME_PAGE } from "../NavItems";
+import './CreatePost.css';
+import Button from 'react-bootstrap/Button'
 
 export default function CreatePost(props) {
   const [createPost, setCreatePost] = useState([]);
@@ -55,16 +57,23 @@ export default function CreatePost(props) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmitFile} className="form">
+    <div className="create-post-box">
+      <form  onSubmit={handleSubmitFile} className="form">
+        <div className="create-post-select-image">
+          <input
+            type="file"
+            name="image"
+            onChange={handleFileInputChange}
+            // value={fileInputState}
+            className="form-input"
+          />
+        {previewSource && (
+          <img src={previewSource} alt="chosen" style={{ height: "250px" }} />
+        )}
+        </div>
+      <div className="create-post-textbox-container">
         <input
-          type="file"
-          name="image"
-          onChange={handleFileInputChange}
-          value={fileInputState}
-          className="form-input"
-        />
-        <input
+          className="input"
           type="text"
           name="Description"
           placeholder="Write a caption... "
@@ -72,14 +81,13 @@ export default function CreatePost(props) {
           onChange={(event) => setTextInputState(event.target.value)}
           className="form-input"
         />
-
-        <button className="btn" type="submit">
-          Submit
-        </button>
+        
+        <div>
+          <Button variant="primary" className="btn-create-post" type="submit">Post</Button>{' '}
+        </div>
+      </div>
       </form>
-      {previewSource && (
-        <img src={previewSource} alt="chosen" style={{ height: "250px" }} />
-      )}
-    </div>
+      </div>
+    
   );
 }
