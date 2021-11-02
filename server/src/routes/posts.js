@@ -157,4 +157,3 @@ const routers = function (pool) {
 
 // only export the function
 module.exports = routers;
-

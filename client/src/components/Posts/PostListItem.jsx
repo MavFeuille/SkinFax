@@ -1,7 +1,13 @@
+import { useState } from "react";
+import axios from "axios";
 import CommentList from "../CommentList";
 
 export default function PostListItem(props) {
   const {
+    handleFollow,
+    followList,
+    creatorUserID,
+    user,
     postId,
     profilePictureUrl,
     imageVideoUrl,
@@ -25,8 +31,14 @@ export default function PostListItem(props) {
             />
           </div>
           <p className="username"> {username}</p>
+          {followList && !followList.includes(creatorUserID) && !isOwner && (
+            <form onSubmit={(event) => event.preventDefault()}>
+              <button onClick={handleFollow}>Follow</button>
+            </form>
+          )}
         </div>
       </div>
+
       <div className="post-content">
         <img className="post-image" src={imageVideoUrl} alt="" />
       </div>
