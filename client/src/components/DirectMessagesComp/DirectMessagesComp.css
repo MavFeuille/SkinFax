@@ -140,8 +140,9 @@ html body {
   border-radius: 8px;
   width: 35%;
   height: 500px;
-  overflow-y: auto;
   z-index: 9999;
+  position: relative;
+  padding-bottom: 80px;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {

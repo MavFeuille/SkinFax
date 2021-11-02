@@ -3,3 +3,7 @@
   flex: auto;
 
 }
+
+.scroll {
+  overflow-y:auto;
+}
