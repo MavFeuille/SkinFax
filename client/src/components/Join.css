@@ -182,6 +182,7 @@ body{
   border-radius: 0;
   padding: 15px 20px;
   width: 100%;
+  color: #090c3f;
 }
 
 .heading {
@@ -192,7 +193,7 @@ body{
 }
 
 .button {
-    color: rgba(252, 248, 248, 0.975) !important;
+    color: rgb(1, 1, 10) !important;
     text-transform: uppercase;
     text-decoration: none;
     background: #6fa3da;

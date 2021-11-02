@@ -56,7 +56,7 @@ const [room, setRoom] = useState('');
           state: {name, room}
           }}>
         <button
-          className="button mt-20" type="submit">Sign In
+          className="button mt-20" type="submit">Enter Room
           </button>
         </Link>
      </div>

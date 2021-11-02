@@ -16,9 +16,13 @@
   margin-left: 0.2%;
   margin-top: 0.2%;
   /* color: white; */
-  background-color: rgb(247, 237, 237);
+  /* background-color: rgb(247, 237, 237); */
 }
 
+.title {
+  display: flex;
+  color: snow;
+}
 .rightInnerContainer {
   display: flex;
   flex: 0.5;

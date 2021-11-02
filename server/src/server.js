@@ -68,10 +68,10 @@ io.on('connection', (socket) => {
      socket.join(user.room);
 
     //emitted from backend -> frontend
-    socket.emit('message', {user: 'admin', text: `${user.name}, welcome to the new room ${user.room}`})
+    socket.emit('message', {user: 'Admin', text: `${user.name}, Welcome to the New Room ${user.room}!`})
     // console.log('user____', user)
     // sends msg to e/o
-    socket.broadcast.to(user.room).emit('message', {user: 'admin', text:`${user.name}, just joined!`})
+    socket.broadcast.to(user.room).emit('message', {user: 'Admin', text:`${user.name}, just joined!`})
 
     socket.join(user.room);
     io.to(user.room).emit('roomData', {room:user.room, users: getUsersInRoom(user.room)})
@@ -99,7 +99,7 @@ io.on('connection', (socket) => {
     console.log('user just left');
     
     if(user){
-      io.to(user.room).emit('message', {user: 'admin', text: `${user.name} has left.`})
+      io.to(user.room).emit('message', {user: 'Admin', text: `${user.name} has left.`})
       io.to(user.room).emit('roomData', {room: user.room, users: getUsersInRoom(user.room)})
     }
   });

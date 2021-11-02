@@ -138,8 +138,9 @@ html body {
   justify-content: space-between;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  height: auto;
+  /* height: 500px; */
   width: 35%;
+  overflow-y:auto;
   z-index: 9999;
 }
 

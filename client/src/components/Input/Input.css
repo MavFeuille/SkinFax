@@ -1,6 +1,9 @@
 .form {
   display: flex;
   border-top: 2px solid #D3D3D3;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  
 }
 
 .input {
@@ -9,6 +12,7 @@
   padding: 5%;
   width: 80%;
   font-size: 1.2em;
+  height: 8%;
 }
 
 input:focus, textarea:focus, select:focus{
@@ -16,7 +20,7 @@ input:focus, textarea:focus, select:focus{
 }
 
 .sendButton {
-  color: #fff !important;
+  color: snow!important;
   text-transform: uppercase;
   text-decoration: none;
   background: #c6c8ff;
