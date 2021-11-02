@@ -43,5 +43,10 @@ export default function Favourites(props) {
     );
   });
 
-  return <div className="user--favorite-section">{userFavourites}</div>;
+  return (
+    <div className="user--favorite-section">
+      <h1>Your Favourites</h1>
+      <div className="user--favorite-wrapper">{userFavourites}</div>
+    </div>
+  );
 }

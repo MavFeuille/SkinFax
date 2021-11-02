@@ -14,7 +14,7 @@ const routers = function (pool) {
       JOIN users ON content_posts.user_id = users.id
       LEFT JOIN likes ON likes.content_post_id = content_posts.id 
       GROUP BY users.id, users.username, image_video_url, description, created, content_posts.id
-      ORDER BY created DESC;`
+      ORDER BY created;`
 
     pool.query(queryString)
       .then((data) => {

@@ -1,13 +1,15 @@
 .mainContainer {
   padding: 0 50px 5px 10px;
   justify-content: center;
+  text-align: center;
 }
 
 .post {
-  width: 50%;
-  margin: 50px auto 0;
+  width: 80%;
+  max-width: 1000px;
+  margin: 20px auto 0;
   padding-top: 30px;
-  border: 1px solid #ded9d9;
+  background: rgba(148, 146, 185, 0.3);
 }
 
 .info {
@@ -56,8 +58,9 @@
 }
 
 .reaction-container {
-  width: 100%;
+  width: 75%;
   height: 50px;
+  margin: auto;
   display: flex;
   align-items: center;
 }
