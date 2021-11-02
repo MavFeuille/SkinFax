@@ -13,6 +13,8 @@ export default function PostListItem(props) {
     addFavourite,
   } = props;
 
+  console.log("post list item", props);
+
   return (
     <section className="post">
       <div className="info">
@@ -31,14 +33,16 @@ export default function PostListItem(props) {
         <img className="post-image" src={imageVideoUrl} alt="" />
       </div>
       <div className="reaction-container">
-        <i class="far fa-heart"></i>
-        <i class="far fa-comment"></i>
-        <button className="button-bookmark-icon" onClick={addFavourite}>
-          <i class="far fa-bookmark"></i>
-        </button>
+        <i className="far fa-heart"></i>
+        <i className="far fa-comment"></i>
+        {!isOwner && (
+          <button className="button-bookmark-icon" onClick={addFavourite}>
+            <i className="far fa-bookmark"></i>
+          </button>
+        )}
         {isOwner && (
-          <button onClick={deletePost}>
-            <i class="far fa-trash-alt"></i>
+          <button className="trash--button" onClick={deletePost}>
+            <i className="far fa-trash-alt"></i>
           </button>
         )}
       </div>
@@ -47,7 +51,7 @@ export default function PostListItem(props) {
         <p>{created}</p>
       </div>
       <div className="comment-form-container">
-        <CommentList postId={postId} user={props.user} />
+        <CommentList postId={postId} user={props.user} isOwner={isOwner} />
       </div>
     </section>
   );

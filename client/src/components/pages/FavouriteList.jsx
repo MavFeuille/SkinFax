@@ -29,6 +29,7 @@ export default function Favourites(props) {
   };
 
   const userFavourites = favourites.map((favourite) => {
+    console.log(favourite);
     return (
       <FavouriteListItem
         key={favourite.id}
@@ -37,9 +38,10 @@ export default function Favourites(props) {
         url={favourite.image_video_url}
         description={favourite.description}
         deleteFavourite={() => deleteFavourite(favourite.id)}
+        profilePictureUrl={favourite.profile_picture_url}
       />
     );
   });
 
-  return <div>{userFavourites}</div>;
+  return <div className="user--favorite-section">{userFavourites}</div>;
 }

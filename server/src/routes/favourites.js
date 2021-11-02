@@ -7,7 +7,7 @@ const routers = function (pool) {
   router.get('/:id', function (req, res) {
     console.log("get favorites", req.params.id)
     const queryString = `  
-    SELECT content_posts.id, favourites.id, image_video_url, description, created, users.username
+    SELECT users.profile_picture_url, content_posts.id, favourites.id, image_video_url, description, created, users.username
     FROM content_posts
     JOIN favourites ON favourites.content_post_id = content_posts.id
     JOIN users ON content_posts.user_id = users.id
