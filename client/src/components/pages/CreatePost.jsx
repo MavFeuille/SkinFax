@@ -57,7 +57,13 @@ export default function CreatePost(props) {
   };
 
   return (
+    <div className="create-post-backrgound">
+    <section>
     <div className="create-post-box">
+     <div>
+      <div>
+        <h1 className="share-tea-heading">Share some of that positivi-Tea...</h1>
+      </div>
       <form  onSubmit={handleSubmitFile} className="form">
         <div className="create-post-select-image">
           <input
@@ -72,7 +78,7 @@ export default function CreatePost(props) {
         )}
         </div>
       <div className="create-post-textbox-container">
-        <input
+        <textarea
           className="input"
           type="text"
           name="Description"
@@ -80,14 +86,22 @@ export default function CreatePost(props) {
           value={textInputState}
           onChange={(event) => setTextInputState(event.target.value)}
           className="form-input"
-        />
+        >
+        </textarea>
         
         <div>
-          <Button variant="primary" className="btn-create-post" type="submit">Post</Button>{' '}
+          <Button  className="btn-create-post"  variant="outline-secondary" type="submit">Post</Button>{' '}
+        <div className="blue-tea">
+          <img src="https://img.icons8.com/dusk/256/000000/tea--v2.png"/>
+        </div>
+          <p></p>
         </div>
       </div>
       </form>
       </div>
+    </div>
+    </section>
+    </div>
     
   );
 }
