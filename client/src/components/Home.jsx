@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CommentForm from "./CommentForm";
-import { IoChatbubbleOutline, IoHeartOutline, IoHeartSharp, IoBookmarkOutline, IoRocketSharp } from "react-icons/io5";
-import { Form, FloatingLabel } from 'react-bootstrap';
+import CommentForm from "../CommentForm";
+import PostList from "../Posts/PostList";
+import "./Home.css";
 
-export default function Home() {
-  const [home, setHome] = useState([]);
+export default function Home(props) {
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     Promise.all([
@@ -21,40 +21,59 @@ export default function Home() {
           const date1 = new Date(a.created.replace(" ", "T"));
           const unixDate1 = Math.floor(date1.getTime() / 1000);
 
-        const date2 = new Date(b.created.replace(' ', "T"));
-        const unixDate2 = Math.floor(date2.getTime()/1000);
-        
-        return unixDate2 - unixDate1;
+          const date2 = new Date(b.created.replace(" ", "T"));
+          const unixDate2 = Math.floor(date2.getTime() / 1000);
+
+          return unixDate2 - unixDate1;
+        });
+        setPosts(combinedPosts);
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      setHome(combinedPosts);
-    }).catch ((err) => {
-       console.log (err)
-   })
-  }, [])
+  }, []);
 
-  const combinedPosts = home.map((obj, index) => {
-    
-    return (
-      <div key={index}>
-        <p> {obj.username}</p>
-        <img src={obj.image_video_url} />
-        <p>{obj.description}</p>
-        <p>{obj.created}</p>
-        <span onClick={() => console.log ("Liked! ")}><IoHeartOutline /></span>
-        <span onClick={() => {console.log ("Clicked for comment! ")}}><IoChatbubbleOutline /></span>
-        <span onClick={() => console.log ("Saved! ")}><IoBookmarkOutline /></span>
-      <div>
-        <CommentForm />
-      </div>
+  const addFavourite = (id) => {
+    console.log("clicked fav");
+    axios
+      .post("/api/favourites/", {
+        id: props.user.id,
+        post_id: id,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
-      </div>
-    );
-  });
+  const deletePost = function (id) {
+    console.log("deleting post, post ID: ", id);
+    axios
+      .delete(`/api/posts/${id}`)
+      .then(() => {
+        setPosts(posts.filter((post) => post.id !== id));
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
 
+  // To render all posts of users him/herself and those they're following
   return (
-    <div>
-      <h1 className="title">Home</h1>
-      {combinedPosts}
-    </div>
+    <section className="mainContainer">
+      <div>
+        <h1 className="title">Home</h1>
+        {posts && (
+          <PostList
+            posts={posts}
+            user={props.user}
+            deletePost={deletePost}
+            addFavourite={addFavourite}
+          />
+        )}
+      </div>
+    </section>
   );
 }

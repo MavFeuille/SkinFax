@@ -9,7 +9,7 @@ export default function useAuth() {
       return setStatus("invalid username or password")
     }
 
-    setUser({ id: 1, email: "mario@hotmail.com" });
+    setUser({ id: 1, email: "mario@hotmail.com", handle: "mario_dabaddest" });
     setStatus('logged in successfully')
   }
 
