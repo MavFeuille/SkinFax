@@ -19,10 +19,12 @@
   },
   "homepage": "https://github.com/MavFeuille/SkinFax#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
     "cloudinary": "^1.27.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "morgan": "^1.10.0",
     "pg": "^8.7.1",
     "pg-native": "^3.0.0",
     "socket.io": "^4.3.1"

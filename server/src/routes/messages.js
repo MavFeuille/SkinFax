@@ -3,6 +3,8 @@ const router = express.Router();
 // function that will contain all the get routes;
 const routers = function (pool) {
 
+  // router.get('/', function (req, res, next) {
+
   router.get('/direct_messages', function (req, res, next) {
     /*array of receiver and sender data 
     from_user_id = sender

@@ -19,50 +19,50 @@ VALUES
 ('KimmyKW', 'kim_kardashian@gmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://pbs.twimg.com/profile_images/1317551648617730048/JY6m4Hfh.jpg', TRUE),
 ('lovelovesjoe', 'lovejoe@gmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://pbs.twimg.com/profile_images/1317551648617730048/JY6m4Hfh.jpg', TRUE);
 
-INSERT INTO content_posts (id, user_id, image_video_url, description)
+INSERT INTO content_posts (user_id, image_video_url, description)
 VALUES 
-(1,1, 'url', 'For me, money is not my definition of success. Inspiring people is a definition of success.'),
-(2,2, 'url', 'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.'),
-(3,2, 'url', 'Coming together is a beginning; keeping together is progress; working together is success.'),
-(4,3, 'url', 'However difficult life may seem, there is always something you can do and succeed at.'),
-(5,2, 'url', 'I still think I am the greatest.'),
-(6,2, 'url', 'Keep your nose out the sky, keep your heart to god, and keep your face to the raising sun.'),
-(7,2, 'url', 'If you have the opportunity to play this game of life you need to appreciate every moment. a lot of people don’t appreciate the moment until it’s passed.'),
-(8,8, 'url', 'I feel like I’m too busy writing history to read it.'),
-(9,9, 'url', 'Know your worth! People always act like they’re doing more for you than you’re doing for them.'),
-(10,10, 'url', 'My message isn’t perfectly defined. I have, as a human being, fallen to peer pressure.'),
-(11,11, 'url', 'If I was just a fan of music, I would think that I was the number one artist in the world.'),
-(12,12, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(13,13, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(14,14, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(15,15, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(16,16, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(17,17, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(18,18, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.');
+(1, 'url','For me, money is not my definition of success. Inspiring people is a definition of success.'),
+(2, 'url', 'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.'),
+(3, 'url', 'Coming together is a beginning; keeping together is progress; working together is success.'),
+(4, 'url', 'However difficult life may seem, there is always something you can do and succeed at.'),
+(5, 'url', 'I still think I am the greatest.'),
+(6, 'url', 'Keep your nose out the sky, keep your heart to god, and keep your face to the raising sun.'),
+(7, 'url', 'If you have the opportunity to play this game of life you need to appreciate every moment. a lot of people don’t appreciate the moment until it’s passed.'),
+(8, 'url', 'I feel like I’m too busy writing history to read it.'),
+(9, 'url', 'Know your worth! People always act like they’re doing more for you than you’re doing for them.'),
+(10, 'url', 'My message isn’t perfectly defined. I have, as a human being, fallen to peer pressure.'),
+(1, 'url', 'If I was just a fan of music, I would think that I was the number one artist in the world.'),
+(1, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(13, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(14, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(15, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(16, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(17, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(18, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.');
 
 INSERT INTO favourites (user_id, content_post_id)
 VALUES 
 (1,2), 
-(2,3), 
+-- (2,3), princess peach
 (3,1),
-(3,1),
-(3,1),
+(1,5),
+(2,1),
 (3,2),
-(3,3),
+(1,3),
+(2,4),
+(3,5),
+(1,6),
+(2,7),
+(3,8),
+(1,8),
+(2,8),
 (3,4),
+(1,10),
+(2,12),
 (3,5),
-(3,6),
-(3,7),
-(3,8),
-(3,8),
-(3,8),
-(3,3),
-(3,2),
-(3,12),
-(3,5),
-(3,3),
-(3,3),
-(3,2),
+(1,18),
+(2,17),
+(2,9),
 (3,7);
 
 INSERT INTO followers(follower_user_id, user_id)
@@ -71,23 +71,23 @@ VALUES
 (2, 1),
 (2, 3),
 (3, 2),
-(3, 4),
-(3, 5),
+(3, 1),
+(5, 1),
 (6, 3),
-(7, 4),
-(4, 7),
-(5, 12),
-(5, 13),
-(5, 7),
+(7, 1),
+(8, 1),
+(9, 1),
+(5, 3),
+(5, 2),
 (6, 2),
-(7, 8),
-(9, 9),
-(10, 2),
-(12, 4),
-(13, 4),
-(12, 3),
-(14, 10),
-(12, 10);
+(7, 2),
+(2, 4),
+(2, 7),
+(2, 8),
+(2, 9),
+(2, 12),
+(2, 17),
+(12, 1);
 
 
 INSERT INTO direct_messages (to_user_id, from_user_id, message)
@@ -134,13 +134,15 @@ VALUES
 (3,'comment 21',2),
 (10,'comment 22',1),
 (13,'comment 23',1),
-(12,'comment 24',8);
+(12,'comment 24',8),
+(3, 'Princess Peach likes Luigi''s post!', 2);
 
 INSERT INTO likes (user_id, content_post_id, comment_id)
 VALUES 
 (1,3,2),
 (2,1,3),
 (3,2,1),
-(1,3,3);
+(1,3,3),
+(3,1,3);
 
 --inserting content image via 3rd party ting

@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import './App.scss';
+import 'bootstrap/scss/bootstrap.scss';
+
 
 //a basic boilerplate code neeeded for ecvery react app
 ReactDOM.render(
