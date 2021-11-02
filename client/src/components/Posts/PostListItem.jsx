@@ -5,6 +5,7 @@ import CommentList from "../CommentList";
 export default function PostListItem(props) {
 
   const { handleFollow, followList, creatorUserID, user, postId, profilePictureUrl, imageVideoUrl, isOwner, created, username, description, deletePost, addFavourite } = props
+  console.log("🚀 ~ file: PostListItem.jsx ~ line 8 ~ PostListItem ~ creatorUserID", creatorUserID)
    
     return (
       <section className="post">

@@ -5,9 +5,9 @@ import "./Home.css";
 
 export default function Explore(props) {
 // console.log("🚀 ~ file: Explore.jsx ~ line 8 ~ Explore ~ props", props)
-
   const [posts, setPosts] = useState([]);
   const [followList, setFollowList] = useState([]);
+  
   console.log("🚀 ~ file: Explore.jsx ~ line 11 ~ Explore ~ posts", posts)
   
   useEffect(() => {
@@ -26,19 +26,17 @@ export default function Explore(props) {
   useEffect(() => {
     axios.get(`/api/follow/${props.user.id}`)
     .then((res) => {
-      // console.log("🚀 ~ file: Explore.jsx ~ line 58 ~ .then ~ res", res);
+      console.log("🚀 ~ file: Explore.jsx ~ line 29 ~ .then ~ res", res);
       setFollowList(res.data);
-      console.log("🚀 ~ file: Explore.jsx ~ line 32 ~ .then ~ res.data", res.data)
+      console.log("🚀 ~ file: Explore.jsx ~ line 31 ~ .then ~ res.data", res.data)
     })
     .catch((err) => {
-      console.log("🚀 ~ file: Explore.jsx ~ line 35 ~ findExistingFollowing ~ err", err);
+      console.log("🚀 ~ file: Explore.jsx ~ line 34 ~ findExistingFollowing ~ err", err);
     })
   },[]);
   ////
   
 
-  
-    
   const addFavourite = (id) => {
     // event.preventDefault();
     console.log("clicked fav");
@@ -86,14 +84,6 @@ export default function Explore(props) {
   return (
     <section className="mainContainer">
       <div>
-        {posts.length && (
-          <PostList
-            posts={posts}
-            user={props.user}
-            deletePost={deletePost}
-            addFavourite={addFavourite}
-          />
-        )}
         <h1 className="title">Explore</h1>
         {posts.length && <PostList posts={posts} user={props.user} deletePost={deletePost} addFavourite={addFavourite} followList={followList} handleFollow={handleFollow}/>}
       </div>
