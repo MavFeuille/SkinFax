@@ -176,6 +176,11 @@ body {
   animation: animate .8s steps(28) 1;
 }
 
+.heart.heart-active{
+  background-position: right;
+  animation: animate .8s steps(28) 1;
+}
+
 .like{
   margin-left: 4px;
   margin-top: 10px;
@@ -193,13 +198,13 @@ body {
   margin-left: 7px;
 } */
 
-/* .numb.heart-active:before{
+.numb.heart-active:before{
   content: '13';
   color: #000;
 }
 .like.heart-active{
   color: #000;
-} */
+}
 
 @keyframes animate {
   0%{

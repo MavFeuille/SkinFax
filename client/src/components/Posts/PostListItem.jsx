@@ -5,6 +5,8 @@ export default function PostListItem(props) {
   const { postId, profilePictureUrl, imageVideoUrl, isOwner, created, username, description, deletePost, addFavourite } = props
 
   const [isActive, setActive] = useState(false);
+  //if isActive/onclick toggle button colour change to pink
+  // which is heart-active
   const toggleClass = () => {
     setActive(!isActive);
   };
@@ -22,9 +24,8 @@ export default function PostListItem(props) {
         <div className="post-content">
           <img className="post-image" src={imageVideoUrl} alt="" />
         </div>
-        <div className="reaction-container">
 
-
+          <div className="reaction-container">
           <div className={isActive ? "heart-btn": null} onClick={toggleClass}>
             <div className="content">
               <span className="heart"></span>
@@ -32,7 +33,11 @@ export default function PostListItem(props) {
               {/* <span className="num"></span> */}
               {/* <span className="heart"></span> */}
             </div>
+
           </div>
+            {/* <div>
+            <button className="heart-active"></button>
+            </div> */}
 
           <i className="far fa-comment" onClick={() => console.log("Click to leave comment!")}></i>
             <button className="button-bookmark-icon" onClick={addFavourite}>
