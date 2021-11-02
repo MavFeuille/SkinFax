@@ -8,7 +8,6 @@ export default function Explore(props) {
   const [posts, setPosts] = useState([]);
   const [followList, setFollowList] = useState([]);
   
-  console.log("🚀 ~ file: Explore.jsx ~ line 11 ~ Explore ~ posts", posts)
   
   useEffect(() => {
     axios
@@ -36,6 +35,7 @@ export default function Explore(props) {
   },[]);
   ////
   
+  console.log("🚀 ~ file: Explore.jsx ~ line 38 ~ Explore ~ posts", posts)
 
   const addFavourite = (id) => {
     // event.preventDefault();
@@ -65,27 +65,28 @@ export default function Explore(props) {
       });
   };
   
+ 
   
-
-
   // Follow new friend
-  const handleFollow = () => {
-    console.log("🚀 ~ file: Explore.jsx ~ line 70 ~ Explore ~ user.id", props.user.id)
-    axios.post(`/api/follow/${posts.user_id}`, {userID: props.user.id})
-    .then((res) => {
-      console.log("🚀 ~ file: Explore.jsx ~ line 57 ~ .then ~ res", res)
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-  }
+  // const handleFollow = () => {
+  //   console.log("🚀 ~ file: Explore.jsx ~ line 70 ~ Explore ~ user.id", props.user.id)
+   
+  //   axios.post(`/api/follow/${posts.user_id}`, {userID: props.user.id})
+  //   .then((res) => {
+  //     console.log("🚀 ~ file: Explore.jsx ~ line 57 ~ .then ~ res", res)
+      
+  //   })
+  //   .catch((err) => {
+  //     console.log(err.message);
+  //   });
+  // }
 
   // To render all posts of users him/herself and those they're following
   return (
     <section className="mainContainer">
       <div>
         <h1 className="title">Explore</h1>
-        {posts.length && <PostList posts={posts} user={props.user} deletePost={deletePost} addFavourite={addFavourite} followList={followList} handleFollow={handleFollow}/>}
+        {posts.length && <PostList posts={posts} user={props.user} deletePost={deletePost} addFavourite={addFavourite} followList={followList} />}
       </div>
     </section>
   );

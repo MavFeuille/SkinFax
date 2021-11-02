@@ -12,9 +12,7 @@ const routers = function (pool) {
     VALUES ($1, $2)
     RETURNING *;`
 
-  
-
-    pool.query(queryString, [req.params.follow_id, req.body.userID])
+    pool.query(queryString, [req.body.userID, req.params.follow_id])
     .then((data) => {
         console.log("🚀 ~ file: follow.js ~ line 15 ~ data", data.rows)
         res.json(data.rows)

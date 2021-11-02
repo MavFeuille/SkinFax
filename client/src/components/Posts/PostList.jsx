@@ -1,12 +1,13 @@
+
 import PostListItem from "./PostListItem";
 
 export default function PostList(props) {
   // const [posts, setPosts] = useState(props.posts);
-  const {followList, handleFollow, posts, addFavourite, deletePost, user} = props
+  const {followList,  posts, addFavourite, deletePost, user} = props
   // console.log("🚀 ~ file: PostList.jsx ~ line 6 ~ PostList ~ posts", posts)
   // console.log("🚀 ~ file: PostList.jsx ~ line 6 ~ PostList ~ user", user)
 
-
+   
 
   const allPosts = posts.map((post) => {
     return (
@@ -24,7 +25,7 @@ export default function PostList(props) {
         user={user}
         creatorUserID={post.user_id}
         followList={followList}
-        handleFollow={handleFollow}
+        // handleFollow={handleFollow}
       />
     );
   });
