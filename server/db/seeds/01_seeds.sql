@@ -1,6 +1,6 @@
 INSERT INTO users ( username, email, password, profile_picture_url, is_active)
 VALUES
-( 'mario', 'mario@hotmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2021/03/mario-hero.jpg', TRUE), 
+( 'mario_thebaddest', 'mario@hotmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2021/03/mario-hero.jpg', TRUE), 
 ('luigi', 'luigi@deviantart.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://ssb.wiki.gallery/images/6/67/Luigi_SSBB.jpg', TRUE),
 ('Princess Peach', 'peach@gmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://pbs.twimg.com/profile_images/1317551648617730048/JY6m4Hfh.jpg', TRUE),
 ('sunflower_girl', 'daisy_keech@gmail.com', '$2a$10$GbpxiC5B2.ab7v9hae.uruaMuI.8LVySWcgwSbPCEUMsyUT8hfJhG', 'https://pbs.twimg.com/profile_images/1317551648617730048/JY6m4Hfh.jpg', TRUE),
@@ -111,7 +111,7 @@ VALUES
 
 INSERT INTO comments (user_id, comment, content_post_id)
 VALUES 
-(1,'love it!', 3),
+(5,'love it!', 3),
 (2,'soo cute!',1),
 (3,'i love the color!',2),
 (4,'omg obsessed',2),
