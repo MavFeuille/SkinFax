@@ -29,12 +29,15 @@ const profileRouter = require('./routes/profile');
 const favouritesRouter = require('./routes/favourites');
 const commentsRouter = require('./routes/comments');
 const messagesRouter = require('./routes/messages');
+const followRouter = require('./routes/follow')
 
 app.use('/api/posts', postsRouter(pool));
 app.use('/api/profile', profileRouter(pool));
 app.use('/api/favourites', favouritesRouter(pool));
 app.use('/api/comments', commentsRouter(pool));
 app.use('/api/messages', messagesRouter(pool));
+app.use('/api/messages', messagesRouter(pool));
+app.use('/api/follow', followRouter(pool));
 
 
 //connected as a client-side socket
