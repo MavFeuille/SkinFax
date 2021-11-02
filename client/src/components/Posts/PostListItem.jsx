@@ -1,5 +1,6 @@
 import CommentList from "../CommentList";
 import {useState} from 'react';
+import classnames from 'classnames';
 
 export default function PostListItem(props) {
   const { postId, profilePictureUrl, imageVideoUrl, isOwner, created, username, description, deletePost, addFavourite } = props
@@ -8,6 +9,7 @@ export default function PostListItem(props) {
   //if isActive/onclick toggle button colour change to pink
   // which is heart-active
   const toggleClass = () => {
+    //changes to the opposite
     setActive(!isActive);
   };
 
@@ -26,14 +28,13 @@ export default function PostListItem(props) {
         </div>
 
           <div className="reaction-container">
-          <div className={isActive ? "heart-btn": null} onClick={toggleClass}>
-            <div className="content">
+          <div className="heart-btn" onClick={toggleClass}>
+            <div className={classnames({content: true, liked: isActive})}>
               <span className="heart"></span>
               <span className="like">Like</span>
               {/* <span className="num"></span> */}
               {/* <span className="heart"></span> */}
             </div>
-
           </div>
             {/* <div>
             <button className="heart-active"></button>
