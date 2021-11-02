@@ -7,7 +7,6 @@ export default function PostListItem(props) {
   const { followList, creatorUserID, user, postId, profilePictureUrl, imageVideoUrl, isOwner, created, username, description, deletePost, addFavourite } = props
   console.log("🚀 ~ file: PostListItem.jsx ~ line 8 ~ PostListItem ~ creatorUserID", creatorUserID)
    
-
    // Follow new friend
    const handleFollow = () => {
     console.log("🚀 ~ file: Explore.jsx ~ line 70 ~ Explore ~ user.id", props.user.id)
