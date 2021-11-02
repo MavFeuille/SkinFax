@@ -47,7 +47,6 @@ export default function CommentList(props) {
   };
 
   const existingComments = comments.map((comment) => {
-    console.log(comment);
     return (
       <div className="comment-container" key={comment.id}>
         <div>
@@ -67,7 +66,7 @@ export default function CommentList(props) {
               className="trash--button"
               onClick={() => deleteComment(comment.id)}
             >
-              <i class="far fa-trash-alt"></i>
+              <i className="far fa-trash-alt"></i>
             </button>
           )}
         </div>

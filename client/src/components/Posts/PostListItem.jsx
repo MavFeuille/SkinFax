@@ -13,8 +13,6 @@ export default function PostListItem(props) {
     addFavourite,
   } = props;
 
-  console.log("post list item", props);
-
   return (
     <section className="post">
       <div className="info">
