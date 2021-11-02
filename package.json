@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/MavFeuille/SkinFax#readme",
   "dependencies": {
-    "cloudinary": "^1.27.1"
+    "cloudinary": "^1.27.1",
+    "emoji-mart": "^3.0.1",
+    "react-feather": "^2.0.9",
+    "react-textarea-autocomplete": "0.0.4"
   }
 }
