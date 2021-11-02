@@ -36,11 +36,6 @@ app.use('/api/favourites', favouritesRouter(pool));
 app.use('/api/comments', commentsRouter(pool));
 app.use('/api/messages', messagesRouter(pool));
 
-// LOGIN/REGISTER --------------------------------------------
-// const usersRouter = require('./routes/users');
-
-// app.use('/api/users', usersRouter(pool));
-
 
 //connected as a client-side socket
 //if err auto removed from funct
@@ -91,27 +86,3 @@ io.on('connection', (socket) => {
 });
 
 server.listen(PORT, console.log(`Server is listening on port ${PORT}`));
-
-// const sass = require ('node-sass-middleware');
-// const morgan = require ('morgan');
-// const bcryptjs = require ('bcryptjs');
-// const cookieSession = require ('cookie-session');
-// app.use (
-//   cookieSession ({
-//     name: 'session',
-//     keys: [
-//       'eSgVkYp3s6v9y$B&E)H@McQfTjWmZq4t',
-//       'z$C&F)J@NcRfUjWnZr4u7x!A%D*G-KaP',
-//     ],
-//   })
-// );
-
-// ________________PG database client/connection setup_________________
-// const {Pool} = require ('pg');
-// const dbParams = require ('./lib/db.js.js.js');
-// const db = new Pool (dbParams);
-// db.connect ();
-//requires helper function and directly calls db
-// const databaseHelpers = require ('./db/database-helper') (db);
-
-// Warning: avoid creating more routes in this file!

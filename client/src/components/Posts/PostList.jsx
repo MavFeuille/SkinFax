@@ -1,11 +1,10 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
 import PostListItem from "./PostListItem";
 
 export default function PostList(props) {
   const { posts, addFavourite, deletePost } = props;
 
   const allPosts = posts.map((post) => {
+    console.log("post list", post);
     return (
       <PostListItem
         key={post.content_post_id}

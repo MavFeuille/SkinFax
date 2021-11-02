@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Home from "./Home";
 import { HOME_PAGE } from "../NavItems";
 
 export default function CreatePost(props) {

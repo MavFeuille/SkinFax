@@ -17,43 +17,35 @@ export default function NavItems(props) {
             props.setPage(HOME_PAGE);
           }}
         >
-          <i class="fas fa-home" />
+          <i className="fas fa-home" />
         </li>
         <li
           onClick={() => {
             props.setPage(PROFILE_PAGE);
           }}
         >
-          <i class="far fa-user-circle" />
+          <i className="far fa-user-circle" />
         </li>
         <li
           onClick={() => {
             props.setPage(FAV_PAGE);
           }}
         >
-          <i class="far fa-bookmark" />
+          <i className="far fa-bookmark" />
         </li>
         <li
           onClick={() => {
             props.setPage(CREATE_POST);
           }}
         >
-          <i class="far fa-plus-square"></i>
+          <i className="far fa-plus-square"></i>
         </li>
         <li
           onClick={() => {
             props.setPage(ROUTER_MESSAGES);
           }}
         >
-          <i class="far fa-comment-dots"></i>
-        </li>
-        <li>{props.user.email}</li>
-        <li
-          onClick={() => {
-            props.logout();
-          }}
-        >
-          <Button variant="outline-secondary">Logout</Button>{" "}
+          <i className="far fa-comment-dots"></i>
         </li>
         <li
           onClick={() => {
@@ -61,7 +53,15 @@ export default function NavItems(props) {
           }}
         >
           Explore
-          </li>
+        </li>
+        <li>{props.user.handle}</li>
+        <li
+          onClick={() => {
+            props.logout();
+          }}
+        >
+          <Button variant="outline-secondary">Logout</Button>{" "}
+        </li>
       </ul>
     </div>
   );

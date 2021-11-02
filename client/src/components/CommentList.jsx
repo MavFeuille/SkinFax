@@ -3,7 +3,7 @@ import axios from "axios";
 import CommentForm from "./CommentForm";
 
 export default function CommentList(props) {
-  const { postId, user } = props;
+  const { postId, user, isOwner } = props;
 
   const [comments, setComments] = useState([]);
 
@@ -39,23 +39,34 @@ export default function CommentList(props) {
           id: record.id,
           comment: record.comment,
           created: record.created,
-          username: props.user.handle,
+          username: user.handle,
+          profilePicture: user.profile_picture_url, // need to fix mario_dabaddest pp
         };
         setComments([comment, ...comments]);
       });
   };
 
   const existingComments = comments.map((comment) => {
+    console.log(comment);
     return (
-      <div className="all-comments">
+      <div className="comment-container" key={comment.id}>
         <div>
-          <p>{comment.username}</p>
+          <p className="username">
+            <img
+              className="user-profile-pic"
+              src={comment.profile_picture_url}
+            />
+            {comment.username}
+          </p>
           <p>{comment.comment}</p>
           <p>{comment.created}</p>
         </div>
         <div>
-          {deleteComment && (
-            <button onClick={() => deleteComment(comment.id)}>
+          {isOwner && (
+            <button
+              className="trash--button"
+              onClick={() => deleteComment(comment.id)}
+            >
               <i class="far fa-trash-alt"></i>
             </button>
           )}
