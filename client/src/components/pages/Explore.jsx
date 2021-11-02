@@ -3,7 +3,7 @@ import axios from "axios";
 import PostList from "../Posts/PostList";
 import "./Home.css";
 
-export default function Home(props) {
+export default function Explore(props) {
   const [posts, setPosts] = useState([]);
 
   console.log("explore posts", posts);

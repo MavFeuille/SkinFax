@@ -6,13 +6,15 @@ const cloudinaryWithConfig = require('../cloudinary_config');
 const routers = function (pool) {
 
   // grabbing all users posts (mix user's own posts and user's following posts)
-    router.get('/', function (req, res) {
+  router.get('/', function (req, res) {
 
     const queryString = `
-    SELECT content_posts.id as post_id, content_posts.user_id as user_id, users.username as username, content_posts.description, content_posts.image_video_url, content_posts.created, users.profile_picture_url as profile_picture
-    FROM content_posts
-    JOIN users ON content_posts.user_id = users.id
-    ORDER BY created DESC;`
+      SELECT count(likes.id) as likes, users.id, users.username as username, users.profile_picture_url, image_video_url, description, created, content_posts.id as content_post_id 
+      FROM content_posts
+      JOIN users ON content_posts.user_id = users.id
+      LEFT JOIN likes ON likes.content_post_id = content_posts.id 
+      GROUP BY users.id, users.username, image_video_url, description, created, content_posts.id
+      ORDER BY created DESC;`
 
     pool.query(queryString)
       .then((data) => {
@@ -44,7 +46,7 @@ const routers = function (pool) {
 
 
   // only getting logged in user's post
-  router.get('/user_posts', function (req, res) {
+  router.get('/users/:id', function (req, res) {
 
     const queryString = `
     SELECT count(likes.id) as likes, users.id, users.username as username, users.profile_picture_url, image_video_url, description, created, content_posts.id as content_post_id 
@@ -55,7 +57,7 @@ const routers = function (pool) {
     GROUP BY users.id, users.username, image_video_url, description, created, content_posts.id
     ORDER BY created DESC;`
 
-    pool.query(queryString, [1])
+    pool.query(queryString, [req.params.id])
       .then((data) => {
         res.json(data.rows)
       })
@@ -65,15 +67,15 @@ const routers = function (pool) {
   });
 
   // get all following's posts
-  router.get('/follow_posts', function (req, res) {
+  router.get('/follow/:id', function (req, res) {
     const queryString = `
     SELECT users.id, users.username as username, users.profile_picture_url, image_video_url, description, created, content_posts.id as content_post_id FROM content_posts
     JOIN users ON content_posts.user_id = users.id
     JOIN followers ON followers.user_id = users.id 
-    WHERE followers.follower_user_id = 1
+    WHERE followers.follower_user_id = $1
     ORDER BY created DESC;`
 
-    pool.query(queryString)
+    pool.query(queryString, [req.params.id])
       .then((data) => {
         res.json(data.rows)
       })

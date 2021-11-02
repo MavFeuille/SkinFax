@@ -40,7 +40,7 @@ export default function CommentList(props) {
           comment: record.comment,
           created: record.created,
           username: user.handle,
-          profilePicture: user.profile_picture_url, // need to fix mario_dabaddest pp
+          profile_picture_url: user.profile_picture_url, // need to fix mario_dabaddest pp
         };
         setComments([comment, ...comments]);
       });

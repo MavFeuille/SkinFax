@@ -7,13 +7,13 @@ export default function Profile(props) {
     userProfile: {},
     userPosts: [],
   });
-  
+
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
     Promise.all([
       axios.get(`/api/profile`),
-      axios.get("/api/posts/user_posts"),
+      axios.get(`/api/posts/users/${props.user.id}`),
       axios.get("/api/comments"),
     ])
       .then((all) => {
@@ -36,13 +36,16 @@ export default function Profile(props) {
     axios
       .delete(`/api/posts/${id}`)
       .then(() => {
-        setState({...state, userPosts: state.userPosts.filter((post) => post.id !== id)});
+        setState({
+          ...state,
+          userPosts: state.userPosts.filter((post) => post.id !== id),
+        });
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
-  
+
   return (
     <div>
       <section className="user--profile-section">
@@ -64,7 +67,13 @@ export default function Profile(props) {
           </span>
         </div>
       </section>
-      {state.userPosts.length && <PostList posts={state.userPosts} user={props.user} deletePost={deletePost} />}
+      {state.userPosts.length && (
+        <PostList
+          posts={state.userPosts}
+          user={props.user}
+          deletePost={deletePost}
+        />
+      )}
     </div>
   );
 }

@@ -8,8 +8,8 @@ export default function Home(props) {
 
   useEffect(() => {
     Promise.all([
-      axios.get("/api/posts/user_posts"),
-      axios.get("/api/posts/follow_posts"),
+      axios.get(`/api/posts/users/${props.user.id}`), // fix
+      axios.get(`/api/posts/follow/${props.user.id}`), // fix
     ])
       .then((all) => {
         const userPosts = all[0].data;
