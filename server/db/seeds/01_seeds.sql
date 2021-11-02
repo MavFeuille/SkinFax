@@ -21,29 +21,29 @@ VALUES
 
 INSERT INTO content_posts (user_id, image_video_url, description)
 VALUES 
-(1, 'url','For me, money is not my definition of success. Inspiring people is a definition of success.'),
-(2, 'url', 'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.'),
-(3, 'url', 'Coming together is a beginning; keeping together is progress; working together is success.'),
-(4, 'url', 'However difficult life may seem, there is always something you can do and succeed at.'),
-(5, 'url', 'I still think I am the greatest.'),
-(6, 'url', 'Keep your nose out the sky, keep your heart to god, and keep your face to the raising sun.'),
-(7, 'url', 'If you have the opportunity to play this game of life you need to appreciate every moment. a lot of people don’t appreciate the moment until it’s passed.'),
-(8, 'url', 'I feel like I’m too busy writing history to read it.'),
-(9, 'url', 'Know your worth! People always act like they’re doing more for you than you’re doing for them.'),
-(10, 'url', 'My message isn’t perfectly defined. I have, as a human being, fallen to peer pressure.'),
-(1, 'url', 'If I was just a fan of music, I would think that I was the number one artist in the world.'),
-(1, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(13, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(14, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(15, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(16, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(17, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
-(18, 'url', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.');
+(1, 'https://images.pexels.com/photos/10013078/pexels-photo-10013078.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940','For me, money is not my definition of success. Inspiring people is a definition of success.'),
+(2, 'https://images.pexels.com/photos/4046316/pexels-photo-4046316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.'),
+(3, 'https://images.pexels.com/photos/3866556/pexels-photo-3866556.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'Coming together is a beginning; keeping together is progress; working together is success.'),
+(4, 'https://images.pexels.com/photos/8160467/pexels-photo-8160467.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'However difficult life may seem, there is always something you can do and succeed at.'),
+(5, 'https://images.pexels.com/photos/5979642/pexels-photo-5979642.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'I still think I am the greatest.'),
+(6, 'https://images.pexels.com/photos/6781228/pexels-photo-6781228.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'Keep your nose out the sky, keep your heart to god, and keep your face to the raising sun.'),
+(7, 'https://images.pexels.com/photos/5927812/pexels-photo-5927812.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'If you have the opportunity to play this game of life you need to appreciate every moment. a lot of people don’t appreciate the moment until it’s passed.'),
+(8, 'https://images.pexels.com/photos/6543153/pexels-photo-6543153.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'I feel like I’m too busy writing history to read it.'),
+(9, 'https://images.pexels.com/photos/7607292/pexels-photo-7607292.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'Know your worth! People always act like they’re doing more for you than you’re doing for them.'),
+(10, 'https://images.pexels.com/photos/8945829/pexels-photo-8945829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'My message isn’t perfectly defined. I have, as a human being, fallen to peer pressure.'),
+(1, 'https://images.pexels.com/photos/6635917/pexels-photo-6635917.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'If I was just a fan of music, I would think that I was the number one artist in the world.'),
+(1, 'https://images.pexels.com/photos/8142196/pexels-photo-8142196.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(13, 'https://images.pexels.com/photos/7582569/pexels-photo-7582569.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(14, 'https://images.pexels.com/photos/8558244/pexels-photo-8558244.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(15, 'https://images.pexels.com/photos/5871825/pexels-photo-5871825.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(16, 'https://images.pexels.com/photos/5977812/pexels-photo-5977812.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(17, 'https://images.pexels.com/photos/4736030/pexels-photo-4736030.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.'),
+(18, 'https://images.pexels.com/photos/6619515/pexels-photo-6619515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'You don’t have to be scared of me, because I am loyal. Why are people so scared of creative ideas and so scared of truth? All I want to do is do good.');
 
 INSERT INTO favourites (user_id, content_post_id)
 VALUES 
 (1,2), 
--- (2,3), princess peach
+(2,3), 
 (3,1),
 (1,5),
 (2,1),
@@ -111,31 +111,31 @@ VALUES
 
 INSERT INTO comments (user_id, comment, content_post_id)
 VALUES 
-(1,'comment 1', 3),
-(2,'comment 2',1),
-(3,'comment 3',2),
-(4,'comment 4',2),
-(4,'comment 5',2),
-(2,'comment 6',2),
-(6,'comment 7',3),
-(7,'comment 8',3),
-(8,'comment 9',8),
-(3,'comment 10',8),
-(4,'comment 11',8),
-(5,'comment 12',9),
-(3,'comment 13',10),
-(1,'comment 14',12),
-(7,'comment 15',4),
-(8,'comment 16',4),
-(9,'comment 17',5),
-(5,'comment 18',4),
-(6,'comment 19',3),
-(7,'comment 20',3),
-(3,'comment 21',2),
-(10,'comment 22',1),
-(13,'comment 23',1),
-(12,'comment 24',8),
-(3, 'Princess Peach likes Luigi''s post!', 2);
+(1,'love it!', 3),
+(2,'soo cute!',1),
+(3,'i love the color!',2),
+(4,'omg obsessed',2),
+(4,'definitely need this',2),
+(2,'PERFFF!',2),
+(6,'cutest pic ever',3),
+(7,'whats your skin care?!',3),
+(8,'haha love it',8),
+(3,'nice!',8),
+(4,'🔥 🔥 🔥 ',8),
+(5,'😃😃',9),
+(3,'😉',10),
+(1,'hey hey nice!',12),
+(7,'love this post',4),
+(8,'keep up the good work💪',4),
+(9,'needed this!',5),
+(5,'made my day!',4),
+(6,'i swear im not a bot',3),
+(7,'follow for follow?',3),
+(3,'please check out my content too!',2),
+(10,'lol wow!',1),
+(13,'ehhh whateverrr',1),
+(12,'cuteeee',8),
+(3, 'more pics!!', 2);
 
 INSERT INTO likes (user_id, content_post_id, comment_id)
 VALUES 
@@ -144,5 +144,3 @@ VALUES
 (3,2,1),
 (1,3,3),
 (3,1,3);
-
---inserting content image via 3rd party ting

@@ -5,6 +5,8 @@ import CommentForm from "./CommentForm";
 export default function CommentList(props) {
   const { postId, user } = props;
 
+  console.log(user);
+
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -47,7 +49,7 @@ export default function CommentList(props) {
 
   const existingComments = comments.map((comment) => {
     return (
-      <div className="all-comments">
+      <div className="all-comments" key={comment.id}>
         <div>
           <p>{comment.username}</p>
           <p>{comment.comment}</p>
@@ -56,7 +58,7 @@ export default function CommentList(props) {
         <div>
           {deleteComment && (
             <button onClick={() => deleteComment(comment.id)}>
-              <i class="far fa-trash-alt"></i>
+              <i className="far fa-trash-alt"></i>
             </button>
           )}
         </div>
