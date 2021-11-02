@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import CommentList from "../CommentList";
 
 export default function PostListItem(props) {
+
+
+
   const {
     followList,
     creatorUserID,
@@ -17,6 +20,9 @@ export default function PostListItem(props) {
     deletePost,
     addFavourite,
   } = props;
+
+  
+
   console.log(
     "🚀 ~ file: PostListItem.jsx ~ line 8 ~ PostListItem ~ creatorUserID",
     creatorUserID
@@ -28,7 +34,7 @@ export default function PostListItem(props) {
    
     axios.post(`/api/follow/${creatorUserID}`, {userID: props.user.id})
     .then((res) => {
-      console.log("🚀 ~ file: Explore.jsx ~ line 17 ~ .then ~ res", res)
+      console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res)
       
     })
     .catch((err) => {
@@ -50,11 +56,13 @@ export default function PostListItem(props) {
             <p className="username"> {username}</p>
             {followList && !followList.includes(creatorUserID) && !isOwner && 
               <form onSubmit={event=> event.preventDefault()}>
-                <button  onClick={handleFollow }>Follow</button>
+                <button className="btn-follow" onClick={handleFollow}> 
+                  Follow
+                </button>
               </form>
             }
             {followList && followList.includes(creatorUserID) && !isOwner && 
-              <p>Following</p>
+              <p className="follow-tag">Following</p>
             }
           </div>
         </div>

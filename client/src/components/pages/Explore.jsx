@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PostList from "../Posts/PostList";
-import "./Home.css";
+import "./Explore.css"
 
 export default function Explore(props) {
 // console.log("🚀 ~ file: Explore.jsx ~ line 8 ~ Explore ~ props", props)
