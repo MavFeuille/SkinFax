@@ -19,7 +19,7 @@ const routers = function (pool) {
         res.json(data.rows)
       })
       .catch(err => {
-        console.log('error:', err.message);
+        console.log('error 1-----:', err.message);
       });
   });
 

@@ -5,6 +5,7 @@ import PostList from "../Posts/PostList";
 import './Home.css';
 
 export default function Home(props) {
+  console.log("🚀 ~ file: Home.jsx ~ line 8 ~ Home ~ props", props)
   
   const [posts, setPosts] = useState([]);
   
@@ -75,7 +76,7 @@ export default function Home(props) {
     <section className="mainContainer">
       <div>
         <h1 className="title">Home</h1>
-        {posts && <PostList posts={posts} user={props.user} deletePost={deletePost} addFavourite={addFavourite}/>}
+        {posts && <PostList posts={posts} user={props.user} deletePost={deletePost} addFavourite={addFavourite} showFollow={false}/>}
       </div>
     </section>
   );

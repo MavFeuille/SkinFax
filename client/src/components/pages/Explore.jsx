@@ -4,8 +4,8 @@ import CommentForm from "../CommentForm";
 import PostList from "../Posts/PostList";
 import './Home.css';
 
-export default function Home(props) {
-  
+export default function Explore(props) {
+
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function Home(props) {
     <section className="mainContainer">
       <div>
         <h1 className="title">Home</h1>
-        {posts.length && <PostList posts={posts} user={props.user} deletePost={deletePost} addFavourite={addFavourite}/>}
+        {posts.length && <PostList posts={posts} user={props.user} deletePost={deletePost} addFavourite={addFavourite} showFollow={true}/>}
       </div>
     </section>
   );
