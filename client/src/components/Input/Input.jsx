@@ -5,7 +5,7 @@ import './Input.css';
 export default function Input({message, setMessage, sendMessage}){
 
   return (
-    <form className="form">
+    <form className="form-dms">
       
       <input 
       className="input"
