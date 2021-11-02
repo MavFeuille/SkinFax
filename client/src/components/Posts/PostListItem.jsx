@@ -35,11 +35,13 @@ export default function PostListItem(props) {
       <div className="reaction-container">
         <i className="far fa-heart"></i>
         <i className="far fa-comment"></i>
-        <button className="button-bookmark-icon" onClick={addFavourite}>
-          <i className="far fa-bookmark"></i>
-        </button>
+        {!isOwner && (
+          <button className="button-bookmark-icon" onClick={addFavourite}>
+            <i className="far fa-bookmark"></i>
+          </button>
+        )}
         {isOwner && (
-          <button onClick={deletePost}>
+          <button className="trash--button" onClick={deletePost}>
             <i className="far fa-trash-alt"></i>
           </button>
         )}
@@ -49,7 +51,7 @@ export default function PostListItem(props) {
         <p>{created}</p>
       </div>
       <div className="comment-form-container">
-        <CommentList postId={postId} user={props.user} />
+        <CommentList postId={postId} user={props.user} isOwner={isOwner} />
       </div>
     </section>
   );
