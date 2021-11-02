@@ -4,7 +4,7 @@ import PostListItem from "./PostListItem";
 
 export default function PostList(props) {
   // const [posts, setPosts] = useState(props.posts);
-  const {showFollow, posts, addFavourite, deletePost, user} = props
+  const {followList, handleFollow, posts, addFavourite, deletePost, user} = props
   
   
 
@@ -24,7 +24,8 @@ export default function PostList(props) {
         postId={post.post_id}
         user={user}
         creatorUserID={post.user_id}
-        showFollow={showFollow}
+        followList={followList}
+        handleFollow={handleFollow}
         
       />
     );

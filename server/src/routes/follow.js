@@ -4,6 +4,7 @@ const router = express.Router();
 // function that will contain all the get routes
 const routers = function (pool) {
 
+  //Follow
   router.post('/:follow_id', function (req, res) {
     console.log("following id", req)
     const queryString = `  
@@ -23,45 +24,45 @@ const routers = function (pool) {
       });
   });
 
-  router.delete("/", (req, res) => {
-    const queryString = `INSERT INTO favourites (user_id, content_post_id)
-    VALUES 
-    ($1,$2);`;
+  //Get the list of people that the user is following
+  router.get('/:follower_user_id', function (req, res) {
+    console.log("follower_user_id", req)
+    const queryString = `  
+    SELECT users.id, username FROM users
+    JOIN followers ON users.id = user_id
+    WHERE follower_user_id = $1;`
+      
 
-    const user_id = req.body.id;
-    const content_post_id = req.body.post_id;
-    console.log(user_id)
-    console.log(content_post_id)
-
-    const val = [user_id, content_post_id];
-
-    pool.query(queryString, val)
-      .then((result) => {
-        res.json(result.data.rows[0])
-      })
+    pool.query(queryString, [req.params.follower_user_id])
+    .then((data) => {
+        console.log("🚀 ~ file: follow.js ~ line 38 ~ .then ~ data", data.rows)
+        const reply = data.rows.map(row => row.id)  
+        res.json(reply)
+    })
       .catch(err => {
-        console.log(err);
+        console.log('error in follow.js line 42 for following:', err.message);
       });
   });
 
-  router.delete("/:id", (req, res) => {
-    console.log("delete", req.params.id)
-    const queryString = `
-    DELETE FROM favourites
-    WHERE favourites.id = $1;`;
+  //Unfollow
+  // router.delete("/:id", (req, res) => {
+  //   console.log("delete", req.params.id)
+  //   const queryString = `
+  //   DELETE FROM favourites
+  //   WHERE favourites.id = $1;`;
 
-    const params = [req.params.id]
+  //   const params = [req.params.id]
 
-    pool.query(queryString, params)
-      .then(() => {
-        res.status(204).send('')
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  })
+  //   pool.query(queryString, params)
+  //     .then(() => {
+  //       res.status(204).send('')
+  //     })
+  //     .catch(err => {
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+  // })
 
   //only return router
   return router;

@@ -7,16 +7,16 @@ export default function CommentList(props) {
 
   const [comments, setComments] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`/api/posts/${postId}/comments`)
-      .then((res) => {
-        setComments(res.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`/api/posts/${postId}/comments`)
+  //     .then((res) => {
+  //       setComments(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  // }, []);
 
   const deleteComment = (id) => {
     axios
