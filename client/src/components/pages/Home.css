@@ -7,8 +7,8 @@
 .post {
   width: 80%;
   max-width: 850px;
-  margin: 20px auto 0;
-  padding-top: 30px;
+  margin: 20px auto;
+  padding: 20px;
   background: rgba(174, 172, 212, 0.3);
 }
 
@@ -19,7 +19,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  align-items: center;
 }
 
 .user {
@@ -40,7 +39,9 @@
   height: 50px;
   font-size: 14px;
   font-weight: bold;
-  padding-top: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .post-content {
@@ -81,7 +82,7 @@
 }
 
 .post-wrapper {
-  width: 80%;
+  width: 65%;
   margin: auto;
 }
 

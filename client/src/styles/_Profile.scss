@@ -28,14 +28,14 @@
   }
 }
 
-.user--posts {
-  @include flex($align-items: flex-start);
-  flex-wrap: wrap;
-  width: 90%;
-  max-width: 1000px;
-  margin: auto;
+// .user--posts {
+//   @include flex($align-items: flex-start);
+//   flex-wrap: wrap;
+//   width: 90%;
+//   max-width: 1000px;
+//   margin: auto;
 
-  .user--post {
-    width: 333px;
-  }
-}
+//   .user--post {
+//     width: 333px;
+//   }
+// }

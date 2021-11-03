@@ -6,7 +6,6 @@
     @include flex;
     justify-content: center;
     flex-wrap: wrap;
-
     .user--favorite-article {
       width: 500px;
       height: 800px;
@@ -14,22 +13,25 @@
       margin: 20px;
       padding: 10px;
       position: relative;
-
       .user--favorite-image {
         width: 100%;
         height: 600px;
       }
-
       .user--favorite-trash-button {
         position: absolute;
         bottom: 0px;
         left: 0px;
       }
-
       .user--favorite-desc {
         padding: 5px;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .user--favorite-section {
+    justify-content: center;
   }
 }
 
