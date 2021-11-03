@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CommentList from "../CommentList";
+import classnames from 'classnames';
 
 export default function PostListItem(props) {
   const {
@@ -17,6 +18,14 @@ export default function PostListItem(props) {
     deletePost,
     addFavourite,
   } = props;
+
+  const [isActive, setActive] = useState(false);
+  //if isActive/onclick toggle button colour change to pink
+  // which is heart-active
+  const toggleClass = () => {
+    //changes to the opposite
+    setActive(!isActive);
+  };
 
   console.log(
     "🚀 ~ file: PostListItem.jsx ~ line 8 ~ PostListItem ~ creatorUserID",
@@ -70,7 +79,15 @@ export default function PostListItem(props) {
       </div>
       <div className="post-wrapper">
         <div className="reaction-container">
-          <i className="far fa-heart"></i>
+          {/* <i className="far fa-heart"></i> */}
+          <div className="heart-btn" onClick={toggleClass}>
+            <div className={classnames({content: true, liked: isActive})}>
+              <span className="heart"></span>
+              <span className="like"></span>
+              {/* <span className="num"></span> */}
+              {/* <span className="heart"></span> */}
+            </div>
+          </div>
           <i className="far fa-comment"></i>
           {!isOwner && (
             <button className="button-bookmark-icon" onClick={addFavourite}>

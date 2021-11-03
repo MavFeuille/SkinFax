@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@1,200&display=swap");
+
+
 header {
   border-bottom: 1px solid rgba(100, 99, 99, 0.5);
   margin-bottom: 20px;
@@ -138,4 +140,95 @@ header nav ul li .far {
 body {
   overflow-x: hidden;
 }
+
+
+
 /*# sourceMappingURL=App.css.map */
+
+
+.heart-btn{
+  position: relative;
+  
+  /* top: 30%;
+  left: 30%; */
+  /* transform: translate(-50%,-50%); */
+}
+.content{
+  border: 2px solid #eae2e1;
+  padding: 0.1px;
+  border-radius: 5px;
+  display: flex;
+  cursor: pointer;
+}
+
+.liked {
+  border-color: #f9b9c4;
+  background-color: #fbd0d8;
+}
+
+.content.heart-active{
+  border-color: #f9b9c4;
+  background-color: #fbd0d8;
+}
+.content .heart{
+  height: 53px;
+  width: 53px;
+  background: url("./icon/img.png") no-repeat;
+  background-position: left;
+  background-size: 2900%;
+  position: absolute;
+  top: 50%;
+  left: 21%;
+  transform: translate(-50%,-50%);
+  margin-left: 3px;
+  margin-right: 4px;
+}
+
+.heart:hover{
+  background-position: right;
+  animation: animate .8s steps(28) 1;
+}
+
+.heart.heart-active{
+  background-position: right;
+  animation: animate .8s steps(28) 1;
+}
+
+.liked.heart {
+  color:red;
+}
+
+.like{
+  margin-left: 4px;
+  margin-top: 10px;
+  font-size: 15px; 
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(160, 152, 152);
+
+}
+
+/* .numb:before{
+  content: '12';
+  font-size: 21px;
+  font-weight: 600;
+  font-family: sans-serif;
+  color: #9C9496;
+  margin-left: 7px;
+} */
+
+.numb.heart-active:before{
+  content: '13';
+  color: #000;
+}
+.like.heart-active{
+  color: #000;
+}
+
+@keyframes animate {
+  0%{
+    background-position: left;
+  }
+  100%{
+    background-position: right;
+  }
+}
