@@ -43,24 +43,24 @@ const routers = function (pool) {
   });
 
   //Unfollow
-  // router.delete("/:id", (req, res) => {
-  //   console.log("delete", req.params.id)
-  //   const queryString = `
-  //   DELETE FROM favourites
-  //   WHERE favourites.id = $1;`;
+  router.delete("/:follower_user_id/:following_user_id", (req, res) => {
+    console.log("delete", req.params.id)
+    const queryString = `
+    DELETE FROM followers
+    WHERE follower_user_id= $1 AND followers.user_id = $2;`;
 
-  //   const params = [req.params.id]
+    // const params = [req.params.id]
 
-  //   pool.query(queryString, params)
-  //     .then(() => {
-  //       res.status(204).send('')
-  //     })
-  //     .catch(err => {
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
-  // })
+    pool.query(queryString, req.body.userID, req.params.following_user_id)
+      .then(() => {
+        res.status(204).send('')
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  })
 
   //only return router
   return router;
