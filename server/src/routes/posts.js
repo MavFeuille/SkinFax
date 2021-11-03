@@ -9,12 +9,12 @@ const routers = function (pool) {
   router.get('/', function (req, res) {
 
     const queryString = `
-      SELECT count(likes.id) as likes, users.id as user_id, users.username as username, users.profile_picture_url, image_video_url, description, created, content_posts.id as content_post_id 
+      SELECT count(likes.id) as likes, users.id as user_id, users.username as username, users.profile_picture_url, image_video_url, description, created, content_posts.id as content_post_id, content_posts.user_id 
       FROM content_posts
       JOIN users ON content_posts.user_id = users.id
       LEFT JOIN likes ON likes.content_post_id = content_posts.id 
       GROUP BY users.id, users.username, image_video_url, description, created, content_posts.id
-      ORDER BY created;`
+      ORDER BY created DESC;`
 
     pool.query(queryString)
       .then((data) => {
@@ -49,7 +49,7 @@ const routers = function (pool) {
   router.get('/users/:id', function (req, res) {
 
     const queryString = `
-    SELECT count(likes.id) as likes, users.id , users.username as username, users.profile_picture_url, image_video_url, description, created, content_posts.id as content_post_id 
+    SELECT count(likes.id) as likes, users.id , users.username as username, users.profile_picture_url, image_video_url, description, created, content_posts.id as content_post_id, content_posts.user_id 
     FROM content_posts
     JOIN users ON content_posts.user_id = users.id
     LEFT JOIN likes ON likes.content_post_id = content_posts.id 
