@@ -23,23 +23,19 @@ export default function App() {
     <Router>
       <div className="App">
         {!user && <Login login={login} status={status} />}
-
-        {(user) &&
-          <div>
-            <Header setPage={setPage} user={user} logout={logout} />
-            {page === HOME_PAGE && <Home user={user} />}
-            {page === PROFILE_PAGE && <Profile user={user} />}
-            {page === FAV_PAGE && <FavouriteList user={user} />}
-            {page === CREATE_POST && <CreatePost setPage={setPage} />}
-            {page === ROUTER_MESSAGES && <RouterMessages />}
-            {page === EXPLORE_PAGE && <Explore user={user} />}
-
-          </div>
-        }
       </div>
+
+      {(user) &&
+        <div className="App">
+          <Header setPage={setPage} user={user} logout={logout} />
+          {page === HOME_PAGE && <Home user={user} />}
+          {page === PROFILE_PAGE && <Profile user={user} />}
+          {page === FAV_PAGE && <FavouriteList user={user} />}
+          {page === CREATE_POST && <CreatePost setPage={setPage} />}
+          {page === ROUTER_MESSAGES && <RouterMessages />}
+          {page === EXPLORE_PAGE && <Explore user={user} />}
+        </div>
+      }
     </Router>
-
   );
-
 };
-

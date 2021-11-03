@@ -4,6 +4,10 @@
   /* text-align: center; */
 }
 
+#title {
+  text-align: center;
+}
+
 .post {
   width: 80%;
   max-width: 1000px;
@@ -23,7 +27,7 @@
 
 .user {
   display: flex;
-  align-items: centre;
+  align-items: center;
 }
 
 .user-profile-pic {
@@ -51,7 +55,6 @@
   font-size: 12px;
   text-align: center;
   padding: 5px 15px;
-
 }
 
 .btn-follow:focus {
@@ -81,9 +84,9 @@
 .follow-tag {
   font-weight: 1px;
   /* font-weight: bold; */
-  margin-top: 9px;;
+  margin-top: 9px;
   border-radius: 0.35em;
-  color: #EFEDF0;
+  color: #efedf0;
 }
 
 .post-content {
@@ -183,7 +186,6 @@
   border: none;
   font-size: 15px;
 }
-
 
 @media (min-width: 320px) and (max-width: 480px) {
   .outerContainer {
