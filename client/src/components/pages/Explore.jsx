@@ -26,40 +26,7 @@ export default function Explore(props) {
     });
   }, [props.user.id])
 
-  
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`/api/posts`)
-  //     .then((res) => {
-  //       console.log("🚀 ~ file: Explore.jsx ~ line 15 ~ .then ~ res", res);
-  //       setPosts(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //     });
-  // }, []);
-
-  // // Get the list of friends that the user is following
-  // useEffect(() => {
-  //   axios
-  //     .get(`/api/follow/${props.user.id}`)
-  //     .then((res) => {
-  //       console.log("🚀 ~ file: Explore.jsx ~ line 29 ~ .then ~ res", res);
-  //       setFollowList(res.data);
-  //       console.log(
-  //         "🚀 ~ file: Explore.jsx ~ line 31 ~ .then ~ res.data",
-  //         res.data
-  //       );
-  //     })
-  //     .catch((err) => {
-  //       console.log(
-  //         "🚀 ~ file: Explore.jsx ~ line 34 ~ findExistingFollowing ~ err",
-  //         err
-  //       );
-  //     });
-  // }, []);
-  ////
 
   console.log("🚀 ~ file: Explore.jsx ~ line 38 ~ Explore ~ posts", posts);
 
@@ -91,19 +58,31 @@ export default function Explore(props) {
       });
   };
 
-  // Follow new friend
-  // const handleFollow = () => {
-  //   console.log("🚀 ~ file: Explore.jsx ~ line 70 ~ Explore ~ user.id", props.user.id)
+  const addFollower = function (followingId, userID) {
+  
+    axios
+      .post(`/api/follow/${followingId}`, { userID: userID })
+      .then((res) => {
+        console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res);
+        setFollowList([...followList, followingId])
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }
 
-  //   axios.post(`/api/follow/${posts.user_id}`, {userID: props.user.id})
-  //   .then((res) => {
-  //     console.log("🚀 ~ file: Explore.jsx ~ line 57 ~ .then ~ res", res)
 
-  //   })
-  //   .catch((err) => {
-  //     console.log(err.message);
-  //   });
-  // }
+  const removeFollower = function (followingId, userID) {
+    axios
+      .delete(`/api/follow/${followingId}`, { data: { userID: userID}})
+      .then((res) => {
+        console.log("🚀 ~ file: Explore.jsx ~ line 65 ~ .then ~ res", res);
+        setFollowList(followList.filter((following) => following !== followingId))
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }
 
   // To render all posts of users him/herself and those they're following
   return (
@@ -117,6 +96,8 @@ export default function Explore(props) {
             deletePost={deletePost}
             addFavourite={addFavourite}
             followList={followList}
+            removeFollower={removeFollower}
+            addFollower={addFollower}
           />
         )}
       </div>

@@ -5,6 +5,8 @@ import classnames from 'classnames';
 
 export default function PostListItem(props) {
   const {
+    addFollower,
+    removeFollower,
     followList,
     creatorUserID,
     postId,
@@ -34,32 +36,35 @@ export default function PostListItem(props) {
 
   // Follow new friend
   const handleFollow = () => {
-    console.log(
-      "🚀 ~ file: Explore.jsx ~ line 70 ~ Explore ~ user.id",
-      props.user.id
-    );
 
-    axios
-      .post(`/api/follow/${creatorUserID}`, { userID: props.user.id })
-      .then((res) => {
-        console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    addFollower(creatorUserID, props.user.id)
+    // console.log(
+    //   "🚀 ~ file: Explore.jsx ~ line 70 ~ Explore ~ user.id",
+    //   props.user.id
+    // );
+
+    // axios
+    //   .post(`/api/follow/${creatorUserID}`, { userID: props.user.id })
+    //   .then((res) => {
+    //     console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
   };
   
 
   const handleUnFollow = () => {
- 
-    axios
-      .delete(`/api/follow/${creatorUserID}`, { data: { userID: props.user.id }})
-      .then((res) => {
-        console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    
+    removeFollower(creatorUserID, props.user.id)
+    // axios
+    //   .delete(`/api/follow/${creatorUserID}`, { data: { userID: props.user.id }})
+    //   .then((res) => {
+    //     console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
   };
   
 

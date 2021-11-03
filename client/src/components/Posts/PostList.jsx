@@ -2,7 +2,7 @@ import PostListItem from "./PostListItem";
 
 export default function PostList(props) {
   // const [posts, setPosts] = useState(props.posts);
-  const { followList, posts, addFavourite, deletePost, user } = props;
+  const { addFollower, removeFollower, followList, posts, addFavourite, deletePost, user } = props;
   // console.log("🚀 ~ file: PostList.jsx ~ line 6 ~ PostList ~ posts", posts)
   // console.log("🚀 ~ file: PostList.jsx ~ line 6 ~ PostList ~ user", user)
   
@@ -24,6 +24,8 @@ export default function PostList(props) {
         user={user}
         creatorUserID={post.user_id}
         followList={followList}
+        removeFollower={removeFollower}
+        addFollower={addFollower}
       />
     );
   });
