@@ -5,6 +5,8 @@ export default function PostList(props) {
   const { followList, posts, addFavourite, deletePost, user } = props;
   // console.log("🚀 ~ file: PostList.jsx ~ line 6 ~ PostList ~ posts", posts)
   // console.log("🚀 ~ file: PostList.jsx ~ line 6 ~ PostList ~ user", user)
+  
+  console.log("🚀 ~ file: PostList.jsx ~ line 6 ~ PostList ~ followList", followList)
 
   const allPosts = posts.map((post) => {
     return (

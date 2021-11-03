@@ -43,24 +43,29 @@ const routers = function (pool) {
   });
 
   //Unfollow
-  // router.delete("/:id", (req, res) => {
-  //   console.log("delete", req.params.id)
-  //   const queryString = `
-  //   DELETE FROM favourites
-  //   WHERE favourites.id = $1;`;
+  router.delete("/:following_id", (req, res) => {
+    // console.log("delete", req.params.following_id)
+    const queryString = `
+    DELETE FROM followers
+    WHERE follower_user_id= $1 AND followers.user_id = $2;`;
 
-  //   const params = [req.params.id]
-
-  //   pool.query(queryString, params)
-  //     .then(() => {
-  //       res.status(204).send('')
-  //     })
-  //     .catch(err => {
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
-  // })
+    // const params = [req.params.id]
+    console.log("🚀 ~ file: follow.js ~ line 63 ~ router.delete ~ req.body.userID", req.body.userID)
+    console.log("🚀 ~ file: follow.js ~ line 56 ~ router.delete ~ req.params.following_id", req.params.following_id)
+    console.log("🚀 ~ file: follow.js ~ line 66 ~ router.delete ~ req.body", req.body)
+    
+    pool.query(queryString, [req.body.userID, req.params.following_id])
+      .then(() => {
+        res.status(204).send('')
+       
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    
+  })
 
   //only return router
   return router;

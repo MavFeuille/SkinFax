@@ -9,36 +9,56 @@ export default function Explore(props) {
   const [followList, setFollowList] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`/api/posts`)
-      .then((res) => {
+    Promise.all([
+      axios.get(`/api/posts`),
+      axios.get(`/api/follow/${props.user.id}`)
+    ]).then((res) => {
         console.log("🚀 ~ file: Explore.jsx ~ line 15 ~ .then ~ res", res);
-        setPosts(res.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
+        setPosts(res[0].data);
+        // console.log("🚀 ~ file: Explore.jsx ~ line 29 ~ .then ~ res", res);
+        setFollowList(res[1].data);
+        console.log(
+          "🚀 ~ file: Explore.jsx ~ line 31 ~ .then ~ FollowList",
+          res[1].data
+        );
+    }).catch((err) => {
+      console.log(err.message);
+    });
+  }, [props.user.id])
 
-  // Get the list of friends that the user is following
-  useEffect(() => {
-    axios
-      .get(`/api/follow/${props.user.id}`)
-      .then((res) => {
-        console.log("🚀 ~ file: Explore.jsx ~ line 29 ~ .then ~ res", res);
-        setFollowList(res.data);
-        console.log(
-          "🚀 ~ file: Explore.jsx ~ line 31 ~ .then ~ res.data",
-          res.data
-        );
-      })
-      .catch((err) => {
-        console.log(
-          "🚀 ~ file: Explore.jsx ~ line 34 ~ findExistingFollowing ~ err",
-          err
-        );
-      });
-  }, []);
+  
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`/api/posts`)
+  //     .then((res) => {
+  //       console.log("🚀 ~ file: Explore.jsx ~ line 15 ~ .then ~ res", res);
+  //       setPosts(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  // }, []);
+
+  // // Get the list of friends that the user is following
+  // useEffect(() => {
+  //   axios
+  //     .get(`/api/follow/${props.user.id}`)
+  //     .then((res) => {
+  //       console.log("🚀 ~ file: Explore.jsx ~ line 29 ~ .then ~ res", res);
+  //       setFollowList(res.data);
+  //       console.log(
+  //         "🚀 ~ file: Explore.jsx ~ line 31 ~ .then ~ res.data",
+  //         res.data
+  //       );
+  //     })
+  //     .catch((err) => {
+  //       console.log(
+  //         "🚀 ~ file: Explore.jsx ~ line 34 ~ findExistingFollowing ~ err",
+  //         err
+  //       );
+  //     });
+  // }, []);
   ////
 
   console.log("🚀 ~ file: Explore.jsx ~ line 38 ~ Explore ~ posts", posts);
@@ -90,7 +110,7 @@ export default function Explore(props) {
     <section className="mainContainer">
       <div>
         <h1 id="title">Explore</h1>
-        {posts.length && (
+        {posts.length > 0 && (
           <PostList
             posts={posts}
             user={props.user}

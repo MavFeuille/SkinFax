@@ -28,8 +28,8 @@ export default function PostListItem(props) {
   };
 
   console.log(
-    "🚀 ~ file: PostListItem.jsx ~ line 8 ~ PostListItem ~ creatorUserID",
-    creatorUserID
+    "🚀 ~ file: PostListItem.jsx ~ line 8 ~ PostListItem ~ user",
+    props.user
   );
 
   // Follow new friend
@@ -48,6 +48,20 @@ export default function PostListItem(props) {
         console.log(err.message);
       });
   };
+  
+
+  const handleUnFollow = () => {
+ 
+    axios
+      .delete(`/api/follow/${creatorUserID}`, { data: { userID: props.user.id }})
+      .then((res) => {
+        console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+  
 
   return (
     <section className="post">
@@ -67,10 +81,17 @@ export default function PostListItem(props) {
                 Follow
               </button>
             </form>
-          )}
-          {followList && followList.includes(creatorUserID) && !isOwner && (
+          )} 
+          {followList && followList.includes(creatorUserID) && !isOwner && 
+            (<form onSubmit={(event) => event.preventDefault()}>
+            <button className="btn-follow" onClick={handleUnFollow}>
+              Following
+            </button>
+          </form>)
+          } 
+          {/* {followList && followList.includes(creatorUserID) && !isOwner && (
             <p className="follow-tag">Following</p>
-          )}
+          )} */}
         </div>
       </div>
 
@@ -82,8 +103,8 @@ export default function PostListItem(props) {
           {/* <i className="far fa-heart"></i> */}
           <div className="heart-btn" onClick={toggleClass}>
             <div className={classnames({content: true, liked: isActive})}>
-              <span className="heart"></span>
-              <span className="like"></span>
+              <span className="heart heart-liked"></span>
+              {/* <span className="like"></span> */}
               {/* <span className="num"></span> */}
               {/* <span className="heart"></span> */}
             </div>

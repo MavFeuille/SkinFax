@@ -145,7 +145,6 @@ body {
 
 /*# sourceMappingURL=App.css.map */
 
-
 .heart-btn{
   position: relative;
   
@@ -154,16 +153,20 @@ body {
   /* transform: translate(-50%,-50%); */
 }
 .content{
-  border: 2px solid #eae2e1;
+  /* border: 2px solid #eae2e1; */
   padding: 0.1px;
   border-radius: 5px;
   display: flex;
   cursor: pointer;
 }
 
-.liked {
+/* .liked {
   border-color: #f9b9c4;
   background-color: #fbd0d8;
+} */
+
+.heart-liked {
+  background-color: red;
 }
 
 .content.heart-active{
@@ -183,6 +186,20 @@ body {
   margin-left: 3px;
   margin-right: 4px;
 }
+
+/* .content .heart-liked {
+  height: 53px;
+  width: 53px;
+  background: url("./icon/img.png") no-repeat;
+  background-position: left;
+  background-size: 2900%;
+  position: absolute;
+  top: 50%;
+  left: 21%;
+  transform: translate(-50%,-50%);
+  margin-left: 3px;
+  margin-right: 4px;
+} */
 
 .heart:hover{
   background-position: right;
