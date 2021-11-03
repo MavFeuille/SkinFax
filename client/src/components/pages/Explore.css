@@ -66,6 +66,18 @@
   padding: 5px 15px;
 }
 
+.btn-follow:focus {
+  margin-top: 6px;
+  background: none;
+  border: 0.5px solid linen;
+  background-color: grey;
+  border-radius: 0.35em;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px 15px;
+}
+
 .btn-follow:visited {
   margin-top: 6px;
   background: none;

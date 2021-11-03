@@ -4,8 +4,6 @@ import CommentList from "../CommentList";
 
 export default function PostListItem(props) {
 
-
-
   const {
     followList,
     creatorUserID,
@@ -21,13 +19,22 @@ export default function PostListItem(props) {
     addFavourite,
   } = props;
 
+  console.log("followList:", followList)
+
+  const [following, setFollowing] = useState(false);
+
+    useEffect(() => {
+        axios.get(`/api/follow/${props.user.id}`)
+      .then((res) => {
+        console.log("🚀 ~ file: Explore.jsx ~ line 29 ~ .then ~ res", res);
+        setFollowing(res.data);
+        console.log("🚀 ~ file: Explore.jsx ~ line 31 ~ .then ~ res.data", res.data)
+      })
+      .catch((err) => {
+        console.log("🚀 ~ file: Explore.jsx ~ line 34 ~ findExistingFollowing ~ err", err);
+      })
+    }, [])
   
-
-  console.log(
-    "🚀 ~ file: PostListItem.jsx ~ line 8 ~ PostListItem ~ creatorUserID",
-    creatorUserID
-  );
-
    // Follow new friend
    const handleFollow = () => {
     console.log("🚀 ~ file: Explore.jsx ~ line 70 ~ Explore ~ user.id", props.user.id)
@@ -35,12 +42,30 @@ export default function PostListItem(props) {
     axios.post(`/api/follow/${creatorUserID}`, {userID: props.user.id})
     .then((res) => {
       console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res)
-      
+      setFollowing(true);
     })
     .catch((err) => {
       console.log(err.message);
     });
   }
+  
+  
+  // Unfollow existing friend
+    const handleUnfollow = () => {
+      console.log("🚀 ~ file: Explore.jsx ~ line 70 ~ Explore ~ user.id", props.user.id)
+    
+      axios.delete(`/api/follow/${props.user.id}/${creatorUserID}`, {userID: props.user.id})
+      .then((res) => {
+          console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res)
+          setFollowing(false);
+        })
+        .catch((err) => {
+            console.log(err.message);
+          });
+        }
+   
+  const followButton = () => following ? handleUnfollow : handleFollow;
+  // console.log("🚀 ~ file: PostListItem.jsx ~ line 58 ~ PostListItem ~ following", following)
 
     return (
       <section className="post">
@@ -62,7 +87,13 @@ export default function PostListItem(props) {
               </form>
             }
             {followList && followList.includes(creatorUserID) && !isOwner && 
-              <p className="follow-tag">Following</p>
+              // <p className="follow-tag">Following</p>
+              <form onSubmit={event=> event.preventDefault()}>
+                <button className="btn-follow" onClick={handleUnfollow}> 
+                  Follow
+                </button>
+              </form>
+              
             }
           </div>
         </div>
