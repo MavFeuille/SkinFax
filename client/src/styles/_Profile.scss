@@ -4,18 +4,17 @@
   width: 90%;
   max-width: 1000px;
   margin: 0 auto 20px;
-  padding: 20px 20px 50px;
+  padding: 20px 20px 20px;
   @include underline;
 
   .user--flex-wrapper {
     @include flex;
     justify-content: space-around;
-    width: inherit;
+    width: 90%;
 
     .username {
       font-weight: bold;
-      text-transform: capitalize;
-      margin-left: 20px;
+      text-transform: lowercase;
     }
 
     .user--profile-picture {
@@ -24,9 +23,7 @@
       border-radius: 50%;
       border: 1px solid rgba(0, 0, 0, 0.5);
       padding: 1.5px;
-    }
-
-    .user--profile-followers {
+      object-fit: cover;
     }
   }
 }

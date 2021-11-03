@@ -1,60 +1,57 @@
 import { useState } from "react";
-import axios from "axios";
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import "./CommentForm.css";
 
+export default function CommentForm(props) {
+  const [text, setText] = useState("");
+  const [label, setLabel] = useState("Write a comment...");
 
-export default function CommentForm() {
-  const [comment, setComment] = useState("");
-  const [label, setLabel] = useState("Write a comment...")
-  
   const clearInput = () => {
-    setComment("");
-  }
-  
-  const handleSubmitComment = (event) => {
-    event.preventDefault();
+    setText("");
+  };
 
-    console.log("Comment length: ", comment.length)
-    console.log("🚀 ~ file: CommentForm.jsx ~ line 19 ~ CommentForm ~ comment", comment)
-
-    if(comment.length > 0) {
-      
-      postComment(comment);
+  const addComment = () => {
+    clearInput();
+    if (text.length > 0) {
+      props.addComment(text, props.postId);
     }
-  }
-
-  const postComment = async (comment) => {
-    console.log("🚀 ~ file: CommentForm.jsx ~ line 20 ~ postComment ~ comment", comment)
-    
-
-
-    axios.post('/api/comments/postComment', {comment: comment})
-      .then((res) => {
-        clearInput();
-        console.log("🚀 ~ file: CommentForm.jsx ~ line 33 ~ .then ~ res", res)
-      })
-  }
+  };
 
   return (
-    <div>
-      <Form onSubmit={handleSubmitComment}>
-        <FloatingLabel controlId="floatingTextarea" label={label} className="mb-3" onFocus={(event) => {setLabel("")}}>
-          <Form.Control 
-            as="textarea" 
-            placeholder="Leave a comment here" 
-            value={comment} 
-            type="string" 
-            onChange={(event) => {setComment(event.target.value)}}
-          />
-           <Button 
-            variant="outline-primary" 
-            type="submit"
-            onClick={() => console.log("validating before post")}>Post</Button>{' '}
-        </FloatingLabel>
-      </Form>
-    </div>
-    
-  )
+    <section className="create-comment-form-section">
+      
+        <Form>
+          <FloatingLabel
+            controlId="floatingTextarea"
+            label={label}
+            className="mb-3"
+            onFocus={(event) => {
+              setLabel("");
+            }}
+          >
+            <Form.Control
+              className="comments-form"
+              as="textarea"
+              placeholder="Leave a comment here"
+              value={text}
+              type="string"
+              onChange={(event) => {
+                setText(event.target.value);
+              }}
+            />
+          </FloatingLabel>
+          <div className="button-create-comment">
+            <Button
+              variant="outline-primary"
+              type="button"
+              onClick={addComment}
+            >
+              Post
+            </Button>{" "}
+          </div>
+        </Form>
+    </section>
+  );
 }

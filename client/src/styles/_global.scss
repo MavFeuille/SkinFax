@@ -4,6 +4,24 @@
   box-sizing: border-box;
 }
 
-body {
+#root {
+  min-height: 100vh;
   overflow-x: hidden;
+  background: rgb(196, 195, 218);
+  background: linear-gradient(
+    48deg,
+    rgba(196, 195, 218, 1) 55%,
+    rgba(49, 130, 255, 0.6409429982930672) 100%
+  );
+  background-repeat: no-repeat;
+}
+
+.trash--button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.button-bookmark-icon {
+  background-color: transparent;
 }

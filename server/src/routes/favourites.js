@@ -4,17 +4,17 @@ const router = express.Router();
 // function that will contain all the get routes
 const routers = function (pool) {
 
-  router.get('/', function (req, res) {
-
+  router.get('/:id', function (req, res) {
+    console.log("get favorites", req.params.id)
     const queryString = `  
-    SELECT image_video_url, description, created, users.username
+    SELECT users.profile_picture_url, content_posts.id, favourites.id, image_video_url, description, created, users.username
     FROM content_posts
     JOIN favourites ON favourites.content_post_id = content_posts.id
     JOIN users ON content_posts.user_id = users.id
-    WHERE favourites.user_id = 2
-    ORDER BY created DESC;`;
+    WHERE favourites.user_id = $1
+    ORDER BY favourites.id DESC`;
 
-    pool.query(queryString)
+    pool.query(queryString, [req.params.id])
       .then((data) => {
         res.json(data.rows)
       })
@@ -23,39 +23,38 @@ const routers = function (pool) {
       });
   });
 
-  router.post("/favourites", (req, res) => {
+  router.post("/", (req, res) => {
     const queryString = `INSERT INTO favourites (user_id, content_post_id)
     VALUES 
     ($1,$2);`;
 
-    const user_id = req.session.user_id;
-    const content_post_id = req.session.content_post_id;
+    const user_id = req.body.id;
+    const content_post_id = req.body.post_id;
+    console.log(user_id)
+    console.log(content_post_id)
 
     const val = [user_id, content_post_id];
 
-    db.query(queryString, val)
-      .then(() => {
-        res.redirect("/");
+    pool.query(queryString, val)
+      .then((result) => {
+        res.json(result.data.rows[0])
       })
       .catch(err => {
         console.log(err);
       });
   });
 
-  router.post("/delete/:id", (req, res) => {
-
+  router.delete("/:id", (req, res) => {
+    console.log("delete", req.params.id)
     const queryString = `
     DELETE FROM favourites
-    WHERE user_id = $1 AND favourites.id = $2;`;
+    WHERE favourites.id = $1;`;
 
-    const user_id = req.session.user_id;
-    const removeItem = req.params.id;
+    const params = [req.params.id]
 
-    const val = [user_id, removeItem]
-
-    db.query(queryString, val)
+    pool.query(queryString, params)
       .then(() => {
-        res.redirect("/favourites");
+        res.status(204).send('')
       })
       .catch(err => {
         res
