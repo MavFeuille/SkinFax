@@ -1,5 +1,14 @@
 header {
   @include underline;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    48deg,
+    rgba(196, 195, 218, 1) 55%,
+    rgba(49, 130, 255, 1) 100%
+  );
+  z-index: 6;
 
   nav {
     @include flex;
