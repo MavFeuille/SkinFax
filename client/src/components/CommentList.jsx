@@ -49,7 +49,7 @@ export default function CommentList(props) {
   const existingComments = comments.map((comment) => {
     return (
       <div className="comment-container" key={comment.id}>
-        <div>
+        <section>
           <p className="username">
             <img
               className="user-profile-pic"
@@ -59,8 +59,8 @@ export default function CommentList(props) {
           </p>
           <p>{comment.comment}</p>
           <p>{comment.created}</p>
-        </div>
-        <div>
+        </section>
+        <section>
           {isOwner && (
             <button
               className="trash--button"
@@ -69,7 +69,7 @@ export default function CommentList(props) {
               <i className="far fa-trash-alt"></i>
             </button>
           )}
-        </div>
+        </section>
       </div>
     );
   });
