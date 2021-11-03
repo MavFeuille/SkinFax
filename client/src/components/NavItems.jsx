@@ -54,7 +54,7 @@ export default function NavItems(props) {
         >
           Explore
         </li>
-        <li>{props.user.handle}</li>
+        {/* <li>{props.user.handle}</li> */}
         <li
           onClick={() => {
             props.logout();

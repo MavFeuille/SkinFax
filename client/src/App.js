@@ -15,7 +15,7 @@ import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 export default function App() {
-  const { user, login, logout, status } = useAuth();
+  const { user, user2, login, logout, status } = useAuth();
 
   const [page, setPage] = useState("Home")
 
@@ -27,10 +27,10 @@ export default function App() {
 
       {(user) &&
         <div className="App">
-          <Header setPage={setPage} user={user} logout={logout} />
-          {page === HOME_PAGE && <Home user={user} />}
-          {page === PROFILE_PAGE && <Profile user={user} />}
-          {page === FAV_PAGE && <FavouriteList user={user} />}
+          <Header setPage={setPage} user={user} user2={user2} logout={logout} />
+          {page === HOME_PAGE && <Home user={user} user2={user2}/>}
+          {page === PROFILE_PAGE && <Profile user={user} user2={user2}/>}
+          {page === FAV_PAGE && <FavouriteList user={user} user2={user2}/>}
           {page === CREATE_POST && <CreatePost setPage={setPage} />}
           {page === ROUTER_MESSAGES && <RouterMessages />}
           {page === EXPLORE_PAGE && <Explore user={user} />}
