@@ -141,29 +141,37 @@ body {
   overflow-x: hidden;
 }
 
-
-
 /*# sourceMappingURL=App.css.map */
 
 .heart-btn{
   position: relative;
-  
   /* top: 30%;
   left: 30%; */
   /* transform: translate(-50%,-50%); */
 }
+
+.fa-heart{
+  color: black;
+  
+}
 .content{
-  /* border: 2px solid #eae2e1; */
+  border: 2px solid #bdbcc0;
   padding: 0.1px;
   border-radius: 5px;
   display: flex;
   cursor: pointer;
+  height: 20px;
+  width: 20px;
 }
 
-/* .liked {
-  border-color: #f9b9c4;
-  background-color: #fbd0d8;
-} */
+.liked {
+  border-radius: 50%;
+  border-color: rgb(216, 140, 153);
+  background-color: #eb8b9d;
+  
+}
+
+
 
 .heart-liked {
   background-color: red;
@@ -216,8 +224,8 @@ body {
 }
 
 .like{
-  margin-left: 4px;
-  margin-top: 10px;
+  /* margin-left: 4px;
+  margin-top: 10px; */
   font-size: 15px; 
   font-family: 'Montserrat', sans-serif;
   color: rgb(160, 152, 152);
@@ -249,3 +257,4 @@ body {
     background-position: right;
   }
 }
+

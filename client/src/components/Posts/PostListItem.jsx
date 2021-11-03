@@ -38,33 +38,13 @@ export default function PostListItem(props) {
   const handleFollow = () => {
 
     addFollower(creatorUserID, props.user.id)
-    // console.log(
-    //   "🚀 ~ file: Explore.jsx ~ line 70 ~ Explore ~ user.id",
-    //   props.user.id
-    // );
-
-    // axios
-    //   .post(`/api/follow/${creatorUserID}`, { userID: props.user.id })
-    //   .then((res) => {
-    //     console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //   });
-  };
+  }
   
 
   const handleUnFollow = () => {
     
     removeFollower(creatorUserID, props.user.id)
-    // axios
-    //   .delete(`/api/follow/${creatorUserID}`, { data: { userID: props.user.id }})
-    //   .then((res) => {
-    //     console.log("🚀 ~ file: Explore.jsx ~ line 37 ~ .then ~ res", res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.message);
-    //   });
+  
   };
   
 
@@ -106,14 +86,25 @@ export default function PostListItem(props) {
       <div className="post-wrapper">
         <div className="reaction-container">
           {/* <i className="far fa-heart"></i> */}
-          <div className="heart-btn" onClick={toggleClass}>
+          {/* <div className="heart-btn" onClick={toggleClass}>
             <div className={classnames({content: true, liked: isActive})}>
               <span className="heart heart-liked"></span>
-              {/* <span className="like"></span> */}
+              <span className="like">Like</span>
               {/* <span className="num"></span> */}
               {/* <span className="heart"></span> */}
+            {/* </div>
+          </div> */} 
+          <div className="heart-btn" onClick={toggleClass}>
+            <div className={classnames({content: true, liked: isActive})}>
+              {/* <span className="heart heart-liked"></span> */}
+              <span className="like"><i class="far fa-heart"></i></span>
+                
+               {/* <span className="num"></span>  */}
+               {/* <span className="heart"></span>  */}
             </div>
           </div>
+
+
           <i className="far fa-comment"></i>
           {!isOwner && (
             <button className="button-bookmark-icon" onClick={addFavourite}>
