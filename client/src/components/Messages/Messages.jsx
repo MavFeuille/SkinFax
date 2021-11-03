@@ -8,7 +8,7 @@ export default function Messages({messages, name}) {
 
   //using prop of messages from DMComp loops thru msgs
   return (
-<ScrollToBottom>
+<ScrollToBottom className="scroll">
     {messages.map((message, i)=> 
     <div key={i}>
       <Message message={message} name={name}/>

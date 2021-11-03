@@ -20,6 +20,11 @@ const pool = new Pool(dbParams);
 const cloudinaryWithConfig = require('./cloudinary_config')
 const morgan = require('morgan')
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json({ limit: '100mb' }));
+// app.use(cors());
+// app.use(router);
 app.use(express.json());
 app.use(morgan("tiny"));
 
@@ -57,15 +62,17 @@ io.on('connection', (socket) => {
     const { error, user } = addUser({ id: socket.id, name, room });
 
     //kicks out
-    if (error) return callback(error);
+    if(error) return callback(error);
+     socket.join(user.room);
 
     //emitted from backend -> frontend
-    socket.emit('message', { user: 'admin', text: `${user.name}, welcome to the new room ${user.room}` })
+    socket.emit('message', {user: 'Admin', text: `${user.name}, Welcome to the New Room ${user.room}!`})
     // console.log('user____', user)
     // sends msg to e/o
-    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name}, just joined!` })
+    socket.broadcast.to(user.room).emit('message', {user: 'Admin', text:`${user.name}, just joined!`})
 
     socket.join(user.room);
+    io.to(user.room).emit('roomData', {room:user.room, users: getUsersInRoom(user.room)})
     callback();
   })
 
@@ -73,10 +80,15 @@ io.on('connection', (socket) => {
   //expects event on backend than transfers -> frontend
   socket.on('sendMessage', (message, callback) => {
     const user = getUser(socket.id)
+    
     console.log('message____test', message)
     console.log('soc id____test', socket.id, user)
     io.to(user.room).emit('message', { user: user.name, text: message })
 
+    // **********
+    //room is undefined when line below shows. and when 
+    // commented out messages are sent to room but arent showing client side 
+    io.to(user.room).emit('message', {user: user.name, text: message})
     callback();
   })
 
@@ -84,7 +96,13 @@ io.on('connection', (socket) => {
 
   //no param b/c user just left
   socket.on('disconnect', () => {
+    const user  = removeUser(socket.id);
     console.log('user just left');
+    
+    if(user){
+      io.to(user.room).emit('message', {user: 'Admin', text: `${user.name} has left.`})
+      io.to(user.room).emit('roomData', {room: user.room, users: getUsersInRoom(user.room)})
+    }
   });
 });
 
