@@ -21,7 +21,7 @@ export default function CommentForm(props) {
 
   return (
     <section className="create-comment-form-section">
-      <div className="create-comment-form">
+      
         <Form>
           <FloatingLabel
             controlId="floatingTextarea"
@@ -51,7 +51,6 @@ export default function CommentForm(props) {
             </Button>{" "}
           </div>
         </Form>
-      </div>
     </section>
   );
 }

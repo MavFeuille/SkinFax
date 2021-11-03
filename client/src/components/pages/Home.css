@@ -1,7 +1,7 @@
 .mainContainer {
   padding: 0 50px 5px 10px;
   justify-content: center;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .post {
@@ -60,7 +60,7 @@
 .reaction-container {
   width: 75%;
   height: 50px;
-  margin: auto;
+  /* margin: auto; */
   display: flex;
   align-items: center;
 }
@@ -74,6 +74,12 @@
   color: lightskyblue;
   border: none;
 }
+
+.post-wrapper {
+  width: 80%;
+  margin: auto;
+}
+
 
 .comment {
   width: 100%;
@@ -138,6 +144,10 @@
   background-color: white;
   border: none;
   font-size: 15px;
+}
+
+form {
+  width: 600px;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {

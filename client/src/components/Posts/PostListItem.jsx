@@ -71,26 +71,28 @@ export default function PostListItem(props) {
       <div className="post-content">
         <img className="post-image" src={imageVideoUrl} alt="" />
       </div>
-      <div className="reaction-container">
-        <i className="far fa-heart"></i>
-        <i className="far fa-comment"></i>
-        {!isOwner && (
-          <button className="button-bookmark-icon" onClick={addFavourite}>
-            <i className="far fa-bookmark"></i>
-          </button>
-        )}
-        {isOwner && (
-          <button className="trash--button" onClick={deletePost}>
-            <i className="far fa-trash-alt"></i>
-          </button>
-        )}
-      </div>
-      <div>
-        <p>{description}</p>
-        <p>{created}</p>
-      </div>
-      <div className="comment-form-container">
-        <CommentList postId={postId} user={props.user} isOwner={isOwner} />
+      <div className="post-wrapper">
+        <div className="reaction-container">
+          <i className="far fa-heart"></i>
+          <i className="far fa-comment"></i>
+          {!isOwner && (
+            <button className="button-bookmark-icon" onClick={addFavourite}>
+              <i className="far fa-bookmark"></i>
+            </button>
+          )}
+          {isOwner && (
+            <button className="trash--button" onClick={deletePost}>
+              <i className="far fa-trash-alt"></i>
+            </button>
+          )}
+        </div>
+        <div>
+          <p>{description}</p>
+          <p>{created}</p>
+        </div>
+        <div className="comment-form-container">
+          <CommentList postId={postId} user={props.user} isOwner={isOwner} />
+        </div>
       </div>
     </section>
   );
