@@ -1,10 +1,7 @@
 .mainContainer {
   padding: 0 50px 5px 10px;
   justify-content: center;
-}
-
-.title {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .post {
@@ -27,7 +24,7 @@
 
 .user {
   display: flex;
-  align-items: centre;
+  align-items: center;
 }
 
 .user-profile-pic {
@@ -68,7 +65,7 @@
 
 .reaction-container {
   height: 50px;
-  margin: auto;
+  /* margin: auto; */
   display: flex;
   align-items: center;
 }
@@ -81,6 +78,11 @@
 .button-bookmark-icon:focus {
   color: lightskyblue;
   border: none;
+}
+
+.post-wrapper {
+  width: 80%;
+  margin: auto;
 }
 
 .comment {
@@ -146,6 +148,10 @@
   background-color: white;
   border: none;
   font-size: 15px;
+}
+
+form {
+  width: 600px;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {

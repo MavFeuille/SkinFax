@@ -1,7 +1,7 @@
 .mainContainer {
   padding: 0 50px 5px 10px;
   justify-content: center;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .post {
@@ -104,7 +104,7 @@
 .reaction-container {
   width: 75%;
   height: 50px;
-  margin: auto;
+  /* margin: auto; */
   display: flex;
   align-items: center;
 }
