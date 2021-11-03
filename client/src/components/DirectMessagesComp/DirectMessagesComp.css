@@ -142,7 +142,7 @@ html body {
   height: 500px;
   z-index: 9999;
   position: relative;
-  padding-bottom: 80px;
+  padding-bottom: 150px;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
