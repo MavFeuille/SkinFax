@@ -7,7 +7,7 @@ export default function FavouriteListItem(props) {
           src={props.profilePictureUrl}
           alt=""
         />
-        <span className="username">{props.username}</span>
+        <span className="user--favorite-username">{props.username}</span>
         <br />
         <span>{props.created}</span>
       </section>

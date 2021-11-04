@@ -8,11 +8,16 @@
     flex-wrap: wrap;
     .user--favorite-article {
       width: 500px;
-      height: 800px;
       border: 1px solid rgb(187, 186, 186);
       margin: 20px;
       padding: 10px;
       position: relative;
+
+      .user--favorite-username {
+        padding-left: 10px;
+        font-weight: bold;
+      }
+
       .user--favorite-image {
         width: 100%;
         height: 600px;
@@ -20,10 +25,10 @@
       .user--favorite-trash-button {
         position: absolute;
         bottom: 0px;
-        left: 0px;
+        left: 10px;
       }
       .user--favorite-desc {
-        padding: 5px;
+        padding: 10px;
       }
     }
   }
